@@ -1,7 +1,7 @@
 ﻿
 namespace InterfaceUsuario
 {
-    partial class Form1
+    partial class MDIFrm
     {
         /// <summary>
         /// Required designer variable.
@@ -29,10 +29,22 @@ namespace InterfaceUsuario
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MDIFrm));
+            this.SuspendLayout();
+            // 
+            // MDIFrm
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            this.ClientSize = new System.Drawing.Size(1393, 693);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.IsMdiContainer = true;
+            this.Name = "MDIFrm";
+            this.Text = "Camobi Pizzaria Delivery";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.Load += new System.EventHandler(this.MDIFrm_Load);
+            this.ResumeLayout(false);
+
         }
 
         #endregion
