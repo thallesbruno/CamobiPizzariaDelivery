@@ -23,5 +23,11 @@ namespace InterfaceUsuario.Login
             var version = Assembly.GetExecutingAssembly().GetName().Version;
             lblVersao.Text = string.Format(lblVersao.Text, version.Major, version.Minor, version.Build, version.Revision);
         }
+
+        public void CarregarUsuarios()
+        {
+
+        }
     }
 }
+    
