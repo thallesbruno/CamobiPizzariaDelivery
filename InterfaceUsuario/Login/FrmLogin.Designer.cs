@@ -37,9 +37,9 @@ namespace InterfaceUsuario.Login
             this.btnEntrar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
             this.lblVersao = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).BeginInit();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
@@ -122,17 +122,17 @@ namespace InterfaceUsuario.Login
             this.panel1.Size = new System.Drawing.Size(231, 103);
             this.panel1.TabIndex = 7;
             // 
-            // label1
+            // lblVersao
             // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.Navy;
-            this.label1.Location = new System.Drawing.Point(3, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(225, 30);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Sistema Pizzaria";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblVersao.BackColor = System.Drawing.Color.Transparent;
+            this.lblVersao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVersao.ForeColor = System.Drawing.Color.Navy;
+            this.lblVersao.Location = new System.Drawing.Point(5, 42);
+            this.lblVersao.Name = "lblVersao";
+            this.lblVersao.Size = new System.Drawing.Size(221, 18);
+            this.lblVersao.TabIndex = 5;
+            this.lblVersao.Text = "Versão {0}.{1}.{2}.{3}";
+            this.lblVersao.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // label2
             // 
@@ -146,17 +146,17 @@ namespace InterfaceUsuario.Login
             this.label2.Text = "Copyright: Thalles Santos";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // lblVersao
+            // label1
             // 
-            this.lblVersao.BackColor = System.Drawing.Color.Transparent;
-            this.lblVersao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVersao.ForeColor = System.Drawing.Color.Navy;
-            this.lblVersao.Location = new System.Drawing.Point(5, 42);
-            this.lblVersao.Name = "lblVersao";
-            this.lblVersao.Size = new System.Drawing.Size(221, 18);
-            this.lblVersao.TabIndex = 5;
-            this.lblVersao.Text = "Versão (0).(1).(0)";
-            this.lblVersao.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.label1.BackColor = System.Drawing.Color.Transparent;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.Navy;
+            this.label1.Location = new System.Drawing.Point(3, 9);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(225, 30);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "Sistema Pizzaria";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // FrmLogin
             // 
@@ -164,7 +164,7 @@ namespace InterfaceUsuario.Login
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::InterfaceUsuario.Properties.Resources.fundo_login;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1059, 657);
+            this.ClientSize = new System.Drawing.Size(1055, 653);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSair);
@@ -180,6 +180,7 @@ namespace InterfaceUsuario.Login
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Acesso ao Sistema";
+            this.Load += new System.EventHandler(this.FrmLogin_Load);
             ((System.ComponentModel.ISupportInitialize)(this.picLogo)).EndInit();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
