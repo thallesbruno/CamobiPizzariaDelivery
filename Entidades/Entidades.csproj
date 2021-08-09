@@ -42,7 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Entidade.cs" />
-    <Compile Include="Enumeradores\Tipo.cs" />
+    <Compile Include="Enumeradores\Status.cs" />
     <Compile Include="IEntidade.cs" />
     <Compile Include="Pessoas\TipoUsuario.cs" />
     <Compile Include="Pessoas\Usuario.cs" />

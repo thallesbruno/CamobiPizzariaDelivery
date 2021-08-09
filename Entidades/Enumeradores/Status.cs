@@ -1,7 +1,7 @@
 ﻿namespace Entidades.Enumeradores
 {
-    public enum Tipo
+    public enum Status
     {
-        Ativo, Inativo,
+        Ativo, Inativo
     }
 }
