@@ -1,20 +1,14 @@
 ﻿using Entidades.Sistema;
 using Negocio.Pessoas;
 using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InterfaceUsuario.Login
 {
     public partial class FrmLogin : Form
     {
+        public bool bFlagLogin;
         public FrmLogin()
         {
             InitializeComponent();
@@ -37,6 +31,35 @@ namespace InterfaceUsuario.Login
 
                 }
             }
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            Dispose();
+        }
+
+        private void btnEntrar_Click(object sender, EventArgs e)
+        {
+            if (cmbUsuarios.Text.Trim().Equals(String.Empty))
+            {
+                MessageBox.Show("Você deve selecionar o login para acessar o sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (txtSenha.Text.Trim().Equals(String.Empty))
+            {
+                MessageBox.Show("Você deve digitar a sua senha para acessar o sistema", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            var item = (ComboBoxItemUsuario)cmbUsuarios.SelectedItem;
+            if (item.Senha != txtSenha.Text.Trim())
+            {
+                MessageBox.Show("Senha incorreta", "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            bFlagLogin = true;
+
+            this.Close();
         }
     }
 }

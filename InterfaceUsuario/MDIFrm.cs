@@ -22,10 +22,9 @@ namespace InterfaceUsuario
                     break;
                 }
             }
-
             var frmLogin = new FrmLogin();
             frmLogin.ShowDialog();
-
+            if (!frmLogin.bFlagLogin) Application.Exit();
         }
     }
 }
