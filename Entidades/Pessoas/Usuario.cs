@@ -16,7 +16,7 @@ namespace Entidades.Pessoas
         public string Login { get; set; }
         public string Senha { get; set; }
         public Status Status { get; set; }
-        public DateTime DtInsercao { get; set; }
-        public int CodigoUsrInsercao { get; set; }
+        public DateTime DtAlteracao { get; set; }
+        public int CodigoUsrAlteracao { get; set; }
     }
 }

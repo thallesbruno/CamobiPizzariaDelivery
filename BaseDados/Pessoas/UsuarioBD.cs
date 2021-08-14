@@ -30,8 +30,8 @@ namespace BaseDados.Pessoas
                         oUsuario.Login = reader["login"].ToString();
                         oUsuario.Senha = reader["senha"].ToString();
                         oUsuario.Status = (Status)Convert.ToInt16(reader["situacao"].ToString());
-                        oUsuario.DtInsercao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
-                        oUsuario.CodigoUsrInsercao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
+                        oUsuario.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
+                        oUsuario.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
 
                         listaUsuarios.Add(oUsuario);
                     }
