@@ -60,7 +60,7 @@ namespace InterfaceUsuario.Login
             bFlagLogin = true;
 
             Sessao.Usuario = new Entidades.Entidade(item.Codigo, item.Login);
-            //Sessao.TipoUsuario = 
+            Sessao.TipoUsuario = new TipoUsuarioNG().BuscarTipoUsuarioDoUsuario(item.Codigo); 
 
             this.Close();
         }
