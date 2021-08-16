@@ -59,6 +59,9 @@ namespace InterfaceUsuario.Login
             }
             bFlagLogin = true;
 
+            Sessao.Usuario = new Entidades.Entidade(item.Codigo, item.Login);
+            //Sessao.TipoUsuario = 
+
             this.Close();
         }
     }
