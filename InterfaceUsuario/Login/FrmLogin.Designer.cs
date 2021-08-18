@@ -91,6 +91,7 @@ namespace InterfaceUsuario.Login
             // 
             this.txtSenha.Location = new System.Drawing.Point(800, 385);
             this.txtSenha.Name = "txtSenha";
+            this.txtSenha.PasswordChar = '*';
             this.txtSenha.Size = new System.Drawing.Size(186, 20);
             this.txtSenha.TabIndex = 4;
             // 
@@ -166,7 +167,7 @@ namespace InterfaceUsuario.Login
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::InterfaceUsuario.Properties.Resources.fundo_login;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(1051, 649);
+            this.ClientSize = new System.Drawing.Size(1047, 645);
             this.ControlBox = false;
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.btnSair);
