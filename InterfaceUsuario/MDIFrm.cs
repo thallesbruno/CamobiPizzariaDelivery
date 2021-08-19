@@ -22,9 +22,19 @@ namespace InterfaceUsuario
                     break;
                 }
             }
+
+            mnsPrincipal.Visible = false;
+
             var frmLogin = new FrmLogin();
             frmLogin.ShowDialog();
             if (!frmLogin.bFlagLogin) Application.Exit();
+
+            mnsPrincipal.Visible = true;
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }
