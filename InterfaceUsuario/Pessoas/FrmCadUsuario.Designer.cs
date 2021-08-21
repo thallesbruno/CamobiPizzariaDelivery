@@ -34,11 +34,18 @@ namespace InterfaceUsuario.Pessoas
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.txtCodigoUsuario = new System.Windows.Forms.TextBox();
+            this.btnBscUsuario = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.txtNomeUsuario = new System.Windows.Forms.TextBox();
+            this.txtLoginUsuario = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.txtSenhaUsuario = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.btnBscTipoUsuario = new System.Windows.Forms.Button();
+            this.txtCodigoTipoUsuario = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.lblMstTipoUsuario = new System.Windows.Forms.Label();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,61 +101,130 @@ namespace InterfaceUsuario.Pessoas
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(35, 13);
+            this.label1.Size = new System.Drawing.Size(43, 13);
             this.label1.TabIndex = 1;
-            this.label1.Text = "label1";
+            this.label1.Text = "Código:";
             // 
-            // textBox1
+            // txtCodigoUsuario
             // 
-            this.textBox1.Location = new System.Drawing.Point(12, 25);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 2;
+            this.txtCodigoUsuario.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtCodigoUsuario.Location = new System.Drawing.Point(12, 25);
+            this.txtCodigoUsuario.Name = "txtCodigoUsuario";
+            this.txtCodigoUsuario.Size = new System.Drawing.Size(149, 20);
+            this.txtCodigoUsuario.TabIndex = 2;
             // 
-            // button1
+            // btnBscUsuario
             // 
-            this.button1.Location = new System.Drawing.Point(12, 51);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 3;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnBscUsuario.Image = global::InterfaceUsuario.Properties.Resources.busca;
+            this.btnBscUsuario.Location = new System.Drawing.Point(167, 25);
+            this.btnBscUsuario.Name = "btnBscUsuario";
+            this.btnBscUsuario.Size = new System.Drawing.Size(23, 21);
+            this.btnBscUsuario.TabIndex = 3;
+            this.btnBscUsuario.UseVisualStyleBackColor = true;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(305, 9);
+            this.label2.Location = new System.Drawing.Point(233, 9);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(35, 13);
+            this.label2.Size = new System.Drawing.Size(38, 13);
             this.label2.TabIndex = 4;
-            this.label2.Text = "label2";
+            this.label2.Text = "Nome:";
             // 
-            // button2
+            // txtNomeUsuario
             // 
-            this.button2.Location = new System.Drawing.Point(308, 50);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.txtNomeUsuario.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtNomeUsuario.Location = new System.Drawing.Point(236, 25);
+            this.txtNomeUsuario.Name = "txtNomeUsuario";
+            this.txtNomeUsuario.Size = new System.Drawing.Size(489, 20);
+            this.txtNomeUsuario.TabIndex = 6;
             // 
-            // textBox2
+            // txtLoginUsuario
             // 
-            this.textBox2.Location = new System.Drawing.Point(308, 24);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 6;
+            this.txtLoginUsuario.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtLoginUsuario.Location = new System.Drawing.Point(236, 81);
+            this.txtLoginUsuario.Name = "txtLoginUsuario";
+            this.txtLoginUsuario.Size = new System.Drawing.Size(244, 20);
+            this.txtLoginUsuario.TabIndex = 8;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(233, 65);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(36, 13);
+            this.label3.TabIndex = 7;
+            this.label3.Text = "Login:";
+            // 
+            // txtSenhaUsuario
+            // 
+            this.txtSenhaUsuario.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtSenhaUsuario.Location = new System.Drawing.Point(486, 81);
+            this.txtSenhaUsuario.Name = "txtSenhaUsuario";
+            this.txtSenhaUsuario.Size = new System.Drawing.Size(242, 20);
+            this.txtSenhaUsuario.TabIndex = 10;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(483, 65);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(41, 13);
+            this.label4.TabIndex = 9;
+            this.label4.Text = "Senha:";
+            // 
+            // btnBscTipoUsuario
+            // 
+            this.btnBscTipoUsuario.Image = global::InterfaceUsuario.Properties.Resources.busca;
+            this.btnBscTipoUsuario.Location = new System.Drawing.Point(167, 162);
+            this.btnBscTipoUsuario.Name = "btnBscTipoUsuario";
+            this.btnBscTipoUsuario.Size = new System.Drawing.Size(23, 21);
+            this.btnBscTipoUsuario.TabIndex = 13;
+            this.btnBscTipoUsuario.UseVisualStyleBackColor = true;
+            // 
+            // txtCodigoTipoUsuario
+            // 
+            this.txtCodigoTipoUsuario.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtCodigoTipoUsuario.Location = new System.Drawing.Point(12, 162);
+            this.txtCodigoTipoUsuario.Name = "txtCodigoTipoUsuario";
+            this.txtCodigoTipoUsuario.Size = new System.Drawing.Size(149, 20);
+            this.txtCodigoTipoUsuario.TabIndex = 12;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(12, 146);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(70, 13);
+            this.label5.TabIndex = 11;
+            this.label5.Text = "Tipo Usuário:";
+            // 
+            // lblMstTipoUsuario
+            // 
+            this.lblMstTipoUsuario.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblMstTipoUsuario.Location = new System.Drawing.Point(233, 165);
+            this.lblMstTipoUsuario.Name = "lblMstTipoUsuario";
+            this.lblMstTipoUsuario.Size = new System.Drawing.Size(495, 18);
+            this.lblMstTipoUsuario.TabIndex = 14;
+            this.lblMstTipoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmCadUsuario
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 327);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.lblMstTipoUsuario);
+            this.Controls.Add(this.btnBscTipoUsuario);
+            this.Controls.Add(this.txtCodigoTipoUsuario);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.txtSenhaUsuario);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtLoginUsuario);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtNomeUsuario);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.btnBscUsuario);
+            this.Controls.Add(this.txtCodigoUsuario);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.flowLayoutPanel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -171,10 +247,17 @@ namespace InterfaceUsuario.Pessoas
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnConfirmar;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox txtCodigoUsuario;
+        private System.Windows.Forms.Button btnBscUsuario;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox txtNomeUsuario;
+        private System.Windows.Forms.TextBox txtLoginUsuario;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox txtSenhaUsuario;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button btnBscTipoUsuario;
+        private System.Windows.Forms.TextBox txtCodigoTipoUsuario;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label lblMstTipoUsuario;
     }
 }
