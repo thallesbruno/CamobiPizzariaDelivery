@@ -14,9 +14,9 @@ namespace Negocio.Pessoas
             _bd = new UsuarioBD();
         }
 
-        public List<Usuario> ListarUsuarios()
+        public List<Usuario> ListarUsuariosAtivos()
         {
-            return _bd.ListarUsuarios();
+            return _bd.ListarUsuariosAtivos();
         }
     }
 }

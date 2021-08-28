@@ -16,5 +16,15 @@ namespace InterfaceUsuario.Pessoas
         {
             InitializeComponent();
         }
+
+        private void btnBscUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnBscTipoUsuario_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
