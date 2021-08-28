@@ -16,7 +16,7 @@ namespace Negocio.Pessoas
 
         public List<Usuario> ListarUsuariosAtivos()
         {
-            return _bd.ListarUsuariosAtivos();
+            return _bd.ListarEntidadesViewPesquisa();
         }
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Entidades.Entidades
 {
-    class EntidadeViewPesquisa : Entidade
+    public class EntidadeViewPesquisa : Entidade
     {
         public Status Status { get; set; }
     }
