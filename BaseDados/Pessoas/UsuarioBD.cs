@@ -23,13 +23,12 @@ namespace BaseDados.Pessoas
                     string query = @"SELECT codigo, nome AS descricao, situacao
                                             FROM USUARIO ";
                     if (status != Status.Todos)
-                    {
                         query += "WHERE SITUACAO = @situacao; ";
-                    }
 
                     comando.CommandText = query;
 
-                    comando.Parameters.AddWithValue("situacao", (int)status);
+                    if (status != Status.Todos)
+                        comando.Parameters.AddWithValue("situacao", (int)status);
                     
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
@@ -53,7 +52,7 @@ namespace BaseDados.Pessoas
             }
             return listaEntidades;
         }
-        public List<Usuario> ListarUsuarios()
+        public List<Usuario> ListarUsuariosAtivos()
         {
             var listaUsuarios = new List<Usuario>();
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
