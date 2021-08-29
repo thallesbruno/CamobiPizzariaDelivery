@@ -21,9 +21,9 @@ namespace BaseDados.Pessoas
                     comando = conexao.CreateCommand();
 
                     string query = @"SELECT codigo, nome AS descricao, situacao
-                                            FROM USUARIO ";
+                                            FROM USUARIO";
                     if (status != Status.Todos)
-                        query += "WHERE SITUACAO = @situacao; ";
+                        query += " WHERE SITUACAO = @situacao; ";
 
                     comando.CommandText = query;
 
