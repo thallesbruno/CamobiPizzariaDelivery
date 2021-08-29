@@ -14,23 +14,23 @@ namespace InterfaceUsuario.Pessoas
 
         private void btnBscUsuario_Click(object sender, EventArgs e)
         {
-
-        }
-
-        private void btnBscTipoUsuario_Click(object sender, EventArgs e)
-        {
             var lista = new UsuarioNG().ListarEntidadesViewPesquisa(Status.Todos);
             //verifica se a lista está vazia
             if (lista.Count < 1)
             {
-                MessageBox.Show("Sem dados para serem exibidos!", 
-                    this.Text, 
-                    MessageBoxButtons.OK, 
+                MessageBox.Show("Sem dados para serem exibidos!",
+                    this.Text,
+                    MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
                 return;
             }
             //passar a lista para o formulario generico de pesquisa
 
+        }
+
+        private void btnBscTipoUsuario_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

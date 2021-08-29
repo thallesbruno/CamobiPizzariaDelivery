@@ -31,6 +31,8 @@ namespace InterfaceUsuario.Login
 
                 }
             }
+            //define o primeiro da lista
+            cmbUsuarios.SelectedIndex = 0;
         }
 
         private void btnSair_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using InterfaceUsuario.Login;
+using InterfaceUsuario.Pessoas;
 using System;
 using System.Windows.Forms;
 
@@ -35,6 +36,21 @@ namespace InterfaceUsuario
         private void sairToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void    AbrirFormularios(Form oFrm)
+        {
+            oFrm.WindowState = FormWindowState.Normal;
+            oFrm.StartPosition = FormStartPosition.Manual;
+            oFrm.MdiParent = this;
+            oFrm.Top = 0;
+            oFrm.Left = 0;
+            oFrm.Show();
+        }
+
+        private void usuáriosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios(new FrmCadUsuario());
         }
     }
 }
