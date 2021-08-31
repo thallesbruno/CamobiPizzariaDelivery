@@ -18,7 +18,7 @@ namespace InterfaceUsuario.Pessoas
             //verifica se a lista está vazia
             if (lista.Count < 1)
             {
-                MessageBox.Show("Sem dados para serem exibidos!",
+                MessageBox.Show("Sem da dos para serem exibidos!",
                     this.Text,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
