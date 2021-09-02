@@ -35,9 +35,9 @@ namespace InterfaceUsuario.Pesquisas
             this.label1 = new System.Windows.Forms.Label();
             this.txtBusca = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.optTodos = new System.Windows.Forms.RadioButton();
-            this.optSomenteAtivos = new System.Windows.Forms.RadioButton();
             this.optSomenteInativos = new System.Windows.Forms.RadioButton();
+            this.optSomenteAtivos = new System.Windows.Forms.RadioButton();
+            this.optTodos = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvlListagem = new System.Windows.Forms.ListView();
             this.flowLayoutPanel1.SuspendLayout();
@@ -107,16 +107,16 @@ namespace InterfaceUsuario.Pesquisas
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Situação";
             // 
-            // optTodos
+            // optSomenteInativos
             // 
-            this.optTodos.AutoSize = true;
-            this.optTodos.Location = new System.Drawing.Point(44, 20);
-            this.optTodos.Name = "optTodos";
-            this.optTodos.Size = new System.Drawing.Size(55, 17);
-            this.optTodos.TabIndex = 0;
-            this.optTodos.TabStop = true;
-            this.optTodos.Text = "Todos";
-            this.optTodos.UseVisualStyleBackColor = true;
+            this.optSomenteInativos.AutoSize = true;
+            this.optSomenteInativos.Location = new System.Drawing.Point(369, 20);
+            this.optSomenteInativos.Name = "optSomenteInativos";
+            this.optSomenteInativos.Size = new System.Drawing.Size(107, 17);
+            this.optSomenteInativos.TabIndex = 2;
+            this.optSomenteInativos.TabStop = true;
+            this.optSomenteInativos.Text = "Somente Inativos";
+            this.optSomenteInativos.UseVisualStyleBackColor = true;
             // 
             // optSomenteAtivos
             // 
@@ -129,16 +129,16 @@ namespace InterfaceUsuario.Pesquisas
             this.optSomenteAtivos.Text = "Somente Ativos";
             this.optSomenteAtivos.UseVisualStyleBackColor = true;
             // 
-            // optSomenteInativos
+            // optTodos
             // 
-            this.optSomenteInativos.AutoSize = true;
-            this.optSomenteInativos.Location = new System.Drawing.Point(369, 20);
-            this.optSomenteInativos.Name = "optSomenteInativos";
-            this.optSomenteInativos.Size = new System.Drawing.Size(107, 17);
-            this.optSomenteInativos.TabIndex = 2;
-            this.optSomenteInativos.TabStop = true;
-            this.optSomenteInativos.Text = "Somente Inativos";
-            this.optSomenteInativos.UseVisualStyleBackColor = true;
+            this.optTodos.AutoSize = true;
+            this.optTodos.Location = new System.Drawing.Point(44, 20);
+            this.optTodos.Name = "optTodos";
+            this.optTodos.Size = new System.Drawing.Size(55, 17);
+            this.optTodos.TabIndex = 0;
+            this.optTodos.TabStop = true;
+            this.optTodos.Text = "Todos";
+            this.optTodos.UseVisualStyleBackColor = true;
             // 
             // groupBox2
             // 
@@ -180,6 +180,7 @@ namespace InterfaceUsuario.Pesquisas
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Pesquisa";
+            this.Load += new System.EventHandler(this.FrmPesquisaGenerica_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
