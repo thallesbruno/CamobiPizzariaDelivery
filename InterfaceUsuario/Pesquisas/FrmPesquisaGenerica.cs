@@ -1,4 +1,5 @@
 ﻿using Entidades.Entidades;
+using InterfaceUsuario.Modulos;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,6 +58,7 @@ namespace InterfaceUsuario.Pesquisas
                 var itemX = new ListViewItem(linha);
                 lvlListagem.Items.Add(itemX);
             }
+            Funcoes.ListViewColor(lvlListagem);
         }
     }
 }

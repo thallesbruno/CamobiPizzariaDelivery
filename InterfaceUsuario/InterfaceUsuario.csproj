@@ -73,6 +73,7 @@
     <Compile Include="MDIFrm.Designer.cs">
       <DependentUpon>MDIFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Modulos\Funcoes.cs" />
     <Compile Include="Pesquisas\FrmPesquisaGenerica.cs">
       <SubType>Form</SubType>
     </Compile>
