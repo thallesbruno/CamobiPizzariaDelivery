@@ -1,4 +1,5 @@
 ﻿using Entidades.Enumeradores;
+using InterfaceUsuario.Pesquisas;
 using Negocio.Pessoas;
 using System;
 using System.Windows.Forms;
@@ -25,7 +26,9 @@ namespace InterfaceUsuario.Pessoas
                 return;
             }
             //passar a lista para o formulario generico de pesquisa
-
+            var frmPesquisa = new FrmPesquisaGenerica("Listagem de Usuários", Status.Todos);
+            frmPesquisa.lista = lista;
+            frmPesquisa.ShowDialog();
         }
 
         private void btnBscTipoUsuario_Click(object sender, EventArgs e)

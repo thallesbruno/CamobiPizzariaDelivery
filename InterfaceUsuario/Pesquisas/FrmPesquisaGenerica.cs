@@ -1,4 +1,5 @@
 ﻿using Entidades.Entidades;
+using Entidades.Enumeradores;
 using InterfaceUsuario.Modulos;
 using System;
 using System.Collections.Generic;
@@ -16,9 +17,17 @@ namespace InterfaceUsuario.Pesquisas
     {
         public List<EntidadeViewPesquisa> lista = new List<EntidadeViewPesquisa>();
         public int iRetorno = 0;
-        public FrmPesquisaGenerica()
+        public FrmPesquisaGenerica(string strTitulo, Status status)
         {
             InitializeComponent();
+
+            this.Text = strTitulo;
+            if (status == Status.Ativo)
+                optSomenteAtivos.Checked = true;
+            else if (status == Status.Inativo)
+                optSomenteInativos.Checked = true;
+            else
+                optTodos.Checked = true;
         }
 
         private void FrmPesquisaGenerica_Load(object sender, EventArgs e)
