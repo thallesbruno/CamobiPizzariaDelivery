@@ -41,9 +41,15 @@ namespace InterfaceUsuario.Pesquisas
                 Top = 0,
                 Left = 0
             };
+            LimparCampos();
             PreencherLista(lista);
         }
 
+        public void LimparCampos()
+        {
+            txtBusca.Text = string.Empty;
+            iRetorno = 0;
+        }
         private void PreencherLista(List<EntidadeViewPesquisa> list)
         {
             lvlListagem.Clear();
@@ -68,6 +74,29 @@ namespace InterfaceUsuario.Pesquisas
                 lvlListagem.Items.Add(itemX);
             }
             Funcoes.ListViewColor(lvlListagem);
+        }
+
+        private void lvlListagem_DoubleClick(object sender, EventArgs e)
+        {
+            btnConfirmar_Click(btnConfirmar, new EventArgs());
+        }
+
+        private void btnSair_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+            if (lvlListagem.SelectedItems.Count <= 0)
+                return;
+
+            var iSelectecIndex = Convert.ToInt32(lvlListagem.SelectedIndices[0]);
+            if (iSelectecIndex >= 0)
+            {
+                iRetorno = Convert.ToInt32(lvlListagem.Items[iSelectecIndex].Text);
+                btnSair_Click(btnSair, new EventArgs());
+            }
         }
     }
 }

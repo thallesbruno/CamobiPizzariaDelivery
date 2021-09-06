@@ -66,6 +66,7 @@ namespace InterfaceUsuario.Pesquisas
             this.btnSair.Text = "Sair";
             this.btnSair.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnConfirmar
             // 
@@ -78,6 +79,7 @@ namespace InterfaceUsuario.Pesquisas
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // label1
             // 
@@ -162,6 +164,7 @@ namespace InterfaceUsuario.Pesquisas
             this.lvlListagem.Size = new System.Drawing.Size(517, 323);
             this.lvlListagem.TabIndex = 0;
             this.lvlListagem.UseCompatibleStateImageBehavior = false;
+            this.lvlListagem.DoubleClick += new System.EventHandler(this.lvlListagem_DoubleClick);
             // 
             // FrmPesquisaGenerica
             // 
@@ -179,7 +182,7 @@ namespace InterfaceUsuario.Pesquisas
             this.Name = "FrmPesquisaGenerica";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "Pesquisa";
+            this.Text = "á podendpo";
             this.Load += new System.EventHandler(this.FrmPesquisaGenerica_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
