@@ -96,6 +96,7 @@ namespace InterfaceUsuario.Pesquisas
             this.txtBusca.Name = "txtBusca";
             this.txtBusca.Size = new System.Drawing.Size(523, 20);
             this.txtBusca.TabIndex = 1;
+            this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
             // 
             // groupBox1
             // 

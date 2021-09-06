@@ -122,5 +122,14 @@ namespace InterfaceUsuario.Pesquisas
             LimparCampos();
             PreencherLista(lista);
         }
+
+        private void txtBusca_TextChanged(object sender, EventArgs e)
+        {
+            if (txtBusca.Text.Trim().Equals(String.Empty))
+                return;
+
+            var listResult = new List<EntidadeViewPesquisa>(from p in lista where p.Descricao.ToLower().Contains(txtBusca.Text.Trim().ToLower()) select p);
+            PreencherLista(listResult);
+        }
     }
 }
