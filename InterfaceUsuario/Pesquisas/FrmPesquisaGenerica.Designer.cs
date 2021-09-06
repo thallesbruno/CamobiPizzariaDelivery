@@ -119,6 +119,7 @@ namespace InterfaceUsuario.Pesquisas
             this.optSomenteInativos.TabStop = true;
             this.optSomenteInativos.Text = "Somente Inativos";
             this.optSomenteInativos.UseVisualStyleBackColor = true;
+            this.optSomenteInativos.CheckedChanged += new System.EventHandler(this.optSomenteInativos_CheckedChanged);
             // 
             // optSomenteAtivos
             // 
@@ -130,6 +131,7 @@ namespace InterfaceUsuario.Pesquisas
             this.optSomenteAtivos.TabStop = true;
             this.optSomenteAtivos.Text = "Somente Ativos";
             this.optSomenteAtivos.UseVisualStyleBackColor = true;
+            this.optSomenteAtivos.CheckedChanged += new System.EventHandler(this.optSomenteAtivos_CheckedChanged);
             // 
             // optTodos
             // 
@@ -141,6 +143,7 @@ namespace InterfaceUsuario.Pesquisas
             this.optTodos.TabStop = true;
             this.optTodos.Text = "Todos";
             this.optTodos.UseVisualStyleBackColor = true;
+            this.optTodos.CheckedChanged += new System.EventHandler(this.optTodos_CheckedChanged);
             // 
             // groupBox2
             // 

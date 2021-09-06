@@ -98,5 +98,29 @@ namespace InterfaceUsuario.Pesquisas
                 btnSair_Click(btnSair, new EventArgs());
             }
         }
+
+        private void optTodos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!optTodos.Checked)
+                return;
+            LimparCampos();
+            PreencherLista(lista);
+        }
+
+        private void optSomenteAtivos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!optSomenteAtivos.Checked)
+                return;
+            LimparCampos();
+            PreencherLista(lista);
+        }
+
+        private void optSomenteInativos_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!optSomenteInativos.Checked)
+                return;
+            LimparCampos();
+            PreencherLista(lista);
+        }
     }
 }
