@@ -2,6 +2,7 @@
 using InterfaceUsuario.Pesquisas;
 using Negocio.Pessoas;
 using System;
+using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace InterfaceUsuario.Pessoas
@@ -29,11 +30,25 @@ namespace InterfaceUsuario.Pessoas
             var frmPesquisa = new FrmPesquisaGenerica("Listagem de Usuários", Status.Todos);
             frmPesquisa.lista = lista;
             frmPesquisa.ShowDialog();
+
+            var iRetorno = frmPesquisa.iRetorno;
+            //iRetorno = 0
+            if (iRetorno < 1)
+                return;
+
+            txtCodigoUsuario.Text = iRetorno.ToString();
+            txtCodigoUsuario_Validating(txtCodigoUsuario, new CancelEventArgs());
+            btnBscUsuario.Focus();
         }
 
         private void btnBscTipoUsuario_Click(object sender, EventArgs e)
         {
             
+        }
+
+        private void txtCodigoUsuario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
         }
     }
 }

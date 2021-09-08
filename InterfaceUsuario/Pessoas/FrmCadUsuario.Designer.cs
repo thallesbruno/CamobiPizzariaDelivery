@@ -113,6 +113,7 @@ namespace InterfaceUsuario.Pessoas
             this.txtCodigoUsuario.Name = "txtCodigoUsuario";
             this.txtCodigoUsuario.Size = new System.Drawing.Size(149, 20);
             this.txtCodigoUsuario.TabIndex = 2;
+            this.txtCodigoUsuario.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodigoUsuario_Validating);
             // 
             // label2
             // 
