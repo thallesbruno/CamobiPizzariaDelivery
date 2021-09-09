@@ -9,6 +9,8 @@ namespace InterfaceUsuario.Pessoas
 {
     public partial class FrmCadUsuario : Form
     {
+
+        private bool IsNovo;
         public FrmCadUsuario()
         {
             InitializeComponent();
@@ -48,6 +50,16 @@ namespace InterfaceUsuario.Pessoas
 
         private void txtCodigoUsuario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            //verificar se esta vazio
+            if (txtCodigoUsuario.Text.Trim().Equals(string.Empty))
+                return;
+
+            var oUsuario = new UsuarioNG().Buscar(Convert.ToInt32(txtCodigoTipoUsuario.Text.Trim()));
+            if (oUsuario == null)
+            {
+                btnExcluir.Enabled = false;
+                return;
+            }
 
         }
     }

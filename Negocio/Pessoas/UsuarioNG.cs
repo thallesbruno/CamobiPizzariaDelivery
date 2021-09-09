@@ -21,9 +21,14 @@ namespace Negocio.Pessoas
             return _bd.ListarEntidadesViewPesquisa(status);
         }
 
-            public List<Usuario> ListarUsuariosAtivos()
+        public List<Usuario> ListarUsuariosAtivos()
         {
             return _bd.ListarUsuariosAtivos();
+        }
+
+        public Usuario Buscar(int cod)
+        {
+            return _bd.Buscar(cod);
         }
     }
 }
