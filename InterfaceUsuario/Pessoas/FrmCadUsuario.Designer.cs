@@ -44,7 +44,7 @@ namespace InterfaceUsuario.Pessoas
             this.txtCodigoTipoUsuario = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.lblMstTipoUsuario = new System.Windows.Forms.Label();
-            this.ucSituacao1 = new InterfaceUsuario.UserControls.ucSituacao();
+            this.oUcSituacao = new InterfaceUsuario.UserControls.ucSituacao();
             this.btnBscTipoUsuario = new System.Windows.Forms.Button();
             this.btnBscUsuario = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
@@ -192,12 +192,12 @@ namespace InterfaceUsuario.Pessoas
             this.lblMstTipoUsuario.TabIndex = 14;
             this.lblMstTipoUsuario.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
-            // ucSituacao1
+            // oUcSituacao
             // 
-            this.ucSituacao1.Location = new System.Drawing.Point(523, 190);
-            this.ucSituacao1.Name = "ucSituacao1";
-            this.ucSituacao1.Size = new System.Drawing.Size(205, 69);
-            this.ucSituacao1.TabIndex = 15;
+            this.oUcSituacao.Location = new System.Drawing.Point(523, 190);
+            this.oUcSituacao.Name = "oUcSituacao";
+            this.oUcSituacao.Size = new System.Drawing.Size(205, 69);
+            this.oUcSituacao.TabIndex = 15;
             // 
             // btnBscTipoUsuario
             // 
@@ -224,7 +224,7 @@ namespace InterfaceUsuario.Pessoas
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(740, 327);
-            this.Controls.Add(this.ucSituacao1);
+            this.Controls.Add(this.oUcSituacao);
             this.Controls.Add(this.lblMstTipoUsuario);
             this.Controls.Add(this.btnBscTipoUsuario);
             this.Controls.Add(this.txtCodigoTipoUsuario);
@@ -271,6 +271,6 @@ namespace InterfaceUsuario.Pessoas
         private System.Windows.Forms.TextBox txtCodigoTipoUsuario;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label lblMstTipoUsuario;
-        private UserControls.ucSituacao ucSituacao1;
+        private UserControls.ucSituacao oUcSituacao;
     }
 }

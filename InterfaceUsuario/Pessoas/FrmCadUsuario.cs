@@ -61,6 +61,18 @@ namespace InterfaceUsuario.Pessoas
                 return;
             }
 
+            IsNovo = false;
+            txtNomeUsuario.Text = oUsuario.Nome;
+            txtLoginUsuario.Text = oUsuario.Login;
+            txtSenhaUsuario.Text = oUsuario.Senha;
+            txtCodigoTipoUsuario.Text = oUsuario.TipoUsuario.Codigo.ToString();
+
+            //1 - Validar o tipo usuario
+            //2 - mascara do campo codigo usuario
+            //3 - mascara do campo codigo tipo usuario
+
+            oUcSituacao.InicializarSituacao(oUsuario.Status);
+            btnExcluir.Enabled = true;
         }
     }
 }
