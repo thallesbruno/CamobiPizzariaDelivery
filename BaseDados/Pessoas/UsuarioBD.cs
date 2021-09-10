@@ -94,7 +94,7 @@ namespace BaseDados.Pessoas
 
         public Usuario Buscar(int cod)
         {
-            Usuario oUsuario;
+            Usuario oUsuario = new Usuario();
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
