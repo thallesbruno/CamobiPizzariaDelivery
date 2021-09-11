@@ -109,7 +109,6 @@ namespace BaseDados.Pessoas
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
-                        oUsuario = new Usuario();
                         oUsuario.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oUsuario.TipoUsuario = new TipoUsuario(Convert.ToInt32(reader["codigo_tipo_usuario"].ToString()), string.Empty);
                         oUsuario.Nome = reader["nome"].ToString();

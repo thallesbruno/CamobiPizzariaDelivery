@@ -54,7 +54,7 @@ namespace InterfaceUsuario.Pessoas
             if (txtCodigoUsuario.Text.Trim().Equals(string.Empty))
                 return;
 
-            var oUsuario = new UsuarioNG().Buscar(Convert.ToInt32(txtCodigoTipoUsuario.Text.Trim()));
+            var oUsuario = new UsuarioNG().Buscar(Convert.ToInt32(txtCodigoUsuario.Text.Trim()));
             if (oUsuario == null)
             {
                 btnExcluir.Enabled = false;
