@@ -1,4 +1,5 @@
 ﻿using Entidades.Enumeradores;
+using InterfaceUsuario.Modulos;
 using InterfaceUsuario.Pesquisas;
 using Negocio.Pessoas;
 using System;
@@ -14,6 +15,8 @@ namespace InterfaceUsuario.Pessoas
         public FrmCadUsuario()
         {
             InitializeComponent();
+            MascaraCampoCodigo.AplicarEventos(txtCodigoUsuario);
+            MascaraCampoCodigo.AplicarEventos(txtCodigoTipoUsuario);
         }
 
         private void btnBscUsuario_Click(object sender, EventArgs e)
@@ -49,6 +52,11 @@ namespace InterfaceUsuario.Pessoas
         }
 
         private void FrmCadUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        public void LimparCampos()
         {
 
         }
@@ -90,7 +98,10 @@ namespace InterfaceUsuario.Pessoas
             //1 - Validar o tipo usuario
             txtCodigoTipoUsuario_Validating(txtCodigoTipoUsuario, new CancelEventArgs());
             //2 - mascara do campo codigo usuario
+            MascaraCampoCodigo.RetornarMascara(txtCodigoUsuario, new EventArgs());
             //3 - mascara do campo codigo tipo usuario
+            MascaraCampoCodigo.RetornarMascara(txtCodigoTipoUsuario, new EventArgs());
+
 
             oUcSituacao.InicializarSituacao(oUsuario.Status);
             btnExcluir.Enabled = true;
