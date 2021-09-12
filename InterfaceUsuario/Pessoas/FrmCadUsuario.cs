@@ -48,6 +48,26 @@ namespace InterfaceUsuario.Pessoas
             
         }
 
+        private void FrmCadUsuario_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+        }
+        
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnConfirmar_Click(object sender, EventArgs e)
+        {
+
+        }
+        
         private void txtCodigoUsuario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             //verificar se esta vazio
@@ -68,11 +88,30 @@ namespace InterfaceUsuario.Pessoas
             txtCodigoTipoUsuario.Text = oUsuario.TipoUsuario.Codigo.ToString();
 
             //1 - Validar o tipo usuario
+            txtCodigoTipoUsuario_Validating(txtCodigoTipoUsuario, new CancelEventArgs());
             //2 - mascara do campo codigo usuario
             //3 - mascara do campo codigo tipo usuario
 
             oUcSituacao.InicializarSituacao(oUsuario.Status);
             btnExcluir.Enabled = true;
+        }
+
+        private void txtCodigoTipoUsuario_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtCodigoTipoUsuario.Text.Trim().Equals(string.Empty))
+            {
+                lblMstTipoUsuario.Text = string.Empty;
+                return;
+            }
+
+            var oTipoUsuario = new TipoUsuarioNG().Buscar(Convert.ToInt32(txtCodigoTipoUsuario.Text.Trim()));
+            if (oTipoUsuario == null)
+            {
+                MessageBox.Show("Tipo de usuário não encontrado!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                txtCodigoTipoUsuario.Select();
+                return;
+            }
+            lblMstTipoUsuario.Text = oTipoUsuario.Descricao;
         }
     }
 }

@@ -72,6 +72,7 @@ namespace InterfaceUsuario.Pessoas
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnExcluir
             // 
@@ -84,6 +85,7 @@ namespace InterfaceUsuario.Pessoas
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnConfirmar
             // 
@@ -96,6 +98,7 @@ namespace InterfaceUsuario.Pessoas
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // label1
             // 
@@ -173,6 +176,7 @@ namespace InterfaceUsuario.Pessoas
             this.txtCodigoTipoUsuario.Name = "txtCodigoTipoUsuario";
             this.txtCodigoTipoUsuario.Size = new System.Drawing.Size(149, 20);
             this.txtCodigoTipoUsuario.TabIndex = 12;
+            this.txtCodigoTipoUsuario.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodigoTipoUsuario_Validating);
             // 
             // label5
             // 
@@ -246,6 +250,7 @@ namespace InterfaceUsuario.Pessoas
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.Text = "Cadastro de Usuários";
+            this.Load += new System.EventHandler(this.FrmCadUsuario_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();

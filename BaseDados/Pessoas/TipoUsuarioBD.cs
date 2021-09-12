@@ -42,5 +42,38 @@ namespace BaseDados.Pessoas
             }
             return tipoUsuario;
         }
+
+        public TipoUsuario Buscar(int codigo)
+        {
+            TipoUsuario tipoUsuario = new TipoUsuario();
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    comando.CommandText = @"SELECT * FROM tipo_usuario WHERE CODIGO = @codigo";
+                    comando.Parameters.AddWithValue("codigo", codigo);
+
+                    MySqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        tipoUsuario.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        tipoUsuario.Descricao = reader["descricao"].ToString();
+                    }
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return tipoUsuario;
+        }
     }
 }
