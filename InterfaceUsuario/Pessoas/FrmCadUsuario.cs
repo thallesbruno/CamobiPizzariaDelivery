@@ -58,6 +58,14 @@ namespace InterfaceUsuario.Pessoas
 
         public void LimparCampos()
         {
+            txtCodigoUsuario.Text = new UsuarioNG().BuscarProximoCodigo().ToString();
+            txtNomeUsuario.Text = string.Empty;
+            txtLoginUsuario.Text = string.Empty;
+            txtSenhaUsuario.Text = string.Empty;
+            txtCodigoTipoUsuario.Text = string.Empty;
+            btnExcluir.Enabled = false;
+            oUcSituacao.InicializarSituacao(Status.Ativo);
+
 
         }
 
@@ -101,7 +109,6 @@ namespace InterfaceUsuario.Pessoas
             MascaraCampoCodigo.RetornarMascara(txtCodigoUsuario, new EventArgs());
             //3 - mascara do campo codigo tipo usuario
             MascaraCampoCodigo.RetornarMascara(txtCodigoTipoUsuario, new EventArgs());
-
 
             oUcSituacao.InicializarSituacao(oUsuario.Status);
             btnExcluir.Enabled = true;

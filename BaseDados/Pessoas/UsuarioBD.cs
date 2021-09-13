@@ -4,11 +4,13 @@ using Entidades.Pessoas;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using BaseDados.Modulos;
 
 namespace BaseDados.Pessoas
 {
     public class UsuarioBD
     {
+        private readonly FuncoesBD bdFuncoes = new FuncoesBD();
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
             var listaEntidades = new List<EntidadeViewPesquisa>();
@@ -129,6 +131,11 @@ namespace BaseDados.Pessoas
                 }
             }
             return oUsuario;
+        }
+
+        public int BuscarProximoCodigo()
+        {
+            return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'usuario'");
         }
     }
 }
