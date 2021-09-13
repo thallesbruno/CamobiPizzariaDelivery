@@ -14,5 +14,11 @@ namespace InterfaceUsuario.Modulos
                     item.BackColor = System.Drawing.Color.LightBlue;
             }
         }
+
+        public static void SelecionarCampo(TextBox textBox)
+        {
+            textBox.Focus();
+            textBox.Select();
+        }
     }
 }

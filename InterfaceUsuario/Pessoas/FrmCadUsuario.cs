@@ -53,7 +53,7 @@ namespace InterfaceUsuario.Pessoas
 
         private void FrmCadUsuario_Load(object sender, EventArgs e)
         {
-
+            btnCancelar_Click(btnCancelar, new EventArgs());
         }
 
         public void LimparCampos()
@@ -66,12 +66,15 @@ namespace InterfaceUsuario.Pessoas
             btnExcluir.Enabled = false;
             oUcSituacao.InicializarSituacao(Status.Ativo);
 
-
+            MascaraCampoCodigo.RetornarMascara(txtCodigoUsuario, new EventArgs());
+            MascaraCampoCodigo.RetornarMascara(txtCodigoTipoUsuario, new EventArgs());
+            IsNovo = true;
+            Funcoes.SelecionarCampo(txtNomeUsuario);
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
-
+            LimparCampos();
         }
         
         private void btnExcluir_Click(object sender, EventArgs e)
