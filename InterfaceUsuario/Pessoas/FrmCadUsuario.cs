@@ -70,6 +70,7 @@ namespace InterfaceUsuario.Pessoas
 
             txtCodigoTipoUsuario.Text = iRetorno.ToString();
             txtCodigoTipoUsuario_Validating(txtCodigoTipoUsuario, new CancelEventArgs());
+            MascaraCampoCodigo.RetornarMascara(txtCodigoTipoUsuario, new EventArgs());
             btnBscTipoUsuario.Focus();
         }
 
@@ -155,6 +156,7 @@ namespace InterfaceUsuario.Pessoas
                 return;
             }
             lblMstTipoUsuario.Text = oTipoUsuario.Descricao;
+
         }
     }
 }

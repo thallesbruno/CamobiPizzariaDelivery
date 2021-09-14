@@ -20,7 +20,7 @@ namespace BaseDados.Pessoas
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    string query = @"SELECT codigo, nome AS descricao, '1' AS situacao
+                    string query = @"SELECT codigo, descricao, '1' AS situacao
                                             FROM tipo_usuario";
 
                     comando.CommandText = query;
