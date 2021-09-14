@@ -25,7 +25,7 @@ namespace InterfaceUsuario.Pessoas
             //verifica se a lista está vazia
             if (lista.Count < 1)
             {
-                MessageBox.Show("Sem da dos para serem exibidos!",
+                MessageBox.Show("Sem dados para serem exibidos!",
                     this.Text,
                     MessageBoxButtons.OK,
                     MessageBoxIcon.Information);
@@ -48,7 +48,16 @@ namespace InterfaceUsuario.Pessoas
 
         private void btnBscTipoUsuario_Click(object sender, EventArgs e)
         {
-            
+            var lista = new TipoUsuarioNG().ListarEntidadesViewPesquisa();
+            //verifica se a lista está vazia
+            if (lista.Count < 1)
+            {
+                MessageBox.Show("Sem dados para serem exibidos!",
+                    this.Text,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Information);
+                return;
+            }
         }
 
         private void FrmCadUsuario_Load(object sender, EventArgs e)

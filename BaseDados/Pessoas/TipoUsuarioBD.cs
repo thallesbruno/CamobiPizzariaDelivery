@@ -1,11 +1,52 @@
-﻿using Entidades.Pessoas;
+﻿using Entidades.Entidades;
+using Entidades.Enumeradores;
+using Entidades.Pessoas;
 using MySql.Data.MySqlClient;
 using System;
+using System.Collections.Generic;
 
 namespace BaseDados.Pessoas
 {
     public class TipoUsuarioBD
     {
+        public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa()
+        {
+            var listaEntidades = new List<EntidadeViewPesquisa>();
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    string query = @"SELECT codigo, nome AS descricao, '1' AS situacao
+                                            FROM tipo_usuario";
+
+                    comando.CommandText = query;
+
+                    MySqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var oEntidade = new EntidadeViewPesquisa();
+                        oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        oEntidade.Descricao = reader["nome"].ToString();
+                        oEntidade.Status = (Status)Convert.ToInt16(reader["situacao"]);
+
+                        listaEntidades.Add(oEntidade);
+                    }
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return listaEntidades;
+        }
         public TipoUsuario BuscarTipoUsuarioDoUsuario(int codigo)
         {
             TipoUsuario tipoUsuario = new TipoUsuario();
