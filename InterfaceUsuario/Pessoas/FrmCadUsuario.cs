@@ -58,6 +58,19 @@ namespace InterfaceUsuario.Pessoas
                     MessageBoxIcon.Information);
                 return;
             }
+            //passar a lista para o formulario generico de pesquisa
+            var frmPesquisa = new FrmPesquisaGenerica("Listagem de Tipos de Usuários", Status.Todos);
+            frmPesquisa.lista = lista;
+            frmPesquisa.ShowDialog();
+
+            var iRetorno = frmPesquisa.iRetorno;
+            //iRetorno = 0
+            if (iRetorno < 1)
+                return;
+
+            txtCodigoTipoUsuario.Text = iRetorno.ToString();
+            txtCodigoTipoUsuario_Validating(txtCodigoTipoUsuario, new CancelEventArgs());
+            btnBscTipoUsuario.Focus();
         }
 
         private void FrmCadUsuario_Load(object sender, EventArgs e)
