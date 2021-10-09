@@ -105,9 +105,34 @@ namespace InterfaceUsuario.Pessoas
 
         }
 
+        private bool VerificarCampos()
+        {
+            if (txtNomeUsuario.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você precisa informar o nome do usuário!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtLoginUsuario.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você precisa informar o login do usuário!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtSenhaUsuario.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você precisa informar a senha do usuário!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtCodigoTipoUsuario.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você precisa informar o tipo do usuário!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-
+            
         }
         
         private void txtCodigoUsuario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
