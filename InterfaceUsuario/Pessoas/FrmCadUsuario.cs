@@ -1,4 +1,6 @@
 ﻿using Entidades.Enumeradores;
+using Entidades.Pessoas;
+using Entidades.Sistema;
 using InterfaceUsuario.Modulos;
 using InterfaceUsuario.Pesquisas;
 using Negocio.Pessoas;
@@ -132,7 +134,26 @@ namespace InterfaceUsuario.Pessoas
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            
+            if (!VerificarCampos())
+                return;
+
+            var oUsuario = new Usuario();
+            oUsuario.Nome = txtNomeUsuario.Text.Trim();
+            oUsuario.Login = txtLoginUsuario.Text.Trim();
+            oUsuario.Senha = txtSenhaUsuario.Text.Trim();
+            oUsuario.TipoUsuario.Codigo = Convert.ToInt32(txtCodigoTipoUsuario.Text.Trim());
+            oUsuario.Status = oUcSituacao._status;
+            oUsuario.CodigoUsrAlteracao = Sessao.Usuario.Codigo;
+            //grava no banco primeira vez
+            if (IsNovo)
+            {
+
+            }
+            //atualiza registro no banco
+            else
+            {
+
+            }
         }
         
         private void txtCodigoUsuario_Validating(object sender, System.ComponentModel.CancelEventArgs e)
