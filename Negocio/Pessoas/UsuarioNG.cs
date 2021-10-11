@@ -16,6 +16,11 @@ namespace Negocio.Pessoas
             _bd = new UsuarioBD();
         }
 
+        public bool Inserir(Usuario oUsuario)
+        {
+            return _bd.Inserir(oUsuario);
+        }
+
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
             return _bd.ListarEntidadesViewPesquisa(status);

@@ -1,16 +1,55 @@
-﻿using Entidades.Enumeradores;
+﻿using BaseDados.Modulos;
 using Entidades.Entidades;
+using Entidades.Enumeradores;
 using Entidades.Pessoas;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using BaseDados.Modulos;
 
 namespace BaseDados.Pessoas
 {
     public class UsuarioBD
     {
         private readonly FuncoesBD bdFuncoes = new FuncoesBD();
+
+        public bool Inserir(Usuario oUsuario)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    comando.CommandText = @"INSERT INTO USUARIO (codigo_tipo_usuario, nome, login, senha, situacao, dt_alteracao, codigo_usr_alteracao)" +
+                        " VALUES (@codigo_tipo_usuario, @nome, login, senha, @situacao, NOW(), @codigo_usr_alteracao)";
+                    comando.Parameters.AddWithValue("codigo_tipo_usuario", oUsuario.TipoUsuario.Codigo);
+                    comando.Parameters.AddWithValue("nome", oUsuario.Nome);
+                    comando.Parameters.AddWithValue("login", oUsuario.Login);
+                    comando.Parameters.AddWithValue("senha", oUsuario.Senha);
+                    comando.Parameters.AddWithValue("situacao", (int)oUsuario.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oUsuario.CodigoUsrAlteracao);
+
+                    int valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        isRetorno = false;
+                    else
+                        isRetorno = true;
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
+
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
             var listaEntidades = new List<EntidadeViewPesquisa>();
@@ -31,7 +70,7 @@ namespace BaseDados.Pessoas
 
                     if (status != Status.Todos)
                         comando.Parameters.AddWithValue("situacao", (int)status);
-                    
+
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
@@ -39,7 +78,7 @@ namespace BaseDados.Pessoas
                         oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oEntidade.Descricao = reader["nome"].ToString();
                         oEntidade.Status = (Status)Convert.ToInt16(reader["situacao"]);
-                        
+
                         listaEntidades.Add(oEntidade);
                     }
                 }
@@ -58,7 +97,7 @@ namespace BaseDados.Pessoas
         {
             var listaUsuarios = new List<Usuario>();
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
-            { 
+            {
                 try
                 {
                     conexao.Open();
