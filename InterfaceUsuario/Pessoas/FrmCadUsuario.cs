@@ -88,6 +88,7 @@ namespace InterfaceUsuario.Pessoas
             txtLoginUsuario.Text = string.Empty;
             txtSenhaUsuario.Text = string.Empty;
             txtCodigoTipoUsuario.Text = string.Empty;
+            lblMstTipoUsuario.Text = string.Empty;
             btnExcluir.Enabled = false;
             oUcSituacao.InicializarSituacao(Status.Ativo);
 
@@ -138,6 +139,7 @@ namespace InterfaceUsuario.Pessoas
                 return;
 
             var oUsuario = new Usuario();
+            var usuarioNG = new UsuarioNG();
             oUsuario.Nome = txtNomeUsuario.Text.Trim();
             oUsuario.Login = txtLoginUsuario.Text.Trim();
             oUsuario.Senha = txtSenhaUsuario.Text.Trim();
@@ -147,7 +149,15 @@ namespace InterfaceUsuario.Pessoas
             //grava no banco primeira vez
             if (IsNovo)
             {
-
+                if (usuarioNG.Inserir(oUsuario)
+                {
+                    MessageBox.Show("Registro cadastrado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao cadastrar registro. Revise as informações!");
+                }
             }
             //atualiza registro no banco
             else
