@@ -149,7 +149,7 @@ namespace InterfaceUsuario.Pessoas
             //grava no banco primeira vez
             if (IsNovo)
             {
-                if (usuarioNG.Inserir(oUsuario)
+                if (usuarioNG.Inserir(oUsuario))
                 {
                     MessageBox.Show("Registro cadastrado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
