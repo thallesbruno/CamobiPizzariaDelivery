@@ -24,7 +24,7 @@ namespace BaseDados.Pessoas
                     comando = conexao.CreateCommand();
 
                     comando.CommandText = @"INSERT INTO USUARIO (codigo_tipo_usuario, nome, login, senha, situacao, dt_alteracao, codigo_usr_alteracao)" +
-                        " VALUES (@codigo_tipo_usuario, @nome, login, senha, @situacao, NOW(), @codigo_usr_alteracao)";
+                        " VALUES (@codigo_tipo_usuario, @nome, @login, @senha, @situacao, NOW(), @codigo_usr_alteracao)";
                     comando.Parameters.AddWithValue("codigo_tipo_usuario", oUsuario.TipoUsuario.Codigo);
                     comando.Parameters.AddWithValue("nome", oUsuario.Nome);
                     comando.Parameters.AddWithValue("login", oUsuario.Login);

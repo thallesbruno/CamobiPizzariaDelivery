@@ -158,7 +158,7 @@ namespace InterfaceUsuario.Pessoas
             this.txtSenhaUsuario.Location = new System.Drawing.Point(486, 81);
             this.txtSenhaUsuario.Name = "txtSenhaUsuario";
             this.txtSenhaUsuario.PasswordChar = '*';
-            this.txtSenhaUsuario.Size = new System.Drawing.Size(242, 20);
+            this.txtSenhaUsuario.Size = new System.Drawing.Size(239, 20);
             this.txtSenhaUsuario.TabIndex = 10;
             // 
             // label4
