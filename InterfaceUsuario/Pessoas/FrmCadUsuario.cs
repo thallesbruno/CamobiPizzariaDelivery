@@ -162,7 +162,16 @@ namespace InterfaceUsuario.Pessoas
             //atualiza registro no banco
             else
             {
-
+                oUsuario.Codigo = Convert.ToInt32(txtCodigoUsuario.Text.Trim());
+                if (usuarioNG.Alterar(oUsuario))
+                {
+                    MessageBox.Show("Registro alterado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao alterar registro. Revise as informações!");
+                }
             }
         }
         

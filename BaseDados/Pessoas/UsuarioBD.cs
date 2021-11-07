@@ -50,6 +50,47 @@ namespace BaseDados.Pessoas
             return isRetorno;
         }
 
+        public bool Alterar(Usuario oUsuario)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    comando.CommandText = @"UPDATE USUARIO SET codigo_tipo_usuario = , nome = @nome, login = @login,
+                        senha = @senha, situacao = @situacao, codigo_usr_alteracao = @codigo_usr_alteracao
+                        WHERE codigo = @codigo";
+
+                    comando.Parameters.AddWithValue("codigo_tipo_usuario", oUsuario.TipoUsuario.Codigo);
+                    comando.Parameters.AddWithValue("nome", oUsuario.Nome);
+                    comando.Parameters.AddWithValue("login", oUsuario.Login);
+                    comando.Parameters.AddWithValue("senha", oUsuario.Senha);
+                    comando.Parameters.AddWithValue("situacao", (int)oUsuario.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oUsuario.CodigoUsrAlteracao);
+                    comando.Parameters.AddWithValue("codigo", oUsuario.Codigo);
+
+                    int valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        isRetorno = false;
+                    else
+                        isRetorno = true;
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
+
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
             var listaEntidades = new List<EntidadeViewPesquisa>();
