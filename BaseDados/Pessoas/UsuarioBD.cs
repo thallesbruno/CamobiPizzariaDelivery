@@ -62,8 +62,8 @@ namespace BaseDados.Pessoas
                     comando = conexao.CreateCommand();
 
                     comando.CommandText = @"UPDATE USUARIO SET codigo_tipo_usuario = , nome = @nome, login = @login,
-                        senha = @senha, situacao = @situacao, codigo_usr_alteracao = @codigo_usr_alteracao
-                        WHERE codigo = @codigo";
+                        senha = @senha, situacao = @situacao, codigo_usr_alteracao = @codigo_usr_alteracao,
+                        dt_alteracao = NOW() WHERE codigo = @codigo";
 
                     comando.Parameters.AddWithValue("codigo_tipo_usuario", oUsuario.TipoUsuario.Codigo);
                     comando.Parameters.AddWithValue("nome", oUsuario.Nome);
