@@ -29,26 +29,47 @@ namespace InterfaceUsuario.Pessoas
         /// </summary>
         private void InitializeComponent()
         {
-            this.txtNomeUsuario = new System.Windows.Forms.TextBox();
+            this.txtNome = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnBscUsuario = new System.Windows.Forms.Button();
-            this.txtCodigoUsuario = new System.Windows.Forms.TextBox();
+            this.btnBscCliente = new System.Windows.Forms.Button();
+            this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.oUcSituacao = new InterfaceUsuario.UserControls.ucSituacao();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
+            this.txtTelefone = new System.Windows.Forms.MaskedTextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.txtCelular = new System.Windows.Forms.MaskedTextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txtRua = new System.Windows.Forms.TextBox();
+            this.txtNumero = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txtComplemento = new System.Windows.Forms.TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.txtBairro = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.txtCidade = new System.Windows.Forms.TextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.chkEnderecoPadrao = new System.Windows.Forms.CheckBox();
+            this.btnAdicionarEndereco = new System.Windows.Forms.Button();
+            this.lvlListagemEnderecos = new System.Windows.Forms.ListView();
+            this.btnRemoverEndereco = new System.Windows.Forms.Button();
+            this.btnEditarEndereco = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // txtNomeUsuario
+            // txtNome
             // 
-            this.txtNomeUsuario.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtNomeUsuario.Location = new System.Drawing.Point(236, 28);
-            this.txtNomeUsuario.Name = "txtNomeUsuario";
-            this.txtNomeUsuario.Size = new System.Drawing.Size(625, 20);
-            this.txtNomeUsuario.TabIndex = 11;
+            this.txtNome.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtNome.Location = new System.Drawing.Point(236, 28);
+            this.txtNome.Name = "txtNome";
+            this.txtNome.Size = new System.Drawing.Size(625, 20);
+            this.txtNome.TabIndex = 11;
             // 
             // label2
             // 
@@ -59,22 +80,22 @@ namespace InterfaceUsuario.Pessoas
             this.label2.TabIndex = 10;
             this.label2.Text = "Nome:";
             // 
-            // btnBscUsuario
+            // btnBscCliente
             // 
-            this.btnBscUsuario.Image = global::InterfaceUsuario.Properties.Resources.busca;
-            this.btnBscUsuario.Location = new System.Drawing.Point(167, 28);
-            this.btnBscUsuario.Name = "btnBscUsuario";
-            this.btnBscUsuario.Size = new System.Drawing.Size(23, 21);
-            this.btnBscUsuario.TabIndex = 9;
-            this.btnBscUsuario.UseVisualStyleBackColor = true;
+            this.btnBscCliente.Image = global::InterfaceUsuario.Properties.Resources.busca;
+            this.btnBscCliente.Location = new System.Drawing.Point(167, 28);
+            this.btnBscCliente.Name = "btnBscCliente";
+            this.btnBscCliente.Size = new System.Drawing.Size(23, 21);
+            this.btnBscCliente.TabIndex = 9;
+            this.btnBscCliente.UseVisualStyleBackColor = true;
             // 
-            // txtCodigoUsuario
+            // txtCodigo
             // 
-            this.txtCodigoUsuario.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtCodigoUsuario.Location = new System.Drawing.Point(12, 28);
-            this.txtCodigoUsuario.Name = "txtCodigoUsuario";
-            this.txtCodigoUsuario.Size = new System.Drawing.Size(149, 20);
-            this.txtCodigoUsuario.TabIndex = 8;
+            this.txtCodigo.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtCodigo.Location = new System.Drawing.Point(12, 28);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(149, 20);
+            this.txtCodigo.TabIndex = 8;
             // 
             // label1
             // 
@@ -139,18 +160,220 @@ namespace InterfaceUsuario.Pessoas
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.UseVisualStyleBackColor = true;
             // 
+            // txtTelefone
+            // 
+            this.txtTelefone.Location = new System.Drawing.Point(236, 77);
+            this.txtTelefone.Mask = "(00) 0000-0000";
+            this.txtTelefone.Name = "txtTelefone";
+            this.txtTelefone.Size = new System.Drawing.Size(100, 20);
+            this.txtTelefone.TabIndex = 18;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(233, 61);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(52, 13);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Telefone:";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(345, 61);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(42, 13);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Celular:";
+            // 
+            // txtCelular
+            // 
+            this.txtCelular.Location = new System.Drawing.Point(348, 77);
+            this.txtCelular.Mask = "(00) 0 0000-0000";
+            this.txtCelular.Name = "txtCelular";
+            this.txtCelular.Size = new System.Drawing.Size(100, 20);
+            this.txtCelular.TabIndex = 20;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.btnEditarEndereco);
+            this.groupBox1.Controls.Add(this.btnRemoverEndereco);
+            this.groupBox1.Controls.Add(this.lvlListagemEnderecos);
+            this.groupBox1.Controls.Add(this.chkEnderecoPadrao);
+            this.groupBox1.Controls.Add(this.txtCidade);
+            this.groupBox1.Controls.Add(this.label9);
+            this.groupBox1.Controls.Add(this.btnAdicionarEndereco);
+            this.groupBox1.Controls.Add(this.txtBairro);
+            this.groupBox1.Controls.Add(this.label8);
+            this.groupBox1.Controls.Add(this.txtComplemento);
+            this.groupBox1.Controls.Add(this.label7);
+            this.groupBox1.Controls.Add(this.txtNumero);
+            this.groupBox1.Controls.Add(this.label6);
+            this.groupBox1.Controls.Add(this.txtRua);
+            this.groupBox1.Controls.Add(this.label5);
+            this.groupBox1.Location = new System.Drawing.Point(15, 118);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(843, 352);
+            this.groupBox1.TabIndex = 22;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Endereço";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(3, 29);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(30, 13);
+            this.label5.TabIndex = 23;
+            this.label5.Text = "Rua:";
+            // 
+            // txtRua
+            // 
+            this.txtRua.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtRua.Location = new System.Drawing.Point(6, 45);
+            this.txtRua.Name = "txtRua";
+            this.txtRua.Size = new System.Drawing.Size(831, 20);
+            this.txtRua.TabIndex = 24;
+            // 
+            // txtNumero
+            // 
+            this.txtNumero.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtNumero.Location = new System.Drawing.Point(6, 98);
+            this.txtNumero.Name = "txtNumero";
+            this.txtNumero.Size = new System.Drawing.Size(116, 20);
+            this.txtNumero.TabIndex = 26;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(3, 82);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(47, 13);
+            this.label6.TabIndex = 25;
+            this.label6.Text = "Número:";
+            // 
+            // txtComplemento
+            // 
+            this.txtComplemento.BackColor = System.Drawing.SystemColors.Window;
+            this.txtComplemento.Location = new System.Drawing.Point(128, 98);
+            this.txtComplemento.Name = "txtComplemento";
+            this.txtComplemento.Size = new System.Drawing.Size(709, 20);
+            this.txtComplemento.TabIndex = 28;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(125, 82);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(74, 13);
+            this.label7.TabIndex = 27;
+            this.label7.Text = "Complemento:";
+            // 
+            // txtBairro
+            // 
+            this.txtBairro.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtBairro.Location = new System.Drawing.Point(6, 149);
+            this.txtBairro.Name = "txtBairro";
+            this.txtBairro.Size = new System.Drawing.Size(264, 20);
+            this.txtBairro.TabIndex = 30;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(3, 133);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(37, 13);
+            this.label8.TabIndex = 29;
+            this.label8.Text = "Bairro:";
+            // 
+            // txtCidade
+            // 
+            this.txtCidade.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtCidade.Location = new System.Drawing.Point(276, 149);
+            this.txtCidade.Name = "txtCidade";
+            this.txtCidade.Size = new System.Drawing.Size(264, 20);
+            this.txtCidade.TabIndex = 32;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(273, 133);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(43, 13);
+            this.label9.TabIndex = 31;
+            this.label9.Text = "Cidade:";
+            // 
+            // chkEnderecoPadrao
+            // 
+            this.chkEnderecoPadrao.AutoSize = true;
+            this.chkEnderecoPadrao.Location = new System.Drawing.Point(555, 151);
+            this.chkEnderecoPadrao.Name = "chkEnderecoPadrao";
+            this.chkEnderecoPadrao.Size = new System.Drawing.Size(85, 17);
+            this.chkEnderecoPadrao.TabIndex = 33;
+            this.chkEnderecoPadrao.Text = "End. Padrão";
+            this.chkEnderecoPadrao.UseVisualStyleBackColor = true;
+            // 
+            // btnAdicionarEndereco
+            // 
+            this.btnAdicionarEndereco.Image = global::InterfaceUsuario.Properties.Resources.confirmar;
+            this.btnAdicionarEndereco.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAdicionarEndereco.Location = new System.Drawing.Point(698, 133);
+            this.btnAdicionarEndereco.Name = "btnAdicionarEndereco";
+            this.btnAdicionarEndereco.Size = new System.Drawing.Size(139, 35);
+            this.btnAdicionarEndereco.TabIndex = 3;
+            this.btnAdicionarEndereco.Text = "Confirmar";
+            this.btnAdicionarEndereco.UseVisualStyleBackColor = true;
+            // 
+            // lvlListagemEnderecos
+            // 
+            this.lvlListagemEnderecos.FullRowSelect = true;
+            this.lvlListagemEnderecos.GridLines = true;
+            this.lvlListagemEnderecos.HideSelection = false;
+            this.lvlListagemEnderecos.Location = new System.Drawing.Point(6, 186);
+            this.lvlListagemEnderecos.Name = "lvlListagemEnderecos";
+            this.lvlListagemEnderecos.Size = new System.Drawing.Size(831, 97);
+            this.lvlListagemEnderecos.TabIndex = 34;
+            this.lvlListagemEnderecos.UseCompatibleStateImageBehavior = false;
+            // 
+            // btnRemoverEndereco
+            // 
+            this.btnRemoverEndereco.Image = global::InterfaceUsuario.Properties.Resources.excluir;
+            this.btnRemoverEndereco.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnRemoverEndereco.Location = new System.Drawing.Point(7, 301);
+            this.btnRemoverEndereco.Name = "btnRemoverEndereco";
+            this.btnRemoverEndereco.Size = new System.Drawing.Size(115, 35);
+            this.btnRemoverEndereco.TabIndex = 35;
+            this.btnRemoverEndereco.Text = "Remover";
+            this.btnRemoverEndereco.UseVisualStyleBackColor = true;
+            // 
+            // btnEditarEndereco
+            // 
+            this.btnEditarEndereco.Image = global::InterfaceUsuario.Properties.Resources.editar;
+            this.btnEditarEndereco.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnEditarEndereco.Location = new System.Drawing.Point(131, 301);
+            this.btnEditarEndereco.Name = "btnEditarEndereco";
+            this.btnEditarEndereco.Size = new System.Drawing.Size(116, 35);
+            this.btnEditarEndereco.TabIndex = 36;
+            this.btnEditarEndereco.Text = "Editar";
+            this.btnEditarEndereco.UseVisualStyleBackColor = true;
+            // 
             // FrmCadCliente
             // 
             this.AllowDrop = true;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(873, 610);
+            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.txtCelular);
+            this.Controls.Add(this.label3);
+            this.Controls.Add(this.txtTelefone);
             this.Controls.Add(this.oUcSituacao);
             this.Controls.Add(this.flowLayoutPanel1);
-            this.Controls.Add(this.txtNomeUsuario);
+            this.Controls.Add(this.txtNome);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnBscUsuario);
-            this.Controls.Add(this.txtCodigoUsuario);
+            this.Controls.Add(this.btnBscCliente);
+            this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
@@ -161,6 +384,8 @@ namespace InterfaceUsuario.Pessoas
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Cadastro de Clientes";
             this.flowLayoutPanel1.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -168,15 +393,35 @@ namespace InterfaceUsuario.Pessoas
 
         #endregion
 
-        private System.Windows.Forms.TextBox txtNomeUsuario;
+        private System.Windows.Forms.TextBox txtNome;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnBscUsuario;
-        private System.Windows.Forms.TextBox txtCodigoUsuario;
+        private System.Windows.Forms.Button btnBscCliente;
+        private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label1;
         private UserControls.ucSituacao oUcSituacao;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button btnCancelar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnConfirmar;
+        private System.Windows.Forms.MaskedTextBox txtTelefone;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.MaskedTextBox txtCelular;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.CheckBox chkEnderecoPadrao;
+        private System.Windows.Forms.TextBox txtCidade;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox txtBairro;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox txtComplemento;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox txtNumero;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txtRua;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Button btnAdicionarEndereco;
+        private System.Windows.Forms.Button btnEditarEndereco;
+        private System.Windows.Forms.Button btnRemoverEndereco;
+        private System.Windows.Forms.ListView lvlListagemEnderecos;
     }
 }
