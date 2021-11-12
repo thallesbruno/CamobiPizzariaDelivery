@@ -81,6 +81,12 @@
     <Compile Include="Pesquisas\FrmPesquisaGenerica.Designer.cs">
       <DependentUpon>FrmPesquisaGenerica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Pessoas\FrmCadCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pessoas\FrmCadCliente.Designer.cs">
+      <DependentUpon>FrmCadCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pessoas\FrmCadUsuario.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -103,6 +109,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Pesquisas\FrmPesquisaGenerica.resx">
       <DependentUpon>FrmPesquisaGenerica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pessoas\FrmCadCliente.resx">
+      <DependentUpon>FrmCadCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pessoas\FrmCadUsuario.resx">
       <DependentUpon>FrmCadUsuario.cs</DependentUpon>
