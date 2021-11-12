@@ -26,7 +26,12 @@ namespace Negocio.Pessoas
             return _bd.Alterar(oUsuario);
         }
 
-        public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
+        public bool Excluir(int codigo)
+        {
+            return _bd.Excluir(codigo);
+        }
+
+            public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
             return _bd.ListarEntidadesViewPesquisa(status);
         }
