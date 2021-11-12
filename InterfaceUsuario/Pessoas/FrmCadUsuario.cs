@@ -105,19 +105,21 @@ namespace InterfaceUsuario.Pessoas
         
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (txtCodigoUsuario.Text.Trim().Equals(String.Empty))
+            if (txtCodigoUsuario.Text.Trim().Equals(String.Empty) || IsNovo)
                 return;
-            if (IsNovo)
-                return;
-            if (new UsuarioNG().Excluir(Convert.ToInt32(txtCodigoUsuario.Text.Trim())))
+
+            if (MessageBox.Show("Deseja excluir este registro?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                MessageBox.Show("Registro excluído com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LimparCampos();
-            }
-            else
-            {
-                MessageBox.Show("Não foi possível excluir este registro. Tente novamente!");
-            }
+                if (new UsuarioNG().Excluir(Convert.ToInt32(txtCodigoUsuario.Text.Trim())))
+                {
+                    MessageBox.Show("Registro excluído com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Não foi possível excluir este registro. Tente novamente!");
+                }
+            }           
         }
 
         private bool VerificarCampos()
