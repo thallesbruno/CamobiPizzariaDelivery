@@ -1,7 +1,7 @@
 ﻿
 namespace InterfaceUsuario.Pesquisas
 {
-    partial class FrmPesquisaGenericaCliente
+    partial class FrmPesquisaGenerica
     {
         /// <summary>
         /// Required designer variable.

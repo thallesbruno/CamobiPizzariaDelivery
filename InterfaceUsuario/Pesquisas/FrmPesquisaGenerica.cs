@@ -13,11 +13,11 @@ using System.Windows.Forms;
 
 namespace InterfaceUsuario.Pesquisas
 {
-    public partial class FrmPesquisaGenericaCliente : Form
+    public partial class FrmPesquisaGenerica : Form
     {
         public List<EntidadeViewPesquisa> lista = new List<EntidadeViewPesquisa>();
         public int iRetorno = 0;
-        public FrmPesquisaGenericaCliente(string strTitulo, Status status)
+        public FrmPesquisaGenerica(string strTitulo, Status status)
         {
             InitializeComponent();
 
