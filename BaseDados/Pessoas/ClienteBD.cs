@@ -19,10 +19,23 @@ namespace BaseDados.Pessoas
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    string query = @"SELECT codigo, nome, telefone, celular AS descricao, situacao
-                                            FROM USUARIO";
+                    string query = @"SELECT codigo, nome, telefone, celular
+                                            FROM cliente";
                     if (status != Status.Todos)
-                        query += " WHERE SITUACAO = @situacao; ";
+                        query += " WHERE SITUACAO = @situacao ";
+                    if (!termoBusca.Trim().Equals(String.Empty))
+                    {
+                        if (status != Status.Todos)
+                            query += " WHERE";
+                        else
+                            query += " AND";
+                        var termos = termoBusca.Split(' ');
+                        foreach (var termo in termos)
+                        {
+                            query += " nome LIKE '%" + termo + "%' AND";
+                        }
+                            
+                    }
 
                     comando.CommandText = query;
 
