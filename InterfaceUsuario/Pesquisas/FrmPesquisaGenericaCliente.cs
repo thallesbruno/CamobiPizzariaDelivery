@@ -11,7 +11,6 @@ namespace InterfaceUsuario.Pesquisas
 {
     public partial class FrmPesquisaGenericaCliente : Form
     {
-        public List<EntidadeViewPesquisa> lista = new List<EntidadeViewPesquisa>();
         public int iRetorno = 0;
         public FrmPesquisaGenericaCliente(string strTitulo, Status status)
         {
@@ -38,7 +37,38 @@ namespace InterfaceUsuario.Pesquisas
                 Left = 0
             };
             LimparCampos();
-            PreencherLista(lista);
+            PrepararListView();
+            BuscarClientes();
+        }
+
+        private void BuscarClientes()
+        {
+            Status status;
+
+            if (optSomenteAtivos.Checked)
+            {
+                status = Status.Ativo;
+            }
+            else if (optSomenteInativos.Checked)
+            {
+                status = Status.Inativo;
+            }
+            else
+            {
+                status = Status.Todos;
+            }
+            lvlListagem.Items.Clear();
+
+        }
+
+        private void PrepararListView()
+        {
+            lvlListagem.Clear();
+            lvlListagem.View = View.Details;
+            lvlListagem.Columns.Add("Código", 80, HorizontalAlignment.Right);
+            lvlListagem.Columns.Add("Nome", 280, HorizontalAlignment.Left);
+            lvlListagem.Columns.Add("Telefone", 90, HorizontalAlignment.Left);
+            lvlListagem.Columns.Add("Celular", 90, HorizontalAlignment.Left);
         }
 
         public void LimparCampos()

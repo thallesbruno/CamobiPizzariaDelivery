@@ -50,7 +50,7 @@ namespace InterfaceUsuario.Pesquisas
             this.flowLayoutPanel1.Controls.Add(this.btnSair);
             this.flowLayoutPanel1.Controls.Add(this.btnConfirmar);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(242, 465);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(470, 465);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(299, 52);
             this.flowLayoutPanel1.TabIndex = 0;
@@ -94,7 +94,7 @@ namespace InterfaceUsuario.Pesquisas
             // 
             this.txtBusca.Location = new System.Drawing.Point(15, 36);
             this.txtBusca.Name = "txtBusca";
-            this.txtBusca.Size = new System.Drawing.Size(523, 20);
+            this.txtBusca.Size = new System.Drawing.Size(754, 20);
             this.txtBusca.TabIndex = 1;
             this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
             // 
@@ -105,7 +105,7 @@ namespace InterfaceUsuario.Pesquisas
             this.groupBox1.Controls.Add(this.optTodos);
             this.groupBox1.Location = new System.Drawing.Point(15, 63);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(523, 48);
+            this.groupBox1.Size = new System.Drawing.Size(754, 48);
             this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Situação";
@@ -151,7 +151,7 @@ namespace InterfaceUsuario.Pesquisas
             this.groupBox2.Controls.Add(this.lvlListagem);
             this.groupBox2.Location = new System.Drawing.Point(15, 117);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(523, 342);
+            this.groupBox2.Size = new System.Drawing.Size(754, 342);
             this.groupBox2.TabIndex = 4;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Listagem de Dados";
@@ -165,16 +165,16 @@ namespace InterfaceUsuario.Pesquisas
             this.lvlListagem.HideSelection = false;
             this.lvlListagem.Location = new System.Drawing.Point(3, 16);
             this.lvlListagem.Name = "lvlListagem";
-            this.lvlListagem.Size = new System.Drawing.Size(517, 323);
+            this.lvlListagem.Size = new System.Drawing.Size(748, 323);
             this.lvlListagem.TabIndex = 0;
             this.lvlListagem.UseCompatibleStateImageBehavior = false;
             this.lvlListagem.DoubleClick += new System.EventHandler(this.lvlListagem_DoubleClick);
             // 
-            // FrmPesquisaGenerica
+            // FrmPesquisaGenericaCliente
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(553, 529);
+            this.ClientSize = new System.Drawing.Size(781, 529);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.txtBusca);
@@ -183,10 +183,10 @@ namespace InterfaceUsuario.Pesquisas
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "FrmPesquisaGenerica";
+            this.Name = "FrmPesquisaGenericaCliente";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "á podendpo";
+            this.Text = "Pesquisa";
             this.Load += new System.EventHandler(this.FrmPesquisaGenerica_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);

@@ -186,7 +186,7 @@ namespace InterfaceUsuario.Pesquisas
             this.Name = "FrmPesquisaGenerica";
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
-            this.Text = "á podendpo";
+            this.Text = "Pesquisa";
             this.Load += new System.EventHandler(this.FrmPesquisaGenerica_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
