@@ -75,6 +75,12 @@
     </Compile>
     <Compile Include="Modulos\Funcoes.cs" />
     <Compile Include="Modulos\MascaraCampoCodigo.cs" />
+    <Compile Include="Pesquisas\FrmPesquisaGenericaCliente.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pesquisas\FrmPesquisaGenericaCliente.Designer.cs">
+      <DependentUpon>FrmPesquisaGenericaCliente.cs</DependentUpon>
+    </Compile>
     <Compile Include="Pesquisas\FrmPesquisaGenerica.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -106,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MDIFrm.resx">
       <DependentUpon>MDIFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pesquisas\FrmPesquisaGenericaCliente.resx">
+      <DependentUpon>FrmPesquisaGenericaCliente.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Pesquisas\FrmPesquisaGenerica.resx">
       <DependentUpon>FrmPesquisaGenerica.cs</DependentUpon>
