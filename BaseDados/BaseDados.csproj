@@ -86,6 +86,7 @@
   <ItemGroup>
     <Compile Include="ConexaoBaseDados.cs" />
     <Compile Include="Modulos\FuncoesBD.cs" />
+    <Compile Include="Pessoas\ClienteBD.cs" />
     <Compile Include="Pessoas\TipoUsuarioBD.cs" />
     <Compile Include="Pessoas\UsuarioBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
