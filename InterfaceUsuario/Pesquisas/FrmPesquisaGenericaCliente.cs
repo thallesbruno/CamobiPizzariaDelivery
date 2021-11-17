@@ -1,6 +1,7 @@
 ﻿using Entidades.Entidades;
 using Entidades.Enumeradores;
 using InterfaceUsuario.Modulos;
+using Negocio.Pessoas;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -59,6 +60,20 @@ namespace InterfaceUsuario.Pesquisas
             }
             lvlListagem.Items.Clear();
 
+            var lista = new ClienteNG().ListarPesquisaCliente(Status.Todos, txtBusca.Text.Trim());
+            if (lista.Count < 1)
+                return;
+            foreach (var item in lista)
+            {
+                var linha = new string[4];
+                linha[0] = item.Codigo.ToString();
+                linha[1] = item.Nome;
+                linha[2] = item.Telefone;
+                linha[3] = item.Celular;
+                var itmx = new ListViewItem(linha);
+                lvlListagem.Items.Add(itmx);
+            }
+            Funcoes.ListViewColor(lvlListagem);
         }
 
         private void PrepararListView()

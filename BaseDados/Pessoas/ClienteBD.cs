@@ -23,7 +23,7 @@ namespace BaseDados.Pessoas
                                             FROM cliente";
                     if (status != Status.Todos)
                         query += " WHERE SITUACAO = @situacao ";
-                    if (!termoBusca.Trim().Equals(String.Empty))
+                    if (!termoBusca.Equals(String.Empty))
                     {
                         if (status != Status.Todos)
                             query += " WHERE";
