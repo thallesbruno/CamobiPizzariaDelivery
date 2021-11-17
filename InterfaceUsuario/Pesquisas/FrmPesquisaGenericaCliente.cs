@@ -1,11 +1,7 @@
-﻿using Entidades.Entidades;
-using Entidades.Enumeradores;
+﻿using Entidades.Enumeradores;
 using InterfaceUsuario.Modulos;
 using Negocio.Pessoas;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Linq;
 using System.Windows.Forms;
 
 namespace InterfaceUsuario.Pesquisas
@@ -60,7 +56,7 @@ namespace InterfaceUsuario.Pesquisas
             }
             lvlListagem.Items.Clear();
 
-            var lista = new ClienteNG().ListarPesquisaCliente(Status.Todos, txtBusca.Text.Trim());
+            var lista = new ClienteNG().ListarPesquisaCliente(status, txtBusca.Text.Trim());
             if (lista.Count < 1)
                 return;
             foreach (var item in lista)
@@ -91,31 +87,6 @@ namespace InterfaceUsuario.Pesquisas
             txtBusca.Text = string.Empty;
             iRetorno = 0;
         }
-        private void PreencherLista(List<EntidadeViewPesquisa> list)
-        {
-            lvlListagem.Clear();
-            lvlListagem.View = View.Details;
-
-            lvlListagem.Columns.Add("Código", 80, HorizontalAlignment.Right);
-            lvlListagem.Columns.Add("Descrição", 280, HorizontalAlignment.Left);
-
-            foreach (var item in list)
-            {
-                if (!optTodos.Checked)
-                {
-                    if (optSomenteAtivos.Checked && item.Status != Entidades.Enumeradores.Status.Ativo)
-                        continue;
-                    else if (optSomenteInativos.Checked && item.Status != Entidades.Enumeradores.Status.Inativo)
-                        continue;
-                }
-                var linha = new string[2];
-                linha[0] = item.Codigo.ToString();
-                linha[1] = item.Descricao;
-                var itemX = new ListViewItem(linha);
-                lvlListagem.Items.Add(itemX);
-            }
-            Funcoes.ListViewColor(lvlListagem);
-        }
 
         private void lvlListagem_DoubleClick(object sender, EventArgs e)
         {
@@ -144,33 +115,27 @@ namespace InterfaceUsuario.Pesquisas
         {
             if (!optTodos.Checked)
                 return;
-            LimparCampos();
-            PreencherLista(lista);
+            BuscarClientes();
         }
 
         private void optSomenteAtivos_CheckedChanged(object sender, EventArgs e)
         {
             if (!optSomenteAtivos.Checked)
                 return;
-            LimparCampos();
-            PreencherLista(lista);
+            BuscarClientes();
         }
 
         private void optSomenteInativos_CheckedChanged(object sender, EventArgs e)
         {
             if (!optSomenteInativos.Checked)
                 return;
-            LimparCampos();
-            PreencherLista(lista);
+            BuscarClientes();
         }
 
         private void txtBusca_TextChanged(object sender, EventArgs e)
         {
-            if (txtBusca.Text.Trim().Equals(String.Empty))
-                return;
-
-            var listResult = new List<EntidadeViewPesquisa>(from p in lista where p.Descricao.ToLower().Contains(txtBusca.Text.Trim().ToLower()) select p);
-            PreencherLista(listResult);
+            if (txtBusca.Text.Trim().Length > 2)
+                BuscarClientes();
         }
     }
 }
