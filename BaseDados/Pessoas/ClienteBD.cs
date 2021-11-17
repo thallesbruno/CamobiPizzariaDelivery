@@ -34,7 +34,7 @@ namespace BaseDados.Pessoas
                         {
                             query += " nome LIKE '%" + termo + "%' AND";
                         }
-                            
+                        query = query.Substring(0, query.Length - 3);
                     }
 
                     comando.CommandText = query;
@@ -45,10 +45,13 @@ namespace BaseDados.Pessoas
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
-                        var oEntidade = new EntidadeViewPesquisa();
+                        var oEntidade = new EntidadeViewPesquisaCliente();
                         oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oEntidade.Descricao = reader["nome"].ToString();
-                        oEntidade.Status = (Status)Convert.ToInt16(reader["situacao"]);
+                        oEntidade.Nome = reader["nome"].ToString();
+                        if (reader["telefone"] != null)
+                            oEntidade.Telefone = Convert.ToInt64(reader["telefone"]).ToString("(##) ####-####");
+                        if (reader["celular"] != null)
+                            oEntidade.Celular = Convert.ToInt64(reader["celular"]).ToString("(##) # ####-####");
 
                         listaEntidades.Add(oEntidade);
                     }
