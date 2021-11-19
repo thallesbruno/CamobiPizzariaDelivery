@@ -1,4 +1,6 @@
-﻿using InterfaceUsuario.Modulos;
+﻿using Entidades.Enumeradores;
+using InterfaceUsuario.Modulos;
+using InterfaceUsuario.Pesquisas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -57,7 +59,15 @@ namespace InterfaceUsuario.Pessoas
 
         private void btnBscCliente_Click(object sender, EventArgs e)
         {
-             
+            var frmPesquisa = new FrmPesquisaGenericaCliente(Status.Todos);
+            frmPesquisa.gpbStatus.Enabled = true;
+            frmPesquisa.ShowDialog();
+            var iRetorno = frmPesquisa.iRetorno;
+            if (iRetorno < 1)
+                return;
+            txtCodigo.Text = iRetorno.ToString();
+            //Validate
+            btnBscCliente.Focus();
         }
 
         //##### Fim Botoes #####

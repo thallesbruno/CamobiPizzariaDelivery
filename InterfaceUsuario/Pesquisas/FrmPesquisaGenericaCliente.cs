@@ -9,11 +9,10 @@ namespace InterfaceUsuario.Pesquisas
     public partial class FrmPesquisaGenericaCliente : Form
     {
         public int iRetorno = 0;
-        public FrmPesquisaGenericaCliente(string strTitulo, Status status)
+        public FrmPesquisaGenericaCliente( Status status)
         {
             InitializeComponent();
 
-            this.Text = strTitulo;
             if (status == Status.Ativo)
                 optSomenteAtivos.Checked = true;
             else if (status == Status.Inativo)
