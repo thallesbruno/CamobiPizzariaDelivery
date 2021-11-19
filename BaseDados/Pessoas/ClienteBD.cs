@@ -25,7 +25,7 @@ namespace BaseDados.Pessoas
                         query += " WHERE SITUACAO = @situacao ";
                     if (!termoBusca.Equals(String.Empty))
                     {
-                        if (status != Status.Todos)
+                        if (status == Status.Todos)
                             query += " WHERE";
                         else
                             query += " AND";

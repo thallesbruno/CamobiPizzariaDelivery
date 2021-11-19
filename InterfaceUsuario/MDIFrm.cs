@@ -52,5 +52,10 @@ namespace InterfaceUsuario
         {
             AbrirFormularios(new FrmCadUsuario());
         }
+
+        private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios(new FrmCadCliente());
+        }
     }
 }
