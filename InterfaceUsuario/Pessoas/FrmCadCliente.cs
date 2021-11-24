@@ -66,10 +66,17 @@ namespace InterfaceUsuario.Pessoas
             if (iRetorno < 1)
                 return;
             txtCodigo.Text = iRetorno.ToString();
-            //Validate
+            txtCodigo_Validating(txtCodigo, new CancelEventArgs());
             btnBscCliente.Focus();
         }
 
         //##### Fim Botoes #####
+
+        private void txtCodigo_Validating(object sender, CancelEventArgs e)
+        {
+            if (txtCodigo.Text.Trim().Equals(string.Empty))
+                    return;
+            //Buscar Cliente no BD
+        }
     }
 }
