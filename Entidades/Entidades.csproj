@@ -46,6 +46,7 @@
     <Compile Include="Entidades\EntidadeViewPesquisaCliente.cs" />
     <Compile Include="Enumeradores\Status.cs" />
     <Compile Include="IEntidade.cs" />
+    <Compile Include="Pessoas\Cliente.cs" />
     <Compile Include="Pessoas\TipoUsuario.cs" />
     <Compile Include="Pessoas\Usuario.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
