@@ -1,6 +1,7 @@
 ﻿using BaseDados.Modulos;
 using Entidades.Entidades;
 using Entidades.Enumeradores;
+using Entidades.Pessoas;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -70,9 +71,9 @@ namespace BaseDados.Pessoas
             return listaEntidades;
         }
 
-        public Usuario Buscar(int cod)
+        public Cliente Buscar(int cod)
         {
-            Usuario oUsuario = new Usuario();
+            var oCliente = new Cliente();
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -81,20 +82,25 @@ namespace BaseDados.Pessoas
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = "SELECT * FROM USUARIO WHERE codigo = @codigo;";
+                    comando.CommandText = "SELECT * FROM CLIENTE WHERE codigo = @codigo;";
                     comando.Parameters.AddWithValue("codigo", cod);
 
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
-                        oUsuario.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oUsuario.TipoUsuario = new TipoUsuario(Convert.ToInt32(reader["codigo_tipo_usuario"].ToString()), string.Empty);
-                        oUsuario.Nome = reader["nome"].ToString();
-                        oUsuario.Login = reader["login"].ToString();
-                        oUsuario.Senha = reader["senha"].ToString();
-                        oUsuario.Status = (Status)Convert.ToInt16(reader["situacao"]);
-                        oUsuario.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
-                        oUsuario.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
+                        oCliente.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        oCliente.Nome = reader["nome"].ToString();
+                        if (reader["telefone"] != null)
+                        {
+                            oCliente.Telefone = Convert.ToInt64(reader["telefone"].ToString());
+                        }
+                        if (reader["celular"] != null)
+                        {
+                            oCliente.Celular = Convert.ToInt64(reader["celular"].ToString());
+                        }
+                        oCliente.Status = (Status)Convert.ToInt16(reader["situacao"]);
+                        oCliente.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());                        
+                        oCliente.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
                     }
                 }
                 catch (MySqlException mysqle)
@@ -106,7 +112,7 @@ namespace BaseDados.Pessoas
                     conexao.Close();
                 }
             }
-            return oUsuario;
+            return oCliente;
         }
 
         public int BuscarProximoCodigo()

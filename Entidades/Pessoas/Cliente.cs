@@ -1,14 +1,16 @@
 ﻿using Entidades.Enumeradores;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Entidades.Pessoas
 {
     public class Cliente
     {
+        public Cliente()
+        {
+            this.Enderecos = new List<Endereco>();
+        }
+
         public int Codigo { get; set; }
         public string Nome { get; set; }
         public long? Telefone { get; set; }
@@ -16,5 +18,6 @@ namespace Entidades.Pessoas
         public Status Status { get; set; }
         public DateTime DtAlteracao { get; set; }
         public int CodigoUsrAlteracao { get; set; }
+        public List<Endereco> Enderecos { get; set; }
     }
 }
