@@ -101,6 +101,7 @@ namespace BaseDados.Pessoas
                         oCliente.Status = (Status)Convert.ToInt16(reader["situacao"]);
                         oCliente.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());                        
                         oCliente.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
+                        //oCliente.Enderecos = ...
                     }
                 }
                 catch (MySqlException mysqle)
