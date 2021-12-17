@@ -2,17 +2,17 @@
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BaseDados.Pessoas
 {
-    public class EnderecoClienteBd
+    public class EnderecoClienteBD
     {
         public List<Endereco> BuscarEnderecosCliente(int codCliente)
         {
             List<Endereco> lista = new List<Endereco>();
+
+            int codEnderecoPadrao = new EnderecoPadraoClienteBD().BuscarEnderecoPadraoCliente(codCliente);
+
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -32,18 +32,11 @@ namespace BaseDados.Pessoas
                         oEndereco.CodigoCliente = Convert.ToInt32(reader["codigo_cliente"].ToString());
                         oEndereco.Rua = reader["rua"].ToString();
                         oEndereco.Numero = Convert.ToInt32(reader["numero"].ToString());
-                        if (reader["telefone"] != null)
-                        {
-                            oCliente.Telefone = Convert.ToInt64(reader["telefone"].ToString());
-                        }
-                        if (reader["celular"] != null)
-                        {
-                            oCliente.Celular = Convert.ToInt64(reader["celular"].ToString());
-                        }
-                        oCliente.Status = (Status)Convert.ToInt16(reader["situacao"]);
-                        oCliente.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
-                        oCliente.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
-                        //oCliente.Enderecos = ...
+                        if (reader["complemento"] != null)
+                            oEndereco.Complemento = reader["complemento"].ToString();
+                        oEndereco.Bairro = reader["bairro"].ToString();
+                        oEndereco.Cidade = reader["cidade"].ToString();
+                        lista.Add(oEndereco);
                     }
                 }
                 catch (MySqlException mysqle)
@@ -55,7 +48,7 @@ namespace BaseDados.Pessoas
                     conexao.Close();
                 }
             }
-            return oCliente;
+            return lista;
         }
     }
 }
