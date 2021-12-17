@@ -29,6 +29,11 @@ namespace BaseDados.Pessoas
                     {
                         var oEndereco = new Endereco();
                         oEndereco.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        if (oEndereco.Codigo == codEnderecoPadrao)
+                            oEndereco.IsEnderecoPadrao = true;
+                        else
+                            oEndereco.IsEnderecoPadrao = false;
+
                         oEndereco.CodigoCliente = Convert.ToInt32(reader["codigo_cliente"].ToString());
                         oEndereco.Rua = reader["rua"].ToString();
                         oEndereco.Numero = Convert.ToInt32(reader["numero"].ToString());

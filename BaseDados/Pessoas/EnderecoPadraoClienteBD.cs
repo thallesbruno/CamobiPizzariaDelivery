@@ -1,10 +1,5 @@
-﻿using Entidades.Pessoas;
-using MySql.Data.MySqlClient;
+﻿using MySql.Data.MySqlClient;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BaseDados.Pessoas
 {
@@ -27,7 +22,7 @@ namespace BaseDados.Pessoas
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
-                       return Convert.ToInt32(reader["codigo_endereco"].ToString();
+                       return Convert.ToInt32(reader["codigo_endereco"].ToString());
                     }
                 }
                 catch (MySqlException mysqle)

@@ -91,17 +91,13 @@ namespace BaseDados.Pessoas
                         oCliente.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oCliente.Nome = reader["nome"].ToString();
                         if (reader["telefone"] != null)
-                        {
                             oCliente.Telefone = Convert.ToInt64(reader["telefone"].ToString());
-                        }
                         if (reader["celular"] != null)
-                        {
                             oCliente.Celular = Convert.ToInt64(reader["celular"].ToString());
-                        }
                         oCliente.Status = (Status)Convert.ToInt16(reader["situacao"]);
                         oCliente.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());                        
                         oCliente.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
-                        //oCliente.Enderecos = ...
+                        oCliente.Enderecos = new EnderecoClienteBD().BuscarEnderecosCliente(oCliente.Codigo);
                     }
                 }
                 catch (MySqlException mysqle)

@@ -1,6 +1,7 @@
 ﻿using Entidades.Enumeradores;
 using InterfaceUsuario.Modulos;
 using InterfaceUsuario.Pesquisas;
+using Negocio.Pessoas;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -77,6 +78,11 @@ namespace InterfaceUsuario.Pessoas
             if (txtCodigo.Text.Trim().Equals(string.Empty))
                     return;
             //Buscar Cliente no BD
+            var oCliente = new ClienteNG().Buscar(Convert.ToInt32(txtCodigo.Text.Trim()));
+            if (oCliente == null)
+            {
+
+            }
         }
     }
 }
