@@ -3,28 +3,58 @@ using InterfaceUsuario.Modulos;
 using InterfaceUsuario.Pesquisas;
 using Negocio.Pessoas;
 using System;
-using System.Collections.Generic;
 using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace InterfaceUsuario.Pessoas
 {
     public partial class FrmCadCliente : Form
     {
+        public bool isNovo;
+        public bool isSucesso;
+        private int iCodEdicao;
+
         public FrmCadCliente()
         {
             InitializeComponent();
             MascaraCampoCodigo.AplicarEventos(txtCodigo);
         }
 
+        public void InicializarEdicao(int iCodEdit)
+        {
+            isSucesso = false;
+             iCodEdicao= iCodEdit;
+        }
+
         private void FrmCadCliente_Load(object sender, EventArgs e)
         {
+            //Preparacao da lista
+            PrepararLista();
 
+            //btnCancelar ==> LimparCampos
+            btnCancelar_Click(btnCancelar, new EventArgs());
+
+            //Verificar codigo de edicao
+            if (iCodEdicao > 0)
+            {
+                txtCodigo.Enabled = false;
+                btnBscCliente.Enabled = false;
+                btnCancelar.Enabled = false;
+                txtCodigo.Text = iCodEdicao.ToString();
+                txtCodigo_Validating(txtCodigo, new CancelEventArgs());
+            }
+        }
+
+        private void PrepararLista()
+        {
+            lvlListagemEnderecos.Clear();
+            lvlListagemEnderecos.View = View.Details;
+            lvlListagemEnderecos.Columns.Add("Padrão", 50, HorizontalAlignment.Right);
+            lvlListagemEnderecos.Columns.Add("Rua", 180, HorizontalAlignment.Left);
+            lvlListagemEnderecos.Columns.Add("Número", 50, HorizontalAlignment.Right);
+            lvlListagemEnderecos.Columns.Add("Complemento", 160, HorizontalAlignment.Left);
+            lvlListagemEnderecos.Columns.Add("Bairro", 80, HorizontalAlignment.Left);
+            lvlListagemEnderecos.Columns.Add("Cidade", 80, HorizontalAlignment.Left);
         }
 
         //##### Botoes #####
