@@ -155,6 +155,25 @@ namespace InterfaceUsuario.Pessoas
             lvlListagemEnderecos.Items.Add(itmx);
         }
 
+        private void LimparCampos()
+        {
+            LimparCamposEndereco();
+            
+            txtCodigo.Text = new ClienteNG().BuscarProximoCodigo().ToString();
+            txtNome.Text = String.Empty;
+            txtTelefone.Text = String.Empty;
+            txtCelular.Text = String.Empty;
+
+            lvlListagemEnderecos.Items.Clear();
+            btnExcluir.Enabled = false;
+
+            MascaraCampoCodigo.RetornarMascara(txtCodigo, new EventArgs());
+            oUcSituacao.InicializarSituacao(Status.Ativo);
+
+            isNovo = true;
+            Funcoes.SelecionarCampo(txtNome);
+        }
+
         private void LimparCamposEndereco()
         {
             txtRua.Text = String.Empty;
