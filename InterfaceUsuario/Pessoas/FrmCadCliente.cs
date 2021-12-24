@@ -111,8 +111,39 @@ namespace InterfaceUsuario.Pessoas
             var oCliente = new ClienteNG().Buscar(Convert.ToInt32(txtCodigo.Text.Trim()));
             if (oCliente == null)
             {
-
+                if (iCodEdicao > 0)
+                {
+                    MessageBox.Show("Não foi possível alterar este registro. Tente novamente!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.Close();
+                }
+                btnExcluir.Enabled = false;
+                return;
             }
+            isNovo = false;
+            txtNome.Text = oCliente.Nome;
+            txtTelefone.Text = oCliente.Telefone.ToString();
+            txtCelular.Text = oCliente.Celular.ToString();
+
+            LimparCamposEndereco();
+            foreach (var item in oCliente.Enderecos)
+            {
+                PreencherListaEnderecos();
+            }
+        }
+
+        private void PreencherListaEnderecos()
+        {
+            
+        }
+
+        private void LimparCamposEndereco()
+        {
+            txtRua.Text = String.Empty;
+            txtNumero.Text = String.Empty;
+            txtComplemento.Text = String.Empty;
+            txtBairro.Text = String.Empty;
+            txtCidade.Text = String.Empty;
+            chkEnderecoPadrao.Checked = false;
         }
     }
 }
