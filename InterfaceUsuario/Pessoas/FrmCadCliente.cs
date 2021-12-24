@@ -71,12 +71,52 @@ namespace InterfaceUsuario.Pessoas
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {
+            LimparCampos();
+        }
 
+        private bool VerificarCamposEndereco()
+        {
+            if (txtRua.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar o nome da rua!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtNumero.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar o número!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtBairro.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar o bairro!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtCidade.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar a cidade!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
         }
 
         private void btnAdicionarEndereco_Click(object sender, EventArgs e)
         {
+            if (VerificarCamposEndereco())
+            {
+                return;
+            }
 
+            var oEndereco = new Endereco();
+
+            oEndereco.Rua = txtRua.Text.Trim();
+            oEndereco.Numero = Convert.ToInt32(txtNumero.Text.Trim());
+            oEndereco.Complemento = txtComplemento.Text.Trim();
+            oEndereco.Bairro = txtBairro.Text.Trim();
+            oEndereco.Cidade = txtCidade.Text.Trim();
+            oEndereco.IsEnderecoPadrao = chkEnderecoPadrao.Checked;
+
+            PreencherListaEnderecos(oEndereco);
+            LimparCamposEndereco();
         }
 
         private void btnRemoverEndereco_Click(object sender, EventArgs e)
