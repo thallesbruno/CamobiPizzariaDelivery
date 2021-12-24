@@ -249,6 +249,7 @@ namespace InterfaceUsuario.Pessoas
             // 
             // lvlListagemEnderecos
             // 
+            this.lvlListagemEnderecos.CheckBoxes = true;
             this.lvlListagemEnderecos.FullRowSelect = true;
             this.lvlListagemEnderecos.GridLines = true;
             this.lvlListagemEnderecos.HideSelection = false;

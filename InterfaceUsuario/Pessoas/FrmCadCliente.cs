@@ -1,4 +1,5 @@
 ﻿using Entidades.Enumeradores;
+using Entidades.Pessoas;
 using InterfaceUsuario.Modulos;
 using InterfaceUsuario.Pesquisas;
 using Negocio.Pessoas;
@@ -127,13 +128,31 @@ namespace InterfaceUsuario.Pessoas
             LimparCamposEndereco();
             foreach (var item in oCliente.Enderecos)
             {
-                PreencherListaEnderecos();
+                PreencherListaEnderecos(item);
             }
+            oUcSituacao.InicializarSituacao(oCliente.Status);
+
+            MascaraCampoCodigo.RetornarMascara(txtCodigo, new EventArgs());
+            btnExcluir.Enabled = true;
         }
 
-        private void PreencherListaEnderecos()
+        private void PreencherListaEnderecos(Endereco obj)
         {
-            
+            var linha = new string[6];
+
+            linha[0] = string.Empty;
+            linha[1] = obj.Rua;
+            linha[2] = obj.Numero.ToString();
+            linha[3] = obj.Complemento;
+            linha[4] = obj.Bairro;
+            linha[5] = obj.Cidade;
+
+            var itmx = new ListViewItem(linha);
+            if (obj.IsEnderecoPadrao)
+                itmx.Checked = true;
+            else
+                itmx.Checked = false;
+            lvlListagemEnderecos.Items.Add(itmx);
         }
 
         private void LimparCamposEndereco()
