@@ -19,6 +19,7 @@ namespace InterfaceUsuario.Pessoas
         {
             InitializeComponent();
             MascaraCampoCodigo.AplicarEventos(txtCodigo);
+            MascaraCampoNumero.AplicarEventos(txtNumero);
         }
 
         public void InicializarEdicao(int iCodEdit)
@@ -173,6 +174,7 @@ namespace InterfaceUsuario.Pessoas
             oUcSituacao.InicializarSituacao(oCliente.Status);
 
             MascaraCampoCodigo.RetornarMascara(txtCodigo, new EventArgs());
+            MascaraCampoNumero.RetornarMascara(txtNumero, new EventArgs());
             btnExcluir.Enabled = true;
         }
 
@@ -208,6 +210,7 @@ namespace InterfaceUsuario.Pessoas
             btnExcluir.Enabled = false;
 
             MascaraCampoCodigo.RetornarMascara(txtCodigo, new EventArgs());
+            MascaraCampoNumero.RetornarMascara(txtNumero, new EventArgs());
             oUcSituacao.InicializarSituacao(Status.Ativo);
 
             isNovo = true;
