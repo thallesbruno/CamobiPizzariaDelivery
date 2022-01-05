@@ -254,10 +254,12 @@ namespace InterfaceUsuario.Pessoas
             this.lvlListagemEnderecos.GridLines = true;
             this.lvlListagemEnderecos.HideSelection = false;
             this.lvlListagemEnderecos.Location = new System.Drawing.Point(6, 186);
+            this.lvlListagemEnderecos.MultiSelect = false;
             this.lvlListagemEnderecos.Name = "lvlListagemEnderecos";
             this.lvlListagemEnderecos.Size = new System.Drawing.Size(831, 97);
             this.lvlListagemEnderecos.TabIndex = 34;
             this.lvlListagemEnderecos.UseCompatibleStateImageBehavior = false;
+            this.lvlListagemEnderecos.DoubleClick += new System.EventHandler(this.lvlListagemEnderecos_DoubleClick);
             // 
             // chkEnderecoPadrao
             // 

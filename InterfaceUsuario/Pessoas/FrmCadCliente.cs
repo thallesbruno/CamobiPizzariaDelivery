@@ -258,5 +258,10 @@ namespace InterfaceUsuario.Pessoas
             txtCidade.Text = String.Empty;
             chkEnderecoPadrao.Checked = false;
         }
+
+        private void lvlListagemEnderecos_DoubleClick(object sender, EventArgs e)
+        {
+            btnEditarEndereco_Click(btnEditarEndereco, new EventArgs());
+        }
     }
 }
