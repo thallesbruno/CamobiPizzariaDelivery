@@ -13,6 +13,7 @@ namespace InterfaceUsuario.Pessoas
     {
         public bool isNovo;
         public bool isSucesso;
+        private bool isInibirAutoCheck;
         private int iCodEdicao;
 
         public FrmCadCliente()
@@ -262,6 +263,23 @@ namespace InterfaceUsuario.Pessoas
         private void lvlListagemEnderecos_DoubleClick(object sender, EventArgs e)
         {
             btnEditarEndereco_Click(btnEditarEndereco, new EventArgs());
+        }
+
+
+        private void lvlListagemEnderecos_MouseDown(object sender, MouseEventArgs e)
+        {
+            isInibirAutoCheck = true;
+        }
+
+        private void lvlListagemEnderecos_MouseUp(object sender, MouseEventArgs e)
+        {
+            isInibirAutoCheck = false;
+        }
+
+        private void lvlListagemEnderecos_ItemCheck(object sender, ItemCheckEventArgs e)
+        {
+            if (isInibirAutoCheck)
+                e.NewValue = e.NewValue;
         }
     }
 }

@@ -259,7 +259,10 @@ namespace InterfaceUsuario.Pessoas
             this.lvlListagemEnderecos.Size = new System.Drawing.Size(831, 97);
             this.lvlListagemEnderecos.TabIndex = 34;
             this.lvlListagemEnderecos.UseCompatibleStateImageBehavior = false;
+            this.lvlListagemEnderecos.ItemCheck += new System.Windows.Forms.ItemCheckEventHandler(this.lvlListagemEnderecos_ItemCheck);
             this.lvlListagemEnderecos.DoubleClick += new System.EventHandler(this.lvlListagemEnderecos_DoubleClick);
+            this.lvlListagemEnderecos.MouseDown += new System.Windows.Forms.MouseEventHandler(this.lvlListagemEnderecos_MouseDown);
+            this.lvlListagemEnderecos.MouseUp += new System.Windows.Forms.MouseEventHandler(this.lvlListagemEnderecos_MouseUp);
             // 
             // chkEnderecoPadrao
             // 
