@@ -122,12 +122,44 @@ namespace InterfaceUsuario.Pessoas
 
         private void btnRemoverEndereco_Click(object sender, EventArgs e)
         {
-
+            if (lvlListagemEnderecos.SelectedIndices.Count <= 0)
+                return;
+           
+            var iSelectedIndex = Convert.ToInt32(lvlListagemEnderecos.SelectedIndices[0]);
+            if (iSelectedIndex >= 0)
+                lvlListagemEnderecos.Items[iSelectedIndex].Remove();
         }
 
         private void btnEditarEndereco_Click(object sender, EventArgs e)
         {
+            if (lvlListagemEnderecos.SelectedIndices.Count <= 0)
+                return;
 
+            var iSelectedIndex = Convert.ToInt32(lvlListagemEnderecos.SelectedIndices[0]);
+            if (iSelectedIndex >= 0)
+            {
+                var oEndereco = new Endereco();
+                oEndereco.IsEnderecoPadrao = lvlListagemEnderecos.Items[iSelectedIndex].Checked;
+                oEndereco.Rua = lvlListagemEnderecos.Items[iSelectedIndex].SubItems[1].Text;
+                oEndereco.Numero = Convert.ToInt32(lvlListagemEnderecos.Items[iSelectedIndex].SubItems[2].Text);
+                oEndereco.Complemento = lvlListagemEnderecos.Items[iSelectedIndex].SubItems[3].Text;
+                oEndereco.Bairro = lvlListagemEnderecos.Items[iSelectedIndex].SubItems[4].Text;
+                oEndereco.Cidade = lvlListagemEnderecos.Items[iSelectedIndex].SubItems[5].Text;
+
+                PreencherCamposEndereco(oEndereco);
+
+                lvlListagemEnderecos.Items[iSelectedIndex].Remove();
+            }
+        }
+
+        private void PreencherCamposEndereco(Endereco oEndereco)
+        {
+            txtRua.Text = oEndereco.Rua;
+            txtNumero.Text = oEndereco.Numero.ToString();
+            txtComplemento.Text = oEndereco.Complemento.ToString();
+            txtBairro.Text = oEndereco.Bairro.ToString();
+            txtCidade.Text = oEndereco.Cidade.ToString();
+            chkEnderecoPadrao.Checked = oEndereco.IsEnderecoPadrao;
         }
 
         private void btnBscCliente_Click(object sender, EventArgs e)
