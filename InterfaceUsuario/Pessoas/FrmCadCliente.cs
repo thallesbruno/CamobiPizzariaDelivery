@@ -61,10 +61,17 @@ namespace InterfaceUsuario.Pessoas
         }
 
         //##### Botoes #####
+
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
             if (!VerificarCampos())
                 return;
+
+            Cliente oCliente = new Cliente();
+            oCliente.Nome = txtNome.Text.Trim();
+            oCliente.Telefone = Funcoes.RemoverMascaraCampoNumerico(txtTelefone);
+            oCliente.Celular = Funcoes.RemoverMascaraCampoNumerico(txtCelular);
+
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
