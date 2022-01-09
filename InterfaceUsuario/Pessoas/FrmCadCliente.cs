@@ -279,7 +279,22 @@ namespace InterfaceUsuario.Pessoas
         private void lvlListagemEnderecos_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (isInibirAutoCheck)
-                e.NewValue = e.NewValue;
+                e.NewValue = e.CurrentValue;
+
+            if (VerificarSeExisteEnderecoPadrao() && e.NewValue == CheckState.Checked)
+            {
+                e.NewValue = CheckState.Unchecked;
+                MessageBox.Show("Deve ter somente um endereço padrão!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private bool VerificarSeExisteEnderecoPadrao()
+        {
+            foreach (ListViewItem item in lvlListagemEnderecos.Items)
+            {
+                if (item.Checked)
+                    return true;
+            }
+            return false;
         }
     }
 }
