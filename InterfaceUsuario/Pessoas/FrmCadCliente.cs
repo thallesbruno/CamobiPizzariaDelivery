@@ -63,7 +63,8 @@ namespace InterfaceUsuario.Pessoas
         //##### Botoes #####
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-
+            if (!VerificarCampos())
+                return;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -74,31 +75,6 @@ namespace InterfaceUsuario.Pessoas
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             LimparCampos();
-        }
-
-        private bool VerificarCamposEndereco()
-        {
-            if (txtRua.Text.Trim().Equals(string.Empty))
-            {
-                MessageBox.Show("Você deve informar o nome da rua!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (txtNumero.Text.Trim().Equals(string.Empty))
-            {
-                MessageBox.Show("Você deve informar o número!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (txtBairro.Text.Trim().Equals(string.Empty))
-            {
-                MessageBox.Show("Você deve informar o bairro!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (txtCidade.Text.Trim().Equals(string.Empty))
-            {
-                MessageBox.Show("Você deve informar a cidade!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
         }
 
         private void btnAdicionarEndereco_Click(object sender, EventArgs e)
@@ -151,17 +127,7 @@ namespace InterfaceUsuario.Pessoas
 
                 lvlListagemEnderecos.Items[iSelectedIndex].Remove();
             }
-        }
-
-        private void PreencherCamposEndereco(Endereco oEndereco)
-        {
-            txtRua.Text = oEndereco.Rua;
-            txtNumero.Text = oEndereco.Numero.ToString();
-            txtComplemento.Text = oEndereco.Complemento.ToString();
-            txtBairro.Text = oEndereco.Bairro.ToString();
-            txtCidade.Text = oEndereco.Cidade.ToString();
-            chkEnderecoPadrao.Checked = oEndereco.IsEnderecoPadrao;
-        }
+        }        
 
         private void btnBscCliente_Click(object sender, EventArgs e)
         {
@@ -177,6 +143,81 @@ namespace InterfaceUsuario.Pessoas
         }
 
         //##### Fim Botoes #####
+        
+        private bool VerificarCampos()
+        {
+            if (txtNome.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Informe o nome do cliente. Tente novamente!", 
+                    this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtTelefone.Text.Trim().Equals(string.Empty) && txtCelular.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar o telefone ou o celular do cliente. Tente novamente!", 
+                    this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (lvlListagemEnderecos.Items.Count < 1)
+            {
+                MessageBox.Show("Você deve informar pelo menos um endereço para o cliente. Tente novamente!", 
+                    this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            int iCountCheck = 0;
+            foreach (ListViewItem item in lvlListagemEnderecos.Items)
+            {
+                if (item.Checked)
+                    iCountCheck++;
+            }
+            if (iCountCheck == 0)
+            {
+                MessageBox.Show("Você deve informar pelo menos um endereço padrão para o cliente. Tente novamente!", 
+                    this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (iCountCheck > 1)
+            {
+                MessageBox.Show("Você deve informar apenas um endereço padrão para o cliente. Tente novamente!",
+                    this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
+        private void PreencherCamposEndereco(Endereco oEndereco)
+        {
+            txtRua.Text = oEndereco.Rua;
+            txtNumero.Text = oEndereco.Numero.ToString();
+            txtComplemento.Text = oEndereco.Complemento.ToString();
+            txtBairro.Text = oEndereco.Bairro.ToString();
+            txtCidade.Text = oEndereco.Cidade.ToString();
+            chkEnderecoPadrao.Checked = oEndereco.IsEnderecoPadrao;
+        }
+        private bool VerificarCamposEndereco()
+        {
+            if (txtRua.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar o nome da rua!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtNumero.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar o número!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtBairro.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar o bairro!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            if (txtCidade.Text.Trim().Equals(string.Empty))
+            {
+                MessageBox.Show("Você deve informar a cidade!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
 
         private void txtCodigo_Validating(object sender, CancelEventArgs e)
         {
@@ -279,7 +320,10 @@ namespace InterfaceUsuario.Pessoas
         private void lvlListagemEnderecos_ItemCheck(object sender, ItemCheckEventArgs e)
         {
             if (isInibirAutoCheck)
+            {
                 e.NewValue = e.CurrentValue;
+                return;
+            }
 
             if (VerificarSeExisteEnderecoPadrao() && e.NewValue == CheckState.Checked)
             {
