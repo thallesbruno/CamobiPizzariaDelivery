@@ -45,7 +45,7 @@ namespace BaseDados.Pessoas
                                                 @telefone,
                                                 @celular,
                                                 @situacao,
-                                                NOW(),
+                                      
                                                 @codigo_usr_alteracao)";
                 }
                 catch (MySqlException mysqle)
