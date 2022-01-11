@@ -1,9 +1,11 @@
 ﻿using Entidades.Enumeradores;
 using Entidades.Pessoas;
+using Entidades.Sistema;
 using InterfaceUsuario.Modulos;
 using InterfaceUsuario.Pesquisas;
 using Negocio.Pessoas;
 using System;
+using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
@@ -71,7 +73,20 @@ namespace InterfaceUsuario.Pessoas
             oCliente.Nome = txtNome.Text.Trim();
             oCliente.Telefone = Funcoes.RemoverMascaraCampoNumerico(txtTelefone);
             oCliente.Celular = Funcoes.RemoverMascaraCampoNumerico(txtCelular);
+            oCliente.Enderecos = MontarListaListViewEnderecos();
+            oCliente.Status = oUcSituacao._status;
+            oCliente.CodigoUsrAlteracao = Sessao.Usuario.Codigo;
 
+            //Inserir no BD
+            if (isNovo)
+            {
+
+            }
+            //Alterar no BD
+            else
+            {
+
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -150,6 +165,28 @@ namespace InterfaceUsuario.Pessoas
         }
 
         //##### Fim Botoes #####
+
+        private List<Endereco> MontarListaListViewEnderecos()
+        {
+            List<Endereco> lEnderecos = new List<Endereco>();
+            foreach (ListViewItem item in lvlListagemEnderecos.Items)
+            {
+                Endereco oEndereco = new Endereco();
+                
+                if (!isNovo)
+                    oEndereco.CodigoCliente = Convert.ToInt32(txtCodigo.Text.Trim());
+
+                oEndereco.IsEnderecoPadrao = item.Checked;
+                oEndereco.Rua = item.SubItems[1].Text;
+                oEndereco.Numero = Convert.ToInt32(item.SubItems[2].Text);
+                oEndereco.Complemento = item.SubItems[3].Text;
+                oEndereco.Bairro = item.SubItems[4].Text;
+                oEndereco.Cidade = item.SubItems[5].Text;
+
+                lEnderecos.Add(oEndereco);
+            }
+            return lEnderecos;
+        }
         
         private bool VerificarCampos()
         {
