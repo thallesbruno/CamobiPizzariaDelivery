@@ -11,6 +11,55 @@ namespace BaseDados.Pessoas
     public class ClienteBD
     {
         private readonly FuncoesBD bdFuncoes = new FuncoesBD();
+
+        public bool Inserir(Cliente oCliente)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                MySqlTransaction transacao = null;
+                try
+                {
+                    conexao.Open();
+
+                    transacao = conexao.BeginTransaction();
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    comando.Connection = conexao;
+                    comando.Transaction = transacao;
+                    
+                    int valorRetorno = 0;
+
+                    //################## INSERE O CLIENTE ##################
+                    comando.CommandText = @"INSERT INTO cliente (
+                                                nome,
+                                                telefone,
+                                                celular,
+                                                situacao,
+                                                dt_alteracao,
+                                                codigo_usr_alteracao)
+                                            VALUES (
+                                                @nome,
+                                                @telefone,
+                                                @celular,
+                                                @situacao,
+                                                NOW(),
+                                                @codigo_usr_alteracao)";
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
+
         public List<EntidadeViewPesquisaCliente> ListarPesquisaCliente(Status status, string termoBusca)
         {
             var listaEntidades = new List<EntidadeViewPesquisaCliente>();
