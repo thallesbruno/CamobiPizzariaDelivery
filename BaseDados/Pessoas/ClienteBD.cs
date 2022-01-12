@@ -45,8 +45,44 @@ namespace BaseDados.Pessoas
                                                 @telefone,
                                                 @celular,
                                                 @situacao,
-                                      
+                                                NOW(),
                                                 @codigo_usr_alteracao)";
+
+                    comando.Parameters.AddWithValue("nome", oCliente.Nome);
+                    comando.Parameters.AddWithValue("telefone", oCliente.Telefone);
+                    comando.Parameters.AddWithValue("celular", oCliente.Celular);
+                    comando.Parameters.AddWithValue("situacao", oCliente.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oCliente.CodigoUsrAlteracao);
+
+                    valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        return isRetorno;
+
+                    comando.CommandText = string.Empty;
+                    comando.Parameters.Clear();
+
+                    //################## BUSCA O CODIGO DO CLIENTE INSERIDO ##################
+                    comando.CommandText = "SHOW TABLE STATUS LIKE 'cliente'";
+
+                    int iCodClienteInserido = 0;
+
+                    using (MySqlDataReader reader = comando.ExecuteReader())
+                    {
+                        while (reader.Read())
+                            iCodClienteInserido = Convert.ToInt32(reader["Auto_increment"].ToString()) - 1;
+                    }
+
+                    comando.CommandText = string.Empty;
+                    comando.Parameters.Clear();
+
+                    //################## INSERIR ENDERECOS ##################
+                    foreach (Endereco oEnd in oCliente.Enderecos)
+                    {
+                        oEnd.CodigoCliente = iCodClienteInserido;
+
+                    }
+
+                    isRetorno = true;
                 }
                 catch (MySqlException mysqle)
                 {
@@ -54,6 +90,11 @@ namespace BaseDados.Pessoas
                 }
                 finally
                 {
+                    if (!isRetorno)
+                        transacao.Rollback();
+                    else
+                        transacao.Commit();
+
                     conexao.Close();
                 }
             }
@@ -163,7 +204,7 @@ namespace BaseDados.Pessoas
 
         public int BuscarProximoCodigo()
         {
-            return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'client'");
+            return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'cliente'");
         }
     }
 }
