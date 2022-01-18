@@ -80,6 +80,69 @@ namespace BaseDados.Pessoas
                     {
                         oEnd.CodigoCliente = iCodClienteInserido;
 
+                        comando.CommandText = @"INSERT INTO endereco_cliente (
+                                                    codigo_cliente,
+                                                    rua,
+                                                    numero,
+                                                    complemento,
+                                                    bairro,
+                                                    cidade)
+                                                VALUES
+                                                    (@codigo_cliente,
+                                                    @rua,
+                                                    @numero,
+                                                    @complemento,
+                                                    @bairro,
+                                                    @cidade);";
+
+                        comando.Parameters.AddWithValue("codigo_cliente", oEnd.CodigoCliente);
+                        comando.Parameters.AddWithValue("rua", oEnd.Rua);
+                        comando.Parameters.AddWithValue("numero", oEnd.Numero);
+                        comando.Parameters.AddWithValue("complemento", oEnd.Complemento);
+                        comando.Parameters.AddWithValue("bairro", oEnd.Bairro);
+                        comando.Parameters.AddWithValue("cidade", oEnd.Cidade);
+
+                        valorRetorno = comando.ExecuteNonQuery();
+                        if (valorRetorno < 1)
+                            return isRetorno;
+
+                        comando.CommandText = string.Empty;
+                        comando.Parameters.Clear();
+
+                        if (oEnd.IsEnderecoPadrao)
+                        {
+                            //Buscar o codigo do endereco inserido
+                            comando.CommandText = "SHOW TABLE STATUS LIKE 'endereco_cliente'";
+
+                            int iCodEnderecoCliente = 0;
+
+                            using (MySqlDataReader reader = comando.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                    iCodClienteInserido = Convert.ToInt32(reader["Auto_increment"].ToString()) - 1;
+                            }
+
+                            comando.CommandText = string.Empty;
+                            comando.Parameters.Clear();
+
+                            //Inserir o endereco padrao
+                            comando.CommandText = @"INSERT INTO endereco_padrao_cliente (
+                                                    codigo_cliente,
+                                                    codigo_endereco)
+                                                VALUES
+                                                    (@codigo_cliente,
+                                                    @codigo_endereco);";
+
+                            comando.Parameters.AddWithValue("codigo_cliente", iCodClienteInserido);
+                            comando.Parameters.AddWithValue("codigo_endereco", iCodEnderecoCliente);
+
+                            valorRetorno = comando.ExecuteNonQuery();
+                            if (valorRetorno < 1)
+                                return isRetorno;
+
+                            comando.CommandText = string.Empty;
+                            comando.Parameters.Clear();
+                        }
                     }
 
                     isRetorno = true;
