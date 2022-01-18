@@ -16,6 +16,11 @@ namespace Negocio.Pessoas
             _bd = new ClienteBD();
         }
 
+        public bool Inserir(Cliente oCliente)
+        { 
+            return _bd.Inserir(oCliente);
+        }
+
         public List<EntidadeViewPesquisaCliente> ListarPesquisaCliente(Status status, string termoBusca)
         {
             return _bd.ListarPesquisaCliente(status, termoBusca);

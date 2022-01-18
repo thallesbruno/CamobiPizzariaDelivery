@@ -77,10 +77,20 @@ namespace InterfaceUsuario.Pessoas
             oCliente.Status = oUcSituacao._status;
             oCliente.CodigoUsrAlteracao = Sessao.Usuario.Codigo;
 
+            ClienteNG ngCliente = new ClienteNG();
+
             //Inserir no BD
             if (isNovo)
             {
-
+                if (ngCliente.Inserir(oCliente))
+                {
+                    MessageBox.Show("Cliente inserido com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Falha ao inserir o cliente. Tente novamente!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             //Alterar no BD
             else
