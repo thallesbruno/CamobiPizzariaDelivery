@@ -204,9 +204,9 @@ namespace BaseDados.Pessoas
                         var oEntidade = new EntidadeViewPesquisaCliente();
                         oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oEntidade.Nome = reader["nome"].ToString();
-                        if (reader["telefone"] != null && reader["telefone"].ToString() != string.Empty)
+                        if (!(reader["telefone"] is System.DBNull))
                             oEntidade.Telefone = Convert.ToInt64(reader["telefone"]).ToString("(##) ####-####");
-                        if (reader["celular"] != null && reader["celular"].ToString() != string.Empty)
+                        if (!(reader["celular"] is System.DBNull))
                             oEntidade.Celular = Convert.ToInt64(reader["celular"]).ToString("(##) # ####-####");
 
                         listaEntidades.Add(oEntidade);
