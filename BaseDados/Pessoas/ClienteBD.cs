@@ -204,9 +204,9 @@ namespace BaseDados.Pessoas
                         var oEntidade = new EntidadeViewPesquisaCliente();
                         oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oEntidade.Nome = reader["nome"].ToString();
-                        if (reader["telefone"] != null)
+                        if (reader["telefone"] != null && reader["telefone"].ToString() != string.Empty)
                             oEntidade.Telefone = Convert.ToInt64(reader["telefone"]).ToString("(##) ####-####");
-                        if (reader["celular"] != null)
+                        if (reader["celular"] != null && reader["celular"].ToString() != string.Empty)
                             oEntidade.Celular = Convert.ToInt64(reader["celular"]).ToString("(##) # ####-####");
 
                         listaEntidades.Add(oEntidade);
@@ -243,9 +243,9 @@ namespace BaseDados.Pessoas
                     {
                         oCliente.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oCliente.Nome = reader["nome"].ToString();
-                        if (reader["telefone"] != null)
+                        if (reader["telefone"] != null && reader["telefone"].ToString() != string.Empty)
                             oCliente.Telefone = Convert.ToInt64(reader["telefone"].ToString());
-                        if (reader["celular"] != null)
+                        if (reader["celular"] != null && reader["celular"].ToString() != string.Empty)
                             oCliente.Celular = Convert.ToInt64(reader["celular"].ToString());
                         oCliente.Status = (Status)Convert.ToInt16(reader["situacao"]);
                         oCliente.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());                        
