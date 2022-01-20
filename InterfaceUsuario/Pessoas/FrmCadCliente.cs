@@ -97,7 +97,15 @@ namespace InterfaceUsuario.Pessoas
             {
                 oCliente.Codigo = Convert.ToInt32(txtCodigo.Text.Trim());
                 //chamar metodos para fazer alteracao
-
+                if (ngCliente.Alterar(oCliente))
+                {
+                    MessageBox.Show("Cliente alterado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao alterar o cliente. Tente novamente!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
