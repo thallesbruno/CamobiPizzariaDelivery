@@ -95,6 +95,8 @@ namespace InterfaceUsuario.Pessoas
             //Alterar no BD
             else
             {
+                oCliente.Codigo = Convert.ToInt32(txtCodigo.Text.Trim());
+                //chamar metodos para fazer alteracao
 
             }
         }

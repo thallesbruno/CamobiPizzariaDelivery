@@ -164,6 +164,151 @@ namespace BaseDados.Pessoas
             return isRetorno;
         }
 
+        public bool Alterar(Cliente oCliente)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                MySqlTransaction transacao = null;
+                try
+                {
+                    conexao.Open();
+
+                    transacao = conexao.BeginTransaction();
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    comando.Connection = conexao;
+                    comando.Transaction = transacao;
+
+                    int valorRetorno = 0;
+
+                    //################## ALTERA O CLIENTE ##################
+
+                    comando.CommandText = @"UPDATE cliente SET 
+                                                nome = @nome,
+                                                telefone = @telefone,
+                                                celular = @celular,
+                                                situacao = @situacao,
+                                                dt_alteracao = NOW(),
+                                                codigo_usr_alteracao = @codigo_usr_alteracao
+                                            WHERE (codigo = @codigo)";
+
+                    comando.Parameters.AddWithValue("codigo", oCliente.Codigo);
+                    comando.Parameters.AddWithValue("nome", oCliente.Nome);
+                    comando.Parameters.AddWithValue("telefone", oCliente.Telefone);
+                    comando.Parameters.AddWithValue("celular", oCliente.Celular);
+                    comando.Parameters.AddWithValue("situacao", oCliente.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oCliente.CodigoUsrAlteracao);
+
+                    valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        return isRetorno;
+
+                    comando.CommandText = string.Empty;
+                    comando.Parameters.Clear();
+
+                    //################## REMOVER ENDERECOS ANTIGOS ##################
+
+                    comando.CommandText = "DELETE FROM endereco_cliente WHERE codigo_cliente = @codigo_cliente";
+
+                    comando.Parameters.AddWithValue("codigo_cliente", oCliente.Codigo);
+
+                    valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        return isRetorno;
+
+                    comando.CommandText = string.Empty;
+                    comando.Parameters.Clear();
+
+                    //################## INSERIR ENDERECOS NOVOS ##################
+
+                    foreach (Endereco oEnd in oCliente.Enderecos)
+                    {
+                        oEnd.CodigoCliente = oCliente.Codigo;
+
+                        comando.CommandText = @"INSERT INTO endereco_cliente (
+                                                    codigo_cliente,
+                                                    rua,
+                                                    numero,
+                                                    complemento,
+                                                    bairro,
+                                                    cidade)
+                                                VALUES
+                                                    (@codigo_cliente,
+                                                    @rua,
+                                                    @numero,
+                                                    @complemento,
+                                                    @bairro,
+                                                    @cidade);";
+
+                        comando.Parameters.AddWithValue("codigo_cliente", oEnd.CodigoCliente);
+                        comando.Parameters.AddWithValue("rua", oEnd.Rua);
+                        comando.Parameters.AddWithValue("numero", oEnd.Numero);
+                        comando.Parameters.AddWithValue("complemento", oEnd.Complemento);
+                        comando.Parameters.AddWithValue("bairro", oEnd.Bairro);
+                        comando.Parameters.AddWithValue("cidade", oEnd.Cidade);
+
+                        valorRetorno = comando.ExecuteNonQuery();
+                        if (valorRetorno < 1)
+                            return isRetorno;
+
+                        comando.CommandText = string.Empty;
+                        comando.Parameters.Clear();
+
+                        if (oEnd.IsEnderecoPadrao)
+                        {
+                            //Buscar o codigo do endereco inserido
+                            comando.CommandText = "SHOW TABLE STATUS LIKE 'endereco_cliente'";
+
+                            int iCodEnderecoCliente = 0;
+
+                            using (MySqlDataReader reader = comando.ExecuteReader())
+                            {
+                                while (reader.Read())
+                                    iCodEnderecoCliente = Convert.ToInt32(reader["Auto_increment"].ToString()) - 1;
+                            }
+
+                            comando.CommandText = string.Empty;
+                            comando.Parameters.Clear();
+
+                            //Inserir o endereco padrao
+                            comando.CommandText = @"UPDATE endereco_padrao_cliente SET 
+                                                        codigo_endereco = @codigo_endereco
+                                                    WHERE codigo_cliente = @codigo_cliente";
+
+                            comando.Parameters.AddWithValue("codigo_cliente", oCliente.Codigo);
+                            comando.Parameters.AddWithValue("codigo_endereco", iCodEnderecoCliente);
+
+                            valorRetorno = comando.ExecuteNonQuery();
+                            if (valorRetorno < 1)
+                                return isRetorno;
+
+                            comando.CommandText = string.Empty;
+                            comando.Parameters.Clear();
+                        }
+                    }
+
+                    isRetorno = true;
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    if (!isRetorno)
+                        transacao.Rollback();
+                    else
+                        transacao.Commit();
+
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
+
         public List<EntidadeViewPesquisaCliente> ListarPesquisaCliente(Status status, string termoBusca)
         {
             var listaEntidades = new List<EntidadeViewPesquisaCliente>();
