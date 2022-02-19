@@ -211,6 +211,19 @@ namespace BaseDados.Pessoas
 
                     //################## REMOVER ENDERECOS ANTIGOS ##################
 
+                    comando.CommandText = "DELETE FROM endereco_padrao_cliente WHERE codigo_cliente = @codigo_cliente";
+
+                    comando.Parameters.AddWithValue("codigo_cliente", oCliente.Codigo);
+
+                    valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        return isRetorno;
+
+                    comando.CommandText = string.Empty;
+                    comando.Parameters.Clear();
+
+                    //##################
+
                     comando.CommandText = "DELETE FROM endereco_cliente WHERE codigo_cliente = @codigo_cliente";
 
                     comando.Parameters.AddWithValue("codigo_cliente", oCliente.Codigo);
@@ -274,9 +287,12 @@ namespace BaseDados.Pessoas
                             comando.Parameters.Clear();
 
                             //Inserir o endereco padrao
-                            comando.CommandText = @"UPDATE endereco_padrao_cliente SET 
-                                                        codigo_endereco = @codigo_endereco
-                                                    WHERE codigo_cliente = @codigo_cliente";
+                            comando.CommandText = @"INSERT INTO endereco_padrao_cliente (
+                                                    codigo_cliente,
+                                                    codigo_endereco)
+                                                VALUES
+                                                    (@codigo_cliente,
+                                                    @codigo_endereco);";
 
                             comando.Parameters.AddWithValue("codigo_cliente", oCliente.Codigo);
                             comando.Parameters.AddWithValue("codigo_endereco", iCodEnderecoCliente);
