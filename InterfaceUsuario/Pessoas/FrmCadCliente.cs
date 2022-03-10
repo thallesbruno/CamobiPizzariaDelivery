@@ -111,7 +111,25 @@ namespace InterfaceUsuario.Pessoas
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-
+            //Excluir registro
+            if (txtCodigo.Text.Trim().Equals(String.Empty))
+            {
+                if (MessageBox.Show("Deseja excluir este cliente?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    if (new ClienteNG().Excluir(Convert.ToInt32(txtCodigo.Text.Trim())))
+                    {
+                        MessageBox.Show("Cliente excluido com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LimparCampos();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Ocorreu um problema na exclusão do cliente. Verifique novamente!",
+                            this.Text,
+                            MessageBoxButtons.OK,
+                            MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

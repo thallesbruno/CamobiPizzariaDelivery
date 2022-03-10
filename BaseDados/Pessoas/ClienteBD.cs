@@ -325,6 +325,81 @@ namespace BaseDados.Pessoas
             return isRetorno;
         }
 
+        public bool Excluir(int iCodCliente)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                MySqlTransaction transacao = null;
+                try
+                {
+                    conexao.Open();
+
+                    transacao = conexao.BeginTransaction();
+
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    comando.Connection = conexao;
+                    comando.Transaction = transacao;
+
+                    int valorRetorno = 0;
+
+                    //################## REMOVER ENDERECOS PADRÃO ##################
+
+                    comando.CommandText = "DELETE FROM endereco_padrao_cliente WHERE codigo_cliente = @codigo_cliente";
+
+                    comando.Parameters.AddWithValue("codigo_cliente", iCodCliente);
+
+                    valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        return isRetorno;
+
+                    comando.CommandText = string.Empty;
+                    comando.Parameters.Clear();
+
+                    //################## REMOVER ENDERECOS ##################
+
+                    comando.CommandText = "DELETE FROM endereco_cliente WHERE codigo_cliente = @codigo_cliente";
+
+                    comando.Parameters.AddWithValue("codigo_cliente", iCodCliente);
+
+                    valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        return isRetorno;
+
+                    comando.CommandText = string.Empty;
+                    comando.Parameters.Clear();
+
+                    //################## REMOVER CLIENTE ##################
+
+                    comando.CommandText = "DELETE FROM cliente WHERE codigo_cliente = @codigo_cliente";
+
+                    comando.Parameters.AddWithValue("codigo_cliente", iCodCliente);
+
+                    valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        return isRetorno;
+
+                    isRetorno = true;
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    if (!isRetorno)
+                        transacao.Rollback();
+                    else
+                        transacao.Commit();
+
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
+
         public List<EntidadeViewPesquisaCliente> ListarPesquisaCliente(Status status, string termoBusca)
         {
             var listaEntidades = new List<EntidadeViewPesquisaCliente>();
