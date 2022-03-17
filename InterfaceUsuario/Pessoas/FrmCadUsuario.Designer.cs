@@ -56,16 +56,16 @@ namespace InterfaceUsuario.Pessoas
             this.flowLayoutPanel1.Controls.Add(this.btnExcluir);
             this.flowLayoutPanel1.Controls.Add(this.btnConfirmar);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(394, 265);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(373, 265);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
-            this.flowLayoutPanel1.Size = new System.Drawing.Size(334, 54);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(355, 54);
             this.flowLayoutPanel1.TabIndex = 0;
             // 
             // btnCancelar
             // 
             this.btnCancelar.Image = global::InterfaceUsuario.Properties.Resources.cancelar;
             this.btnCancelar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnCancelar.Location = new System.Drawing.Point(226, 3);
+            this.btnCancelar.Location = new System.Drawing.Point(247, 3);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(105, 45);
             this.btnCancelar.TabIndex = 2;
@@ -78,7 +78,7 @@ namespace InterfaceUsuario.Pessoas
             // 
             this.btnExcluir.Image = global::InterfaceUsuario.Properties.Resources.excluir;
             this.btnExcluir.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnExcluir.Location = new System.Drawing.Point(115, 3);
+            this.btnExcluir.Location = new System.Drawing.Point(136, 3);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(105, 45);
             this.btnExcluir.TabIndex = 1;
@@ -91,7 +91,7 @@ namespace InterfaceUsuario.Pessoas
             // 
             this.btnConfirmar.Image = global::InterfaceUsuario.Properties.Resources.confirmar;
             this.btnConfirmar.ImageAlign = System.Drawing.ContentAlignment.TopCenter;
-            this.btnConfirmar.Location = new System.Drawing.Point(4, 3);
+            this.btnConfirmar.Location = new System.Drawing.Point(25, 3);
             this.btnConfirmar.Name = "btnConfirmar";
             this.btnConfirmar.Size = new System.Drawing.Size(105, 45);
             this.btnConfirmar.TabIndex = 0;

@@ -1,5 +1,6 @@
 ﻿using InterfaceUsuario.Login;
 using InterfaceUsuario.Pessoas;
+using InterfaceUsuario.Produtos;
 using System;
 using System.Windows.Forms;
 
@@ -56,6 +57,11 @@ namespace InterfaceUsuario
         private void clientesToolStripMenuItem_Click(object sender, EventArgs e)
         {
             AbrirFormularios(new FrmCadCliente());
+        }
+
+        private void adicionaisToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios(new FrmCadAdicional());
         }
     }
 }
