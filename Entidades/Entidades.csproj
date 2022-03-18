@@ -50,9 +50,11 @@
     <Compile Include="Pessoas\Endereco.cs" />
     <Compile Include="Pessoas\TipoUsuario.cs" />
     <Compile Include="Pessoas\Usuario.cs" />
+    <Compile Include="Produtos\Adicional.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Sistema\ComboBoxItemUsuario.cs" />
     <Compile Include="Sistema\Sessao.cs" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

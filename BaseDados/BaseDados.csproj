@@ -91,6 +91,7 @@
     <Compile Include="Pessoas\EnderecoPadraoClienteBD.cs" />
     <Compile Include="Pessoas\TipoUsuarioBD.cs" />
     <Compile Include="Pessoas\UsuarioBD.cs" />
+    <Compile Include="Produtos\AdicionalBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

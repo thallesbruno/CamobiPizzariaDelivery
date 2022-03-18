@@ -76,6 +76,7 @@
     <Compile Include="Modulos\Funcoes.cs" />
     <Compile Include="Modulos\MascaraCampoNumero.cs" />
     <Compile Include="Modulos\MascaraCampoCodigo.cs" />
+    <Compile Include="Modulos\MascaraDinheiro.cs" />
     <Compile Include="Pesquisas\FrmPesquisaGenericaCliente.cs">
       <SubType>Form</SubType>
     </Compile>

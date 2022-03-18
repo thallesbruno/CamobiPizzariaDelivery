@@ -30,7 +30,7 @@
         {
             this.txtDescricao = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.btnBscUsuario = new System.Windows.Forms.Button();
+            this.btnBscAdicional = new System.Windows.Forms.Button();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
@@ -62,14 +62,15 @@
             this.label2.TabIndex = 20;
             this.label2.Text = "Descrição:";
             // 
-            // btnBscUsuario
+            // btnBscAdicional
             // 
-            this.btnBscUsuario.Image = global::InterfaceUsuario.Properties.Resources.busca;
-            this.btnBscUsuario.Location = new System.Drawing.Point(166, 36);
-            this.btnBscUsuario.Name = "btnBscUsuario";
-            this.btnBscUsuario.Size = new System.Drawing.Size(23, 21);
-            this.btnBscUsuario.TabIndex = 19;
-            this.btnBscUsuario.UseVisualStyleBackColor = true;
+            this.btnBscAdicional.Image = global::InterfaceUsuario.Properties.Resources.busca;
+            this.btnBscAdicional.Location = new System.Drawing.Point(166, 36);
+            this.btnBscAdicional.Name = "btnBscAdicional";
+            this.btnBscAdicional.Size = new System.Drawing.Size(23, 21);
+            this.btnBscAdicional.TabIndex = 19;
+            this.btnBscAdicional.UseVisualStyleBackColor = true;
+            this.btnBscAdicional.Click += new System.EventHandler(this.btnBscAdicional_Click);
             // 
             // txtCodigo
             // 
@@ -78,6 +79,7 @@
             this.txtCodigo.Name = "txtCodigo";
             this.txtCodigo.Size = new System.Drawing.Size(149, 20);
             this.txtCodigo.TabIndex = 18;
+            this.txtCodigo.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodigo_Validating);
             // 
             // label1
             // 
@@ -110,6 +112,7 @@
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnExcluir
             // 
@@ -122,6 +125,7 @@
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnExcluir.UseVisualStyleBackColor = true;
+            this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
             // btnConfirmar
             // 
@@ -134,6 +138,7 @@
             this.btnConfirmar.Text = "Confirmar";
             this.btnConfirmar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnConfirmar.UseVisualStyleBackColor = true;
+            this.btnConfirmar.Click += new System.EventHandler(this.btnConfirmar_Click);
             // 
             // txtValor
             // 
@@ -166,9 +171,10 @@
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(235, 73);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(34, 13);
+            this.label4.Size = new System.Drawing.Size(68, 13);
             this.label4.TabIndex = 26;
-            this.label4.Text = "Valor:";
+            this.label4.Text = "Observação:";
+            this.label4.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // oUcSituacao
             // 
@@ -190,7 +196,7 @@
             this.Controls.Add(this.oUcSituacao);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.btnBscUsuario);
+            this.Controls.Add(this.btnBscAdicional);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
@@ -211,7 +217,7 @@
         private UserControls.ucSituacao oUcSituacao;
         private System.Windows.Forms.TextBox txtDescricao;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button btnBscUsuario;
+        private System.Windows.Forms.Button btnBscAdicional;
         private System.Windows.Forms.TextBox txtCodigo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;

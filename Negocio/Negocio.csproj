@@ -44,6 +44,7 @@
     <Compile Include="Pessoas\ClienteNG.cs" />
     <Compile Include="Pessoas\TipoUsuarioNG.cs" />
     <Compile Include="Pessoas\UsuarioNG.cs" />
+    <Compile Include="Produtos\AdicionalNG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -56,5 +57,6 @@
       <Name>Entidades</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
