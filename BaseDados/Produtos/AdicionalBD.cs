@@ -5,9 +5,6 @@ using Entidades.Produtos;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BaseDados.Produtos
 {
@@ -15,43 +12,42 @@ namespace BaseDados.Produtos
     {
         private readonly FuncoesBD bdFuncoes = new FuncoesBD();
 
-        //public bool Inserir(Usuario oUsuario)
-        //{
-        //    bool isRetorno = false;
-        //    using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
-        //    {
-        //        try
-        //        {
-        //            conexao.Open();
-        //            MySqlCommand comando = new MySqlCommand();
-        //            comando = conexao.CreateCommand();
+        public bool Inserir(Adicional oAdicional)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
 
-        //            comando.CommandText = @"INSERT INTO USUARIO (codigo_tipo_usuario, nome, login, senha, situacao, dt_alteracao, codigo_usr_alteracao)" +
-        //                " VALUES (@codigo_tipo_usuario, @nome, @login, @senha, @situacao, NOW(), @codigo_usr_alteracao)";
-        //            comando.Parameters.AddWithValue("codigo_tipo_usuario", oUsuario.TipoUsuario.Codigo);
-        //            comando.Parameters.AddWithValue("nome", oUsuario.Nome);
-        //            comando.Parameters.AddWithValue("login", oUsuario.Login);
-        //            comando.Parameters.AddWithValue("senha", oUsuario.Senha);
-        //            comando.Parameters.AddWithValue("situacao", (int)oUsuario.Status);
-        //            comando.Parameters.AddWithValue("codigo_usr_alteracao", oUsuario.CodigoUsrAlteracao);
+                    comando.CommandText = @"INSERT INTO adicional (descricao, observacao, valor, situacao, dt_alteracao, codigo_usr_alteracao)" +
+                        " VALUES (@descricao, @observacao, @valor, @situacao, NOW(), @codigo_usr_alteracao)";
+                    comando.Parameters.AddWithValue("descricao", oAdicional.Descricao);
+                    comando.Parameters.AddWithValue("observacao", oAdicional.Observacao);
+                    comando.Parameters.AddWithValue("valor", oAdicional.Valor);
+                    comando.Parameters.AddWithValue("situacao", (int)oAdicional.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oAdicional.CodigoUsrAlteracao);
 
-        //            int valorRetorno = comando.ExecuteNonQuery();
-        //            if (valorRetorno < 1)
-        //                isRetorno = false;
-        //            else
-        //                isRetorno = true;
-        //        }
-        //        catch (MySqlException mysqle)
-        //        {
-        //            throw new System.Exception(mysqle.ToString());
-        //        }
-        //        finally
-        //        {
-        //            conexao.Close();
-        //        }
-        //    }
-        //    return isRetorno;
-        //}
+                    int valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        isRetorno = false;
+                    else
+                        isRetorno = true;
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
 
         //public bool Alterar(Usuario oUsuario)
         //{
@@ -251,7 +247,7 @@ namespace BaseDados.Produtos
 
         public int BuscarProximoCodigo()
         {
-            return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'usuario'");
+            return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'adicional'");
         }
     }
 }

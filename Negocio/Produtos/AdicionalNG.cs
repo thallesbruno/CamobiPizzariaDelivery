@@ -2,11 +2,7 @@
 using Entidades.Entidades;
 using Entidades.Enumeradores;
 using Entidades.Produtos;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Negocio.Produtos
 {
@@ -19,6 +15,10 @@ namespace Negocio.Produtos
 
             _bd = new AdicionalBD();
         }
+        public bool Inserir(Adicional oAdicional)
+        {
+            return _bd.Inserir(oAdicional);
+        }
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
             return _bd.ListarEntidadesViewPesquisa(status);
@@ -26,6 +26,10 @@ namespace Negocio.Produtos
         public Adicional Buscar(int cod)
         {
             return _bd.Buscar(cod);
+        }
+        public int BuscarProximoCodigo()
+        {
+            return _bd.BuscarProximoCodigo();
         }
     }
 }

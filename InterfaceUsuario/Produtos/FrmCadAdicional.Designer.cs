@@ -142,7 +142,7 @@
             // 
             // txtValor
             // 
-            this.txtValor.BackColor = System.Drawing.Color.White;
+            this.txtValor.BackColor = System.Drawing.SystemColors.InactiveCaption;
             this.txtValor.Location = new System.Drawing.Point(575, 291);
             this.txtValor.Name = "txtValor";
             this.txtValor.Size = new System.Drawing.Size(149, 20);
@@ -206,6 +206,7 @@
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Cadastro de Adicionais";
+            this.Load += new System.EventHandler(this.FrmCadAdicional_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
