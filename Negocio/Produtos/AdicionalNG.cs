@@ -15,21 +15,30 @@ namespace Negocio.Produtos
 
             _bd = new AdicionalBD();
         }
+        
         public bool Inserir(Adicional oAdicional)
         {
             return _bd.Inserir(oAdicional);
         }
+
+        public bool Alterar(Adicional oAdicional)
+        {
+            return _bd.Alterar(oAdicional);
+        }
+
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
             return _bd.ListarEntidadesViewPesquisa(status);
         }
+        
         public Adicional Buscar(int cod)
         {
             return _bd.Buscar(cod);
         }
+        
         public int BuscarProximoCodigo()
         {
             return _bd.BuscarProximoCodigo();
-        }
-    }
+        }        
+     }
 }

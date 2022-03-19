@@ -74,7 +74,11 @@ namespace InterfaceUsuario.Produtos
 
             oAdicional.Descricao = txtDescricao.Text.Trim();
             oAdicional.Observacao = txtObservacao.Text.Trim();
+
+            MascaraDinheiro.TirarMascara(txtValor, new EventArgs());
             oAdicional.Valor = Convert.ToDecimal(txtValor.Text.Trim());
+            MascaraDinheiro.RetornarMascara(txtValor, new EventArgs());
+
             oAdicional.Status = oUcSituacao._status;
             oAdicional.CodigoUsrAlteracao = Sessao.Usuario.Codigo;
             //grava no banco primeira vez
@@ -91,19 +95,19 @@ namespace InterfaceUsuario.Produtos
                 }
             }
             //atualiza registro no banco
-            //else
-            //{
-            //    oAdicional.Codigo = Convert.ToInt32(txtCodigo.Text.Trim());
-            //    if (adicionalNG.Alterar(oAdicional))
-            //    {
-            //        MessageBox.Show("Registro alterado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            //        LimparCampos();
-            //    }
-            //    else
-            //    {
-            //        MessageBox.Show("Erro ao alterar registro. Revise as informações!");
-            //    }
-            //}
+            else
+            {
+                oAdicional.Codigo = Convert.ToInt32(txtCodigo.Text.Trim());
+                if (adicionalNG.Alterar(oAdicional))
+                {
+                    MessageBox.Show("Registro alterado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Erro ao alterar registro. Revise as informações!");
+                }
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
