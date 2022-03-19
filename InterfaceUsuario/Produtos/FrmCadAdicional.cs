@@ -112,7 +112,21 @@ namespace InterfaceUsuario.Produtos
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+            if (txtCodigo.Text.Trim().Equals(String.Empty) || IsNovo)
+                return;
 
+            if (MessageBox.Show("Deseja excluir este registro?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+            {
+                if (new AdicionalNG().Excluir(Convert.ToInt32(txtCodigo.Text.Trim())))
+                {
+                    MessageBox.Show("Registro excluído com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LimparCampos();
+                }
+                else
+                {
+                    MessageBox.Show("Não foi possível excluir este registro. Tente novamente!");
+                }
+            }
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
@@ -149,6 +163,7 @@ namespace InterfaceUsuario.Produtos
             txtCodigo.Text = new AdicionalNG().BuscarProximoCodigo().ToString();
             txtDescricao.Text = string.Empty;
             txtValor.Text = string.Empty;
+            txtObservacao.Text = String.Empty;
 
             btnExcluir.Enabled = false;
 

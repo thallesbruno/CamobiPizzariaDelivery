@@ -89,37 +89,37 @@ namespace BaseDados.Produtos
             return isRetorno;
         }
 
-        //public bool Excluir(int codigo)
-        //{
-        //    bool isRetorno = false;
-        //    using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
-        //    {
-        //        try
-        //        {
-        //            conexao.Open();
-        //            MySqlCommand comando = new MySqlCommand();
-        //            comando = conexao.CreateCommand();
+        public bool Excluir(int codigo)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
 
-        //            comando.CommandText = @"DELETE FROM usuario WHERE codigo = @codigo";
-        //            comando.Parameters.AddWithValue("codigo", codigo);
+                    comando.CommandText = @"DELETE FROM adicional WHERE codigo = @codigo";
+                    comando.Parameters.AddWithValue("codigo", codigo);
 
-        //            int valorRetorno = comando.ExecuteNonQuery();
-        //            if (valorRetorno < 1)
-        //                isRetorno = false;
-        //            else
-        //                isRetorno = true;
-        //        }
-        //        catch (MySqlException mysqle)
-        //        {
-        //            throw new System.Exception(mysqle.ToString());
-        //        }
-        //        finally
-        //        {
-        //            conexao.Close();
-        //        }
-        //    }
-        //    return isRetorno;
-        //}
+                    int valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        isRetorno = false;
+                    else
+                        isRetorno = true;
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
 
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {

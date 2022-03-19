@@ -45,6 +45,7 @@
     <Compile Include="Pessoas\TipoUsuarioNG.cs" />
     <Compile Include="Pessoas\UsuarioNG.cs" />
     <Compile Include="Produtos\AdicionalNG.cs" />
+    <Compile Include="Produtos\SaborPizzaNG.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
