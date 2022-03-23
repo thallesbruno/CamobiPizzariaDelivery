@@ -39,7 +39,7 @@ namespace InterfaceUsuario
             Application.Exit();
         }
 
-        private void    AbrirFormularios(Form oFrm)
+        private void AbrirFormularios(Form oFrm)
         {
             oFrm.WindowState = FormWindowState.Normal;
             oFrm.StartPosition = FormStartPosition.Manual;

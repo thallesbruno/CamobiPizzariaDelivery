@@ -39,10 +39,10 @@ namespace Negocio.Produtos
             return _bd.ListarEntidadesViewPesquisa(status);
         }
 
-        //public SaborPizza Buscar(int cod)
-        //{
-        //    return _bd.Buscar(cod);
-        //}
+        public SaborPizza Buscar(int cod)
+        {
+            return _bd.Buscar(cod);
+        }
 
         public int BuscarProximoCodigo()
         {
