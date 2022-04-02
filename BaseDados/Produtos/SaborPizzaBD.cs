@@ -15,114 +15,132 @@ namespace BaseDados.Produtos
     {
         private readonly FuncoesBD bdFuncoes = new FuncoesBD();
 
-        //public bool Inserir(Adicional oAdicional)
-        //{
-        //    bool isRetorno = false;
-        //    using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
-        //    {
-        //        try
-        //        {
-        //            conexao.Open();
-        //            MySqlCommand comando = new MySqlCommand();
-        //            comando = conexao.CreateCommand();
+        public bool Inserir(SaborPizza oSaborPizza)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
 
-        //            comando.CommandText = @"INSERT INTO adicional (descricao, observacao, valor, situacao, dt_alteracao, codigo_usr_alteracao)" +
-        //                " VALUES (@descricao, @observacao, @valor, @situacao, NOW(), @codigo_usr_alteracao)";
-        //            comando.Parameters.AddWithValue("descricao", oAdicional.Descricao);
-        //            comando.Parameters.AddWithValue("observacao", oAdicional.Observacao);
-        //            comando.Parameters.AddWithValue("valor", oAdicional.Valor);
-        //            comando.Parameters.AddWithValue("situacao", (int)oAdicional.Status);
-        //            comando.Parameters.AddWithValue("codigo_usr_alteracao", oAdicional.CodigoUsrAlteracao);
+                    comando.CommandText = @"INSERT INTO sabor_pizza
+                                          (descricao,
+                                           observacao,
+                                           valor_adicional,
+                                           situacao,
+                                           dt_alteracao,
+                                           codigo_usr_alteracao)
+                                        VALUES
+                                          (@descricao,
+                                           @observacao,
+                                           @valor_adicional,
+                                           @situacao,
+                                           NOW(),
+                                           @codigo_usr_alteracao)
+                                        ";
+                    comando.Parameters.AddWithValue("descricao", oSaborPizza.Descricao);
+                    comando.Parameters.AddWithValue("observacao", oSaborPizza.Observacao);
+                    comando.Parameters.AddWithValue("valor_adicional", oSaborPizza.ValorAdicional);
+                    comando.Parameters.AddWithValue("situacao", (int)oSaborPizza.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oSaborPizza.CodigoUsrAlteracao);
 
-        //            int valorRetorno = comando.ExecuteNonQuery();
-        //            if (valorRetorno < 1)
-        //                isRetorno = false;
-        //            else
-        //                isRetorno = true;
-        //        }
-        //        catch (MySqlException mysqle)
-        //        {
-        //            throw new System.Exception(mysqle.ToString());
-        //        }
-        //        finally
-        //        {
-        //            conexao.Close();
-        //        }
-        //    }
-        //    return isRetorno;
-        //}
+                    int valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        isRetorno = false;
+                    else
+                        isRetorno = true;
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
 
-        //public bool Alterar(Adicional oAdicional)
-        //{
-        //    bool isRetorno = false;
-        //    using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
-        //    {
-        //        try
-        //        {
-        //            conexao.Open();
-        //            MySqlCommand comando = new MySqlCommand();
-        //            comando = conexao.CreateCommand();
+        public bool Alterar(SaborPizza oSaborPizza)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
 
-        //            comando.CommandText = @"UPDATE adicional SET descricao = @descricao, observacao = @observacao, valor = @valor,
-        //                situacao = @situacao, dt_alteracao = NOW(), codigo_usr_alteracao = @codigo_usr_alteracao,
-        //                WHERE codigo = @codigo";
+                    comando.CommandText = @"UPDATE sabor_pizza
+                                            SET descricao            = @descricao,
+                                                observacao           = @observacao,
+                                                valor_adicional      = @valor_adicional,
+                                                situacao             = @situacao,
+                                                dt_alteracao         = NOW(),
+                                                codigo_usr_alteracao = @codigo_usr_alteracao
+                                            WHERE codigo = @codigo
+                                        ";
+                    comando.Parameters.AddWithValue("descricao", oSaborPizza.Descricao);
+                    comando.Parameters.AddWithValue("observacao", oSaborPizza.Observacao);
+                    comando.Parameters.AddWithValue("valor_adicional", oSaborPizza.ValorAdicional);
+                    comando.Parameters.AddWithValue("situacao", (int)oSaborPizza.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oSaborPizza.CodigoUsrAlteracao);
+                    comando.Parameters.AddWithValue("codigo", oSaborPizza.Codigo);
 
-        //            comando.Parameters.AddWithValue("descricao", oAdicional.Descricao);
-        //            comando.Parameters.AddWithValue("observacao", oAdicional.Observacao);
-        //            comando.Parameters.AddWithValue("valor", oAdicional.Valor);
-        //            comando.Parameters.AddWithValue("situacao", (int)oAdicional.Status);
-        //            comando.Parameters.AddWithValue("codigo_usr_alteracao", oAdicional.CodigoUsrAlteracao);
-        //            comando.Parameters.AddWithValue("codigo", oAdicional.Codigo);
+                    int valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        isRetorno = false;
+                    else
+                        isRetorno = true;
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
 
-        //            int valorRetorno = comando.ExecuteNonQuery();
-        //            if (valorRetorno < 1)
-        //                isRetorno = false;
-        //            else
-        //                isRetorno = true;
-        //        }
-        //        catch (MySqlException mysqle)
-        //        {
-        //            throw new System.Exception(mysqle.ToString());
-        //        }
-        //        finally
-        //        {
-        //            conexao.Close();
-        //        }
-        //    }
-        //    return isRetorno;
-        //}
+        public bool Excluir(int codigo)
+        {
+            bool isRetorno = false;
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
 
-        //public bool Excluir(int codigo)
-        //{
-        //    bool isRetorno = false;
-        //    using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
-        //    {
-        //        try
-        //        {
-        //            conexao.Open();
-        //            MySqlCommand comando = new MySqlCommand();
-        //            comando = conexao.CreateCommand();
+                    comando.CommandText = @"DELETE FROM sabor_pizza WHERE codigo = @codigo";
+                    comando.Parameters.AddWithValue("codigo", codigo);
 
-        //            comando.CommandText = @"DELETE FROM adicional WHERE codigo = @codigo";
-        //            comando.Parameters.AddWithValue("codigo", codigo);
-
-        //            int valorRetorno = comando.ExecuteNonQuery();
-        //            if (valorRetorno < 1)
-        //                isRetorno = false;
-        //            else
-        //                isRetorno = true;
-        //        }
-        //        catch (MySqlException mysqle)
-        //        {
-        //            throw new System.Exception(mysqle.ToString());
-        //        }
-        //        finally
-        //        {
-        //            conexao.Close();
-        //        }
-        //    }
-        //    return isRetorno;
-        //}
+                    int valorRetorno = comando.ExecuteNonQuery();
+                    if (valorRetorno < 1)
+                        isRetorno = false;
+                    else
+                        isRetorno = true;
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return isRetorno;
+        }
 
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {
@@ -150,7 +168,7 @@ namespace BaseDados.Produtos
                     {
                         var oEntidade = new EntidadeViewPesquisa();
                         oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oEntidade.Descricao = reader["nome"].ToString();
+                        oEntidade.Descricao = reader["descricao"].ToString();
                         oEntidade.Status = (Status)Convert.ToInt16(reader["situacao"]);
 
                         listaEntidades.Add(oEntidade);
@@ -185,7 +203,7 @@ namespace BaseDados.Produtos
                     {
                         var oSaborPizza = new SaborPizza();
                         oSaborPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oSaborPizza.Descricao = reader["nome"].ToString();
+                        oSaborPizza.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))
                             oSaborPizza.Observacao = reader["observacao"].ToString();
                         oSaborPizza.ValorAdicional = Convert.ToDecimal(reader["valor_adicional"].ToString());
@@ -226,7 +244,7 @@ namespace BaseDados.Produtos
                     while (reader.Read())
                     {
                         oSaborPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oSaborPizza.Descricao = reader["nome"].ToString();
+                        oSaborPizza.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))
                             oSaborPizza.Observacao = reader["observacao"].ToString();
                         oSaborPizza.ValorAdicional = Convert.ToDecimal(reader["valor_adicional"].ToString());

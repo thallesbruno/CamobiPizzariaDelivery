@@ -37,10 +37,12 @@ namespace InterfaceUsuario
             this.pessoasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatõriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatõriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pizzasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saboresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -104,6 +106,22 @@ namespace InterfaceUsuario
             this.usuáriosToolStripMenuItem.Text = "Usuários";
             this.usuáriosToolStripMenuItem.Click += new System.EventHandler(this.usuáriosToolStripMenuItem_Click);
             // 
+            // produtosToolStripMenuItem
+            // 
+            this.produtosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.adicionaisToolStripMenuItem,
+            this.pizzasToolStripMenuItem});
+            this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem.Text = "Produtos";
+            // 
+            // adicionaisToolStripMenuItem
+            // 
+            this.adicionaisToolStripMenuItem.Name = "adicionaisToolStripMenuItem";
+            this.adicionaisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adicionaisToolStripMenuItem.Text = "Adicionais";
+            this.adicionaisToolStripMenuItem.Click += new System.EventHandler(this.adicionaisToolStripMenuItem_Click);
+            // 
             // rotinasToolStripMenuItem
             // 
             this.rotinasToolStripMenuItem.Name = "rotinasToolStripMenuItem";
@@ -116,20 +134,20 @@ namespace InterfaceUsuario
             this.relatõriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.relatõriosToolStripMenuItem.Text = "Relatórios";
             // 
-            // produtosToolStripMenuItem
+            // pizzasToolStripMenuItem
             // 
-            this.produtosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.adicionaisToolStripMenuItem});
-            this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.produtosToolStripMenuItem.Text = "Produtos";
+            this.pizzasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saboresToolStripMenuItem});
+            this.pizzasToolStripMenuItem.Name = "pizzasToolStripMenuItem";
+            this.pizzasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pizzasToolStripMenuItem.Text = "Pizzas";
             // 
-            // adicionaisToolStripMenuItem
+            // saboresToolStripMenuItem
             // 
-            this.adicionaisToolStripMenuItem.Name = "adicionaisToolStripMenuItem";
-            this.adicionaisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.adicionaisToolStripMenuItem.Text = "Adicionais";
-            this.adicionaisToolStripMenuItem.Click += new System.EventHandler(this.adicionaisToolStripMenuItem_Click);
+            this.saboresToolStripMenuItem.Name = "saboresToolStripMenuItem";
+            this.saboresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saboresToolStripMenuItem.Text = "Sabores";
+            this.saboresToolStripMenuItem.Click += new System.EventHandler(this.saboresToolStripMenuItem_Click);
             // 
             // MDIFrm
             // 
@@ -165,6 +183,8 @@ namespace InterfaceUsuario
         private System.Windows.Forms.ToolStripMenuItem clientesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produtosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adicionaisToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pizzasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saboresToolStripMenuItem;
     }
 }
 

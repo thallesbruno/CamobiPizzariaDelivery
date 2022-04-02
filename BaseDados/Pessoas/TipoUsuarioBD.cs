@@ -20,8 +20,7 @@ namespace BaseDados.Pessoas
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    string query = @"SELECT codigo, descricao, '1' AS situacao
-                                            FROM tipo_usuario";
+                    string query = @"SELECT codigo, descricao FROM tipo_usuario";
 
                     comando.CommandText = query;
 
@@ -30,8 +29,8 @@ namespace BaseDados.Pessoas
                     {
                         var oEntidade = new EntidadeViewPesquisa();
                         oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oEntidade.Descricao = reader["nome"].ToString();
-                        oEntidade.Status = (Status)Convert.ToInt16(reader["situacao"]);
+                        oEntidade.Descricao = reader["descricao"].ToString();
+                        //oEntidade.Status = (Status)Convert.ToInt16(reader["situacao"]);
 
                         listaEntidades.Add(oEntidade);
                     }

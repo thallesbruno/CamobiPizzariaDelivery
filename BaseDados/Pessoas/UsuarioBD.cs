@@ -61,7 +61,7 @@ namespace BaseDados.Pessoas
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = @"UPDATE USUARIO SET codigo_tipo_usuario = , nome = @nome, login = @login,
+                    comando.CommandText = @"UPDATE USUARIO SET codigo_tipo_usuario = @codigo_tipo_usuario, nome = @nome, login = @login,
                         senha = @senha, situacao = @situacao, codigo_usr_alteracao = @codigo_usr_alteracao,
                         dt_alteracao = NOW() WHERE codigo = @codigo";
 
@@ -134,10 +134,9 @@ namespace BaseDados.Pessoas
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    string query = @"SELECT codigo, nome AS descricao, situacao
-                                            FROM USUARIO";
+                    string query = @"SELECT codigo, nome, login, situacao FROM usuario";
                     if (status != Status.Todos)
-                        query += " WHERE SITUACAO = @situacao; ";
+                        query += " WHERE situacao = @situacao;";
 
                     comando.CommandText = query;
 

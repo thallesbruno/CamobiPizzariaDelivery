@@ -19,20 +19,20 @@ namespace Negocio.Produtos
             _bd = new SaborPizzaBD();
         }
 
-        //public bool Inserir(SaborPizza oSaborPizza)
-        //{
-        //    return _bd.Inserir(oSaborPizza);
-        //}
+        public bool Inserir(SaborPizza oSaborPizza)
+        {
+            return _bd.Inserir(oSaborPizza);
+        }
 
-        //public bool Alterar(SaborPizza oSaborPizza)
-        //{
-        //    return _bd.Alterar(oSaborPizza);
-        //}
+        public bool Alterar(SaborPizza oSaborPizza)
+        {
+            return _bd.Alterar(oSaborPizza);
+        }
 
-        //public bool Excluir(int codigo)
-        //{
-        //    return _bd.Excluir(codigo);
-        //}
+        public bool Excluir(int codigo)
+        {
+            return _bd.Excluir(codigo);
+        }
 
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(Status status)
         {

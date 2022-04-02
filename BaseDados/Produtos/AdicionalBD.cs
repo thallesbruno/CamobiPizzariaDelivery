@@ -61,7 +61,7 @@ namespace BaseDados.Produtos
                     comando = conexao.CreateCommand();
 
                     comando.CommandText = @"UPDATE adicional SET descricao = @descricao, observacao = @observacao, valor = @valor,
-                        situacao = @situacao, dt_alteracao = NOW(), codigo_usr_alteracao = @codigo_usr_alteracao,
+                        situacao = @situacao, dt_alteracao = NOW(), codigo_usr_alteracao = @codigo_usr_alteracao
                         WHERE codigo = @codigo";
 
                     comando.Parameters.AddWithValue("descricao", oAdicional.Descricao);
@@ -147,7 +147,7 @@ namespace BaseDados.Produtos
                     {
                         var oEntidade = new EntidadeViewPesquisa();
                         oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oEntidade.Descricao = reader["nome"].ToString();
+                        oEntidade.Descricao = reader["descricao"].ToString();
                         oEntidade.Status = (Status)Convert.ToInt16(reader["situacao"]);
 
                         listaEntidades.Add(oEntidade);
@@ -182,7 +182,7 @@ namespace BaseDados.Produtos
                     {
                         var oAdicional = new Adicional();
                         oAdicional.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oAdicional.Descricao = reader["nome"].ToString();
+                        oAdicional.Descricao = reader["descricao"].ToString();
                         if(!(reader["observacao"] is System.DBNull))
                             oAdicional.Observacao = reader["observacao"].ToString();
                         oAdicional.Valor = Convert.ToDecimal(reader["valor"].ToString());
@@ -223,7 +223,7 @@ namespace BaseDados.Produtos
                     while (reader.Read())
                     {
                         oAdicional.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oAdicional.Descricao = reader["nome"].ToString();
+                        oAdicional.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))
                             oAdicional.Observacao = reader["observacao"].ToString();
                         oAdicional.Valor = Convert.ToDecimal(reader["valor"].ToString());

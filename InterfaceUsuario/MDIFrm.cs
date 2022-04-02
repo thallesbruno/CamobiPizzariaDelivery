@@ -63,5 +63,10 @@ namespace InterfaceUsuario
         {
             AbrirFormularios(new FrmCadAdicional());
         }
+
+        private void saboresToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios(new FrmCadSaborPizza());
+        }
     }
 }

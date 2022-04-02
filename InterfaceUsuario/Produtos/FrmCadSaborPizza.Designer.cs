@@ -205,7 +205,7 @@
             this.Name = "FrmCadSaborPizza";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
-            this.Text = "Cadastro de Sabor de Pizza";
+            this.Text = "Cadastro de Sabores de Pizza";
             this.Load += new System.EventHandler(this.FrmCadSaborPizza_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
