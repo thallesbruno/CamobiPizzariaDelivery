@@ -8,11 +8,11 @@ using System.Collections.Generic;
 
 namespace BaseDados.Produtos
 {
-    public class SaborPizzaBD
+    public class SaborBordaBD
     {
         private readonly FuncoesBD bdFuncoes = new FuncoesBD();
 
-        public bool Inserir(SaborPizza oSaborPizza)
+        public bool Inserir(SaborBorda oSaborBorda)
         {
             bool isRetorno = false;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
@@ -23,7 +23,7 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = @"INSERT INTO sabor_pizza
+                    comando.CommandText = @"INSERT INTO sabor_borda
                                           (descricao,
                                            observacao,
                                            valor_adicional,
@@ -38,11 +38,11 @@ namespace BaseDados.Produtos
                                            NOW(),
                                            @codigo_usr_alteracao)
                                         ";
-                    comando.Parameters.AddWithValue("descricao", oSaborPizza.Descricao);
-                    comando.Parameters.AddWithValue("observacao", oSaborPizza.Observacao);
-                    comando.Parameters.AddWithValue("valor_adicional", oSaborPizza.ValorAdicional);
-                    comando.Parameters.AddWithValue("situacao", (int)oSaborPizza.Status);
-                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oSaborPizza.CodigoUsrAlteracao);
+                    comando.Parameters.AddWithValue("descricao", oSaborBorda.Descricao);
+                    comando.Parameters.AddWithValue("observacao", oSaborBorda.Observacao);
+                    comando.Parameters.AddWithValue("valor_adicional", oSaborBorda.ValorAdicional);
+                    comando.Parameters.AddWithValue("situacao", (int)oSaborBorda.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oSaborBorda.CodigoUsrAlteracao);
 
                     int valorRetorno = comando.ExecuteNonQuery();
                     if (valorRetorno < 1)
@@ -62,7 +62,7 @@ namespace BaseDados.Produtos
             return isRetorno;
         }
 
-        public bool Alterar(SaborPizza oSaborPizza)
+        public bool Alterar(SaborBorda oSaborBorda)
         {
             bool isRetorno = false;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
@@ -73,7 +73,7 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = @"UPDATE sabor_pizza
+                    comando.CommandText = @"UPDATE sabor_borda
                                             SET descricao            = @descricao,
                                                 observacao           = @observacao,
                                                 valor_adicional      = @valor_adicional,
@@ -82,12 +82,12 @@ namespace BaseDados.Produtos
                                                 codigo_usr_alteracao = @codigo_usr_alteracao
                                             WHERE codigo = @codigo
                                         ";
-                    comando.Parameters.AddWithValue("descricao", oSaborPizza.Descricao);
-                    comando.Parameters.AddWithValue("observacao", oSaborPizza.Observacao);
-                    comando.Parameters.AddWithValue("valor_adicional", oSaborPizza.ValorAdicional);
-                    comando.Parameters.AddWithValue("situacao", (int)oSaborPizza.Status);
-                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oSaborPizza.CodigoUsrAlteracao);
-                    comando.Parameters.AddWithValue("codigo", oSaborPizza.Codigo);
+                    comando.Parameters.AddWithValue("descricao", oSaborBorda.Descricao);
+                    comando.Parameters.AddWithValue("observacao", oSaborBorda.Observacao);
+                    comando.Parameters.AddWithValue("valor_adicional", oSaborBorda.ValorAdicional);
+                    comando.Parameters.AddWithValue("situacao", (int)oSaborBorda.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oSaborBorda.CodigoUsrAlteracao);
+                    comando.Parameters.AddWithValue("codigo", oSaborBorda.Codigo);
 
                     int valorRetorno = comando.ExecuteNonQuery();
                     if (valorRetorno < 1)
@@ -118,7 +118,7 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = @"DELETE FROM sabor_pizza WHERE codigo = @codigo";
+                    comando.CommandText = @"DELETE FROM sabor_borda WHERE codigo = @codigo";
                     comando.Parameters.AddWithValue("codigo", codigo);
 
                     int valorRetorno = comando.ExecuteNonQuery();
@@ -151,7 +151,7 @@ namespace BaseDados.Produtos
                     comando = conexao.CreateCommand();
 
                     string query = @"SELECT codigo, descricao, situacao
-                                            FROM sabor_pizza";
+                                            FROM sabor_borda";
                     if (status != Status.Todos)
                         query += " WHERE SITUACAO = @situacao; ";
 
@@ -183,9 +183,9 @@ namespace BaseDados.Produtos
             return listaEntidades;
         }
 
-        public List<SaborPizza> ListarSaboresDePizzaAtivos()
+        public List<SaborBorda> ListarSaboresDeBordaAtivos()
         {
-            var listaSaboresDePizza = new List<SaborPizza>();
+            var listaSaboresDeBorda = new List<SaborBorda>();
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -194,21 +194,21 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = "SELECT * FROM sabor_pizza WHERE situacao = 1;";
+                    comando.CommandText = "SELECT * FROM sabor_borda WHERE situacao = 1;";
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
-                        var oSaborPizza = new SaborPizza();
-                        oSaborPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oSaborPizza.Descricao = reader["descricao"].ToString();
+                        var oSaborBorda = new SaborBorda();
+                        oSaborBorda.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        oSaborBorda.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))
-                            oSaborPizza.Observacao = reader["observacao"].ToString();
-                        oSaborPizza.ValorAdicional = Convert.ToDecimal(reader["valor_adicional"].ToString());
-                        oSaborPizza.Status = (Status)Convert.ToInt16(reader["situacao"]);
-                        oSaborPizza.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
-                        oSaborPizza.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
+                            oSaborBorda.Observacao = reader["observacao"].ToString();
+                        oSaborBorda.ValorAdicional = Convert.ToDecimal(reader["valor_adicional"].ToString());
+                        oSaborBorda.Status = (Status)Convert.ToInt16(reader["situacao"]);
+                        oSaborBorda.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
+                        oSaborBorda.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
 
-                        listaSaboresDePizza.Add(oSaborPizza);
+                        listaSaboresDeBorda.Add(oSaborBorda);
                     }
                 }
                 catch (MySqlException mysqle)
@@ -220,12 +220,12 @@ namespace BaseDados.Produtos
                     conexao.Close();
                 }
             }
-            return listaSaboresDePizza;
+            return listaSaboresDeBorda;
         }
 
-        public SaborPizza Buscar(int cod)
+        public SaborBorda Buscar(int cod)
         {
-            SaborPizza oSaborPizza = new SaborPizza();
+            SaborBorda oSaborBorda = new SaborBorda();
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -234,20 +234,20 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = "SELECT * FROM sabor_pizza WHERE codigo = @codigo;";
+                    comando.CommandText = "SELECT * FROM sabor_borda WHERE codigo = @codigo;";
                     comando.Parameters.AddWithValue("codigo", cod);
 
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
-                        oSaborPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oSaborPizza.Descricao = reader["descricao"].ToString();
+                        oSaborBorda.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        oSaborBorda.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))
-                            oSaborPizza.Observacao = reader["observacao"].ToString();
-                        oSaborPizza.ValorAdicional = Convert.ToDecimal(reader["valor_adicional"].ToString());
-                        oSaborPizza.Status = (Status)Convert.ToInt16(reader["situacao"]);
-                        oSaborPizza.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
-                        oSaborPizza.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
+                            oSaborBorda.Observacao = reader["observacao"].ToString();
+                        oSaborBorda.ValorAdicional = Convert.ToDecimal(reader["valor_adicional"].ToString());
+                        oSaborBorda.Status = (Status)Convert.ToInt16(reader["situacao"]);
+                        oSaborBorda.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
+                        oSaborBorda.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
                     }
                 }
                 catch (MySqlException mysqle)
@@ -259,12 +259,12 @@ namespace BaseDados.Produtos
                     conexao.Close();
                 }
             }
-            return oSaborPizza;
+            return oSaborBorda;
         }
 
         public int BuscarProximoCodigo()
         {
-            return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'sabor_pizza'");
+            return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'sabor_borda'");
         }
     }
 }

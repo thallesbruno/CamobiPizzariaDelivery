@@ -10,21 +10,26 @@ using System.Windows.Forms;
 
 namespace InterfaceUsuario.Produtos
 {
-    public partial class FrmCadAdicional : Form
+    public partial class FrmCadTamanhoPizza : Form
     {
         private bool IsNovo;
 
-        public FrmCadAdicional()
+        public FrmCadTamanhoPizza()
         {
             InitializeComponent();
 
             MascaraCampoCodigo.AplicarEventos(txtCodigo);
             MascaraDinheiro.AplicarEventos(txtValor);
+        }        
+
+        private void FrmCadTamanhoPizza_Load(object sender, EventArgs e)
+        {
+            btnCancelar_Click(btnCancelar, new EventArgs());
         }
 
-        private void btnBscAdicional_Click(object sender, EventArgs e)
+        private void btnBscTamanhoPizza_Click(object sender, EventArgs e)
         {
-            var lista = new AdicionalNG().ListarEntidadesViewPesquisa(Status.Todos);
+            var lista = new TamanhoPizzaNG().ListarEntidadesViewPesquisa(Status.Todos);
             //verifica se a lista está vazia
             if (lista.Count < 1)
             {
@@ -35,7 +40,7 @@ namespace InterfaceUsuario.Produtos
                 return;
             }
             //passar a lista para o formulario generico de pesquisa
-            var frmPesquisa = new FrmPesquisaGenerica("Listagem de Adicionais", Status.Todos);
+            var frmPesquisa = new FrmPesquisaGenerica("Listagem de Tamanho de Pizzas", Status.Todos);
             frmPesquisa.lista = lista;
             frmPesquisa.ShowDialog();
 
@@ -46,14 +51,14 @@ namespace InterfaceUsuario.Produtos
 
             txtCodigo.Text = iRetorno.ToString();
             txtCodigo_Validating(txtCodigo, new CancelEventArgs());
-            btnBscAdicional.Focus();
+            btnBscTamanhoPizza.Focus();
         }
 
         private bool VerificarCampos()
         {
             if (txtDescricao.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("Você precisa informar a descrição do adicional!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Você precisa informar a descrição do tamanho de pizza!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -63,7 +68,13 @@ namespace InterfaceUsuario.Produtos
 
             if (dValor <= 0)
             {
-                MessageBox.Show("Você precisa informar um valor válido para o adicional de pizza!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Você precisa informar um valor válido para o tamanho de pizza!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            if (cmbQtdSabores.SelectedIndex == -1)
+            {
+                MessageBox.Show("Você precisa informar a quantidade de sabores do tamanho de pizza!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
 
@@ -75,22 +86,30 @@ namespace InterfaceUsuario.Produtos
             if (!VerificarCampos())
                 return;
 
-            var oAdicional = new Adicional();
-            var adicionalNG = new AdicionalNG();
+            var oTamanhoPizza = new TamanhoPizza();
+            var tamanhoPizzaNG = new TamanhoPizzaNG();
 
-            oAdicional.Descricao = txtDescricao.Text.Trim();
-            oAdicional.Observacao = txtObservacao.Text.Trim();
+            oTamanhoPizza.Descricao = txtDescricao.Text.Trim();
+            oTamanhoPizza.Observacao = txtObservacao.Text.Trim();
 
             MascaraDinheiro.TirarMascara(txtValor, new EventArgs());
-            oAdicional.Valor = Convert.ToDecimal(txtValor.Text.Trim());
+            oTamanhoPizza.Valor = Convert.ToDecimal(txtValor.Text.Trim());
             MascaraDinheiro.RetornarMascara(txtValor, new EventArgs());
 
-            oAdicional.Status = oUcSituacao._status;
-            oAdicional.CodigoUsrAlteracao = Sessao.Usuario.Codigo;
+            /*
+             *  1 2 3 4 5 6
+             *  0 1 2 3 4 5
+             * 
+             */
+
+            oTamanhoPizza.QtdSabores = cmbQtdSabores.SelectedIndex + 1;
+
+            oTamanhoPizza.Status = oUcSituacao._status;
+            oTamanhoPizza.CodigoUsrAlteracao = Sessao.Usuario.Codigo;
             //grava no banco primeira vez
             if (IsNovo)
             {
-                if (adicionalNG.Inserir(oAdicional))
+                if (tamanhoPizzaNG.Inserir(oTamanhoPizza))
                 {
                     MessageBox.Show("Registro cadastrado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
@@ -103,8 +122,8 @@ namespace InterfaceUsuario.Produtos
             //atualiza registro no banco
             else
             {
-                oAdicional.Codigo = Convert.ToInt32(txtCodigo.Text.Trim());
-                if (adicionalNG.Alterar(oAdicional))
+                oTamanhoPizza.Codigo = Convert.ToInt32(txtCodigo.Text.Trim());
+                if (tamanhoPizzaNG.Alterar(oTamanhoPizza))
                 {
                     MessageBox.Show("Registro alterado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
@@ -123,7 +142,7 @@ namespace InterfaceUsuario.Produtos
 
             if (MessageBox.Show("Deseja excluir este registro?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (new AdicionalNG().Excluir(Convert.ToInt32(txtCodigo.Text.Trim())))
+                if (new TamanhoPizzaNG().Excluir(Convert.ToInt32(txtCodigo.Text.Trim())))
                 {
                     MessageBox.Show("Registro excluído com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
@@ -140,13 +159,28 @@ namespace InterfaceUsuario.Produtos
             LimparCampos();
         }
 
+        public void LimparCampos()
+        {
+            txtCodigo.Text = new TamanhoPizzaNG().BuscarProximoCodigo().ToString();
+            txtDescricao.Text = string.Empty;
+            txtObservacao.Text = String.Empty;
+            txtValor.Text = string.Empty;
+            cmbQtdSabores.SelectedIndex = -1;
+            btnExcluir.Enabled = false;
+            oUcSituacao.InicializarSituacao(Status.Ativo);
+            MascaraCampoCodigo.RetornarMascara(txtCodigo, new EventArgs());
+            MascaraDinheiro.RetornarMascara(txtValor, new EventArgs());
+            IsNovo = true;
+            Funcoes.SelecionarCampo(txtDescricao);
+        }
+
         private void txtCodigo_Validating(object sender, CancelEventArgs e)
         {
             if (txtCodigo.Text.Trim().Equals(string.Empty))
                 return;
 
-            var oAdicional = new AdicionalNG().Buscar(Convert.ToInt32(txtCodigo.Text.Trim()));
-            if (oAdicional == null)
+            var oTamanhoPizza = new TamanhoPizzaNG().Buscar(Convert.ToInt32(txtCodigo.Text.Trim()));
+            if (oTamanhoPizza == null)
             {
                 btnExcluir.Enabled = false;
                 return;
@@ -154,36 +188,16 @@ namespace InterfaceUsuario.Produtos
 
             IsNovo = false;
 
-            txtDescricao.Text = oAdicional.Descricao;
-            txtObservacao.Text = oAdicional.Observacao;
-            txtValor.Text = oAdicional.Valor.ToString();
+            txtDescricao.Text = oTamanhoPizza.Descricao;
+            txtObservacao.Text = oTamanhoPizza.Observacao;
+            txtValor.Text = oTamanhoPizza.Valor.ToString();
             MascaraCampoCodigo.RetornarMascara(txtCodigo, new EventArgs());
             MascaraDinheiro.RetornarMascara(txtValor, new EventArgs());
 
-            oUcSituacao.InicializarSituacao(oAdicional.Status);
+            cmbQtdSabores.SelectedIndex = oTamanhoPizza.QtdSabores - 1;
+
+            oUcSituacao.InicializarSituacao(oTamanhoPizza.Status);
             btnExcluir.Enabled = true;
-        }
-
-        public void LimparCampos()
-        {
-            txtCodigo.Text = new AdicionalNG().BuscarProximoCodigo().ToString();
-            txtDescricao.Text = string.Empty;
-            txtValor.Text = string.Empty;
-            txtObservacao.Text = String.Empty;
-
-            btnExcluir.Enabled = false;
-
-            oUcSituacao.InicializarSituacao(Status.Ativo);
-
-            MascaraCampoCodigo.RetornarMascara(txtCodigo, new EventArgs());
-            MascaraDinheiro.RetornarMascara(txtValor, new EventArgs());
-            IsNovo = true;
-            Funcoes.SelecionarCampo(txtDescricao);
-        }
-
-        private void FrmCadAdicional_Load(object sender, EventArgs e)
-        {
-            btnCancelar_Click(btnCancelar, new EventArgs());
         }
     }
 }

@@ -6,23 +6,23 @@ using System.Collections.Generic;
 
 namespace Negocio.Produtos
 {
-    public class SaborPizzaNG
+    public class SaborBordaNG
     {
-        private readonly SaborPizzaBD _bd;
+        private readonly SaborBordaBD _bd;
 
-        public SaborPizzaNG()
+        public SaborBordaNG()
         {
-            _bd = new SaborPizzaBD();
+            _bd = new SaborBordaBD();
         }
 
-        public bool Inserir(SaborPizza oSaborPizza)
+        public bool Inserir(SaborBorda oSaborBorda)
         {
-            return _bd.Inserir(oSaborPizza);
+            return _bd.Inserir(oSaborBorda);
         }
 
-        public bool Alterar(SaborPizza oSaborPizza)
+        public bool Alterar(SaborBorda oSaborBorda)
         {
-            return _bd.Alterar(oSaborPizza);
+            return _bd.Alterar(oSaborBorda);
         }
 
         public bool Excluir(int codigo)
@@ -35,7 +35,7 @@ namespace Negocio.Produtos
             return _bd.ListarEntidadesViewPesquisa(status);
         }
 
-        public SaborPizza Buscar(int cod)
+        public SaborBorda Buscar(int cod)
         {
             return _bd.Buscar(cod);
         }

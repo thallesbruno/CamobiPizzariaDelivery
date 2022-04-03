@@ -39,10 +39,12 @@ namespace InterfaceUsuario
             this.usuáriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adicionaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatõriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pizzasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saboresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatõriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bordasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.tamanhosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -122,6 +124,23 @@ namespace InterfaceUsuario
             this.adicionaisToolStripMenuItem.Text = "Adicionais";
             this.adicionaisToolStripMenuItem.Click += new System.EventHandler(this.adicionaisToolStripMenuItem_Click);
             // 
+            // pizzasToolStripMenuItem
+            // 
+            this.pizzasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.saboresToolStripMenuItem,
+            this.bordasToolStripMenuItem,
+            this.tamanhosToolStripMenuItem});
+            this.pizzasToolStripMenuItem.Name = "pizzasToolStripMenuItem";
+            this.pizzasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pizzasToolStripMenuItem.Text = "Pizzas";
+            // 
+            // saboresToolStripMenuItem
+            // 
+            this.saboresToolStripMenuItem.Name = "saboresToolStripMenuItem";
+            this.saboresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saboresToolStripMenuItem.Text = "Sabores";
+            this.saboresToolStripMenuItem.Click += new System.EventHandler(this.saboresToolStripMenuItem_Click);
+            // 
             // rotinasToolStripMenuItem
             // 
             this.rotinasToolStripMenuItem.Name = "rotinasToolStripMenuItem";
@@ -134,20 +153,19 @@ namespace InterfaceUsuario
             this.relatõriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.relatõriosToolStripMenuItem.Text = "Relatórios";
             // 
-            // pizzasToolStripMenuItem
+            // bordasToolStripMenuItem
             // 
-            this.pizzasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.saboresToolStripMenuItem});
-            this.pizzasToolStripMenuItem.Name = "pizzasToolStripMenuItem";
-            this.pizzasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.pizzasToolStripMenuItem.Text = "Pizzas";
+            this.bordasToolStripMenuItem.Name = "bordasToolStripMenuItem";
+            this.bordasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.bordasToolStripMenuItem.Text = "Bordas";
+            this.bordasToolStripMenuItem.Click += new System.EventHandler(this.bordasToolStripMenuItem_Click);
             // 
-            // saboresToolStripMenuItem
+            // tamanhosToolStripMenuItem
             // 
-            this.saboresToolStripMenuItem.Name = "saboresToolStripMenuItem";
-            this.saboresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.saboresToolStripMenuItem.Text = "Sabores";
-            this.saboresToolStripMenuItem.Click += new System.EventHandler(this.saboresToolStripMenuItem_Click);
+            this.tamanhosToolStripMenuItem.Name = "tamanhosToolStripMenuItem";
+            this.tamanhosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.tamanhosToolStripMenuItem.Text = "Tamanhos";
+            this.tamanhosToolStripMenuItem.Click += new System.EventHandler(this.tamanhosToolStripMenuItem_Click);
             // 
             // MDIFrm
             // 
@@ -185,6 +203,8 @@ namespace InterfaceUsuario
         private System.Windows.Forms.ToolStripMenuItem adicionaisToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pizzasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem saboresToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem bordasToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem tamanhosToolStripMenuItem;
     }
 }
 

@@ -107,11 +107,23 @@
     <Compile Include="Produtos\FrmCadAdicional.Designer.cs">
       <DependentUpon>FrmCadAdicional.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produtos\FrmCadSaborBorda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\FrmCadSaborBorda.Designer.cs">
+      <DependentUpon>FrmCadSaborBorda.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produtos\FrmCadSaborPizza.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Produtos\FrmCadSaborPizza.Designer.cs">
       <DependentUpon>FrmCadSaborPizza.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produtos\FrmCadTamanhoPizza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\FrmCadTamanhoPizza.Designer.cs">
+      <DependentUpon>FrmCadTamanhoPizza.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -142,8 +154,14 @@
     <EmbeddedResource Include="Produtos\FrmCadAdicional.resx">
       <DependentUpon>FrmCadAdicional.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\FrmCadSaborBorda.resx">
+      <DependentUpon>FrmCadSaborBorda.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produtos\FrmCadSaborPizza.resx">
       <DependentUpon>FrmCadSaborPizza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\FrmCadTamanhoPizza.resx">
+      <DependentUpon>FrmCadTamanhoPizza.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

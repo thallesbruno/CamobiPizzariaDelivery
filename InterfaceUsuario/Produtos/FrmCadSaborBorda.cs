@@ -10,21 +10,26 @@ using System.Windows.Forms;
 
 namespace InterfaceUsuario.Produtos
 {
-    public partial class FrmCadAdicional : Form
+    public partial class FrmCadSaborBorda : Form
     {
         private bool IsNovo;
 
-        public FrmCadAdicional()
+        public FrmCadSaborBorda()
         {
             InitializeComponent();
 
             MascaraCampoCodigo.AplicarEventos(txtCodigo);
-            MascaraDinheiro.AplicarEventos(txtValor);
+            MascaraDinheiro.AplicarEventos(txtValorAdicional);
         }
 
-        private void btnBscAdicional_Click(object sender, EventArgs e)
+        private void FrmCadSaborBorda_Load(object sender, EventArgs e)
         {
-            var lista = new AdicionalNG().ListarEntidadesViewPesquisa(Status.Todos);
+            btnCancelar_Click(btnCancelar, new EventArgs());
+        }
+
+        private void btnBscSaborBorda_Click(object sender, EventArgs e)
+        {
+            var lista = new SaborBordaNG().ListarEntidadesViewPesquisa(Status.Todos);
             //verifica se a lista está vazia
             if (lista.Count < 1)
             {
@@ -35,7 +40,7 @@ namespace InterfaceUsuario.Produtos
                 return;
             }
             //passar a lista para o formulario generico de pesquisa
-            var frmPesquisa = new FrmPesquisaGenerica("Listagem de Adicionais", Status.Todos);
+            var frmPesquisa = new FrmPesquisaGenerica("Listagem de Sabores de Borda", Status.Todos);
             frmPesquisa.lista = lista;
             frmPesquisa.ShowDialog();
 
@@ -46,27 +51,16 @@ namespace InterfaceUsuario.Produtos
 
             txtCodigo.Text = iRetorno.ToString();
             txtCodigo_Validating(txtCodigo, new CancelEventArgs());
-            btnBscAdicional.Focus();
+            btnBscSaborBorda.Focus();
         }
 
         private bool VerificarCampos()
         {
             if (txtDescricao.Text.Trim().Equals(string.Empty))
             {
-                MessageBox.Show("Você precisa informar a descrição do adicional!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Você precisa informar a descrição do sabor de borda!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-            MascaraDinheiro.TirarMascara(txtValor, new EventArgs());
-            var dValor = Convert.ToDecimal(txtValor.Text.Trim());
-            MascaraDinheiro.RetornarMascara(txtValor, new EventArgs());
-
-            if (dValor <= 0)
-            {
-                MessageBox.Show("Você precisa informar um valor válido para o adicional de pizza!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-
             return true;
         }
 
@@ -75,22 +69,22 @@ namespace InterfaceUsuario.Produtos
             if (!VerificarCampos())
                 return;
 
-            var oAdicional = new Adicional();
-            var adicionalNG = new AdicionalNG();
+            var oSaborBorda = new SaborBorda();
+            var SaborBordaNG = new SaborBordaNG();
 
-            oAdicional.Descricao = txtDescricao.Text.Trim();
-            oAdicional.Observacao = txtObservacao.Text.Trim();
+            oSaborBorda.Descricao = txtDescricao.Text.Trim();
+            oSaborBorda.Observacao = txtObservacao.Text.Trim();
 
-            MascaraDinheiro.TirarMascara(txtValor, new EventArgs());
-            oAdicional.Valor = Convert.ToDecimal(txtValor.Text.Trim());
-            MascaraDinheiro.RetornarMascara(txtValor, new EventArgs());
+            MascaraDinheiro.TirarMascara(txtValorAdicional, new EventArgs());
+            oSaborBorda.ValorAdicional = Convert.ToDecimal(txtValorAdicional.Text.Trim());
+            MascaraDinheiro.RetornarMascara(txtValorAdicional, new EventArgs());
 
-            oAdicional.Status = oUcSituacao._status;
-            oAdicional.CodigoUsrAlteracao = Sessao.Usuario.Codigo;
+            oSaborBorda.Status = oUcSituacao._status;
+            oSaborBorda.CodigoUsrAlteracao = Sessao.Usuario.Codigo;
             //grava no banco primeira vez
             if (IsNovo)
             {
-                if (adicionalNG.Inserir(oAdicional))
+                if (SaborBordaNG.Inserir(oSaborBorda))
                 {
                     MessageBox.Show("Registro cadastrado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
@@ -103,8 +97,8 @@ namespace InterfaceUsuario.Produtos
             //atualiza registro no banco
             else
             {
-                oAdicional.Codigo = Convert.ToInt32(txtCodigo.Text.Trim());
-                if (adicionalNG.Alterar(oAdicional))
+                oSaborBorda.Codigo = Convert.ToInt32(txtCodigo.Text.Trim());
+                if (SaborBordaNG.Alterar(oSaborBorda))
                 {
                     MessageBox.Show("Registro alterado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
@@ -123,7 +117,7 @@ namespace InterfaceUsuario.Produtos
 
             if (MessageBox.Show("Deseja excluir este registro?", this.Text, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
-                if (new AdicionalNG().Excluir(Convert.ToInt32(txtCodigo.Text.Trim())))
+                if (new SaborBordaNG().Excluir(Convert.ToInt32(txtCodigo.Text.Trim())))
                 {
                     MessageBox.Show("Registro excluído com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
@@ -145,8 +139,8 @@ namespace InterfaceUsuario.Produtos
             if (txtCodigo.Text.Trim().Equals(string.Empty))
                 return;
 
-            var oAdicional = new AdicionalNG().Buscar(Convert.ToInt32(txtCodigo.Text.Trim()));
-            if (oAdicional == null)
+            var oSaborBorda = new SaborBordaNG().Buscar(Convert.ToInt32(txtCodigo.Text.Trim()));
+            if (oSaborBorda == null)
             {
                 btnExcluir.Enabled = false;
                 return;
@@ -154,36 +148,28 @@ namespace InterfaceUsuario.Produtos
 
             IsNovo = false;
 
-            txtDescricao.Text = oAdicional.Descricao;
-            txtObservacao.Text = oAdicional.Observacao;
-            txtValor.Text = oAdicional.Valor.ToString();
+            txtDescricao.Text = oSaborBorda.Descricao;
+            txtObservacao.Text = oSaborBorda.Observacao;
+            txtValorAdicional.Text = oSaborBorda.ValorAdicional.ToString();
             MascaraCampoCodigo.RetornarMascara(txtCodigo, new EventArgs());
-            MascaraDinheiro.RetornarMascara(txtValor, new EventArgs());
+            MascaraDinheiro.RetornarMascara(txtValorAdicional, new EventArgs());
 
-            oUcSituacao.InicializarSituacao(oAdicional.Status);
+            oUcSituacao.InicializarSituacao(oSaborBorda.Status);
             btnExcluir.Enabled = true;
         }
 
         public void LimparCampos()
         {
-            txtCodigo.Text = new AdicionalNG().BuscarProximoCodigo().ToString();
+            txtCodigo.Text = new SaborBordaNG().BuscarProximoCodigo().ToString();
             txtDescricao.Text = string.Empty;
-            txtValor.Text = string.Empty;
             txtObservacao.Text = String.Empty;
-
+            txtValorAdicional.Text = string.Empty;
             btnExcluir.Enabled = false;
-
             oUcSituacao.InicializarSituacao(Status.Ativo);
-
             MascaraCampoCodigo.RetornarMascara(txtCodigo, new EventArgs());
-            MascaraDinheiro.RetornarMascara(txtValor, new EventArgs());
+            MascaraDinheiro.RetornarMascara(txtValorAdicional, new EventArgs());
             IsNovo = true;
             Funcoes.SelecionarCampo(txtDescricao);
-        }
-
-        private void FrmCadAdicional_Load(object sender, EventArgs e)
-        {
-            btnCancelar_Click(btnCancelar, new EventArgs());
         }
     }
 }

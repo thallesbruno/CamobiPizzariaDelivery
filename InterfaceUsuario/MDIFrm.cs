@@ -68,5 +68,15 @@ namespace InterfaceUsuario
         {
             AbrirFormularios(new FrmCadSaborPizza());
         }
+
+        private void bordasToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios(new FrmCadSaborBorda());
+        }
+
+        private void tamanhosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios(new FrmCadTamanhoPizza());
+        }
     }
 }

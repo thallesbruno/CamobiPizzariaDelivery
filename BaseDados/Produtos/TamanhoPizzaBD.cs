@@ -8,11 +8,11 @@ using System.Collections.Generic;
 
 namespace BaseDados.Produtos
 {
-    public class SaborPizzaBD
+    public class TamanhoPizzaBD
     {
         private readonly FuncoesBD bdFuncoes = new FuncoesBD();
 
-        public bool Inserir(SaborPizza oSaborPizza)
+        public bool Inserir(TamanhoPizza oTamanhoPizza)
         {
             bool isRetorno = false;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
@@ -23,26 +23,29 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = @"INSERT INTO sabor_pizza
+                    comando.CommandText = @"INSERT INTO tamanho_pizza
                                           (descricao,
                                            observacao,
-                                           valor_adicional,
+                                           valor,
+                                           qtd_sabores,
                                            situacao,
                                            dt_alteracao,
                                            codigo_usr_alteracao)
                                         VALUES
                                           (@descricao,
                                            @observacao,
-                                           @valor_adicional,
+                                           @valor,
+                                           @qtd_sabores,
                                            @situacao,
                                            NOW(),
                                            @codigo_usr_alteracao)
                                         ";
-                    comando.Parameters.AddWithValue("descricao", oSaborPizza.Descricao);
-                    comando.Parameters.AddWithValue("observacao", oSaborPizza.Observacao);
-                    comando.Parameters.AddWithValue("valor_adicional", oSaborPizza.ValorAdicional);
-                    comando.Parameters.AddWithValue("situacao", (int)oSaborPizza.Status);
-                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oSaborPizza.CodigoUsrAlteracao);
+                    comando.Parameters.AddWithValue("descricao", oTamanhoPizza.Descricao);
+                    comando.Parameters.AddWithValue("observacao", oTamanhoPizza.Observacao);
+                    comando.Parameters.AddWithValue("valor", oTamanhoPizza.Valor);
+                    comando.Parameters.AddWithValue("qtd_sabores", oTamanhoPizza.QtdSabores);
+                    comando.Parameters.AddWithValue("situacao", (int)oTamanhoPizza.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oTamanhoPizza.CodigoUsrAlteracao);
 
                     int valorRetorno = comando.ExecuteNonQuery();
                     if (valorRetorno < 1)
@@ -62,7 +65,7 @@ namespace BaseDados.Produtos
             return isRetorno;
         }
 
-        public bool Alterar(SaborPizza oSaborPizza)
+        public bool Alterar(TamanhoPizza oTamanhoPizza)
         {
             bool isRetorno = false;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
@@ -73,21 +76,23 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = @"UPDATE sabor_pizza
+                    comando.CommandText = @"UPDATE tamanho_pizza
                                             SET descricao            = @descricao,
                                                 observacao           = @observacao,
-                                                valor_adicional      = @valor_adicional,
+                                                valor                = @valor,
+                                                qtd_sabores          = @qtd_sabores,
                                                 situacao             = @situacao,
                                                 dt_alteracao         = NOW(),
                                                 codigo_usr_alteracao = @codigo_usr_alteracao
                                             WHERE codigo = @codigo
                                         ";
-                    comando.Parameters.AddWithValue("descricao", oSaborPizza.Descricao);
-                    comando.Parameters.AddWithValue("observacao", oSaborPizza.Observacao);
-                    comando.Parameters.AddWithValue("valor_adicional", oSaborPizza.ValorAdicional);
-                    comando.Parameters.AddWithValue("situacao", (int)oSaborPizza.Status);
-                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oSaborPizza.CodigoUsrAlteracao);
-                    comando.Parameters.AddWithValue("codigo", oSaborPizza.Codigo);
+                    comando.Parameters.AddWithValue("descricao", oTamanhoPizza.Descricao);
+                    comando.Parameters.AddWithValue("observacao", oTamanhoPizza.Observacao);
+                    comando.Parameters.AddWithValue("valor", oTamanhoPizza.Valor);
+                    comando.Parameters.AddWithValue("qtd_sabores", oTamanhoPizza.QtdSabores);
+                    comando.Parameters.AddWithValue("situacao", (int)oTamanhoPizza.Status);
+                    comando.Parameters.AddWithValue("codigo_usr_alteracao", oTamanhoPizza.CodigoUsrAlteracao);
+                    comando.Parameters.AddWithValue("codigo", oTamanhoPizza.Codigo);
 
                     int valorRetorno = comando.ExecuteNonQuery();
                     if (valorRetorno < 1)
@@ -118,7 +123,7 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = @"DELETE FROM sabor_pizza WHERE codigo = @codigo";
+                    comando.CommandText = @"DELETE FROM tamanho_pizza WHERE codigo = @codigo";
                     comando.Parameters.AddWithValue("codigo", codigo);
 
                     int valorRetorno = comando.ExecuteNonQuery();
@@ -151,7 +156,7 @@ namespace BaseDados.Produtos
                     comando = conexao.CreateCommand();
 
                     string query = @"SELECT codigo, descricao, situacao
-                                            FROM sabor_pizza";
+                                            FROM tamanho_pizza";
                     if (status != Status.Todos)
                         query += " WHERE SITUACAO = @situacao; ";
 
@@ -183,9 +188,9 @@ namespace BaseDados.Produtos
             return listaEntidades;
         }
 
-        public List<SaborPizza> ListarSaboresDePizzaAtivos()
+        public List<TamanhoPizza> ListarTamanhoDePizzaAtivos()
         {
-            var listaSaboresDePizza = new List<SaborPizza>();
+            var listaTamanhoDePizza = new List<TamanhoPizza>();
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -194,21 +199,22 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = "SELECT * FROM sabor_pizza WHERE situacao = 1;";
+                    comando.CommandText = "SELECT * FROM tamanho_pizza WHERE situacao = 1;";
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
-                        var oSaborPizza = new SaborPizza();
-                        oSaborPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oSaborPizza.Descricao = reader["descricao"].ToString();
+                        var oTamanhoPizza = new TamanhoPizza();
+                        oTamanhoPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        oTamanhoPizza.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))
-                            oSaborPizza.Observacao = reader["observacao"].ToString();
-                        oSaborPizza.ValorAdicional = Convert.ToDecimal(reader["valor_adicional"].ToString());
-                        oSaborPizza.Status = (Status)Convert.ToInt16(reader["situacao"]);
-                        oSaborPizza.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
-                        oSaborPizza.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
+                            oTamanhoPizza.Observacao = reader["observacao"].ToString();
+                        oTamanhoPizza.Valor = Convert.ToDecimal(reader["valor"].ToString());
+                        oTamanhoPizza.QtdSabores = Convert.ToInt32(reader["qtd_sabores"].ToString());
+                        oTamanhoPizza.Status = (Status)Convert.ToInt16(reader["situacao"]);
+                        oTamanhoPizza.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
+                        oTamanhoPizza.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
 
-                        listaSaboresDePizza.Add(oSaborPizza);
+                        listaTamanhoDePizza.Add(oTamanhoPizza);
                     }
                 }
                 catch (MySqlException mysqle)
@@ -220,12 +226,12 @@ namespace BaseDados.Produtos
                     conexao.Close();
                 }
             }
-            return listaSaboresDePizza;
+            return listaTamanhoDePizza;
         }
 
-        public SaborPizza Buscar(int cod)
+        public TamanhoPizza Buscar(int cod)
         {
-            SaborPizza oSaborPizza = new SaborPizza();
+            TamanhoPizza oTamanhoPizza = new TamanhoPizza();
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -234,20 +240,21 @@ namespace BaseDados.Produtos
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = "SELECT * FROM sabor_pizza WHERE codigo = @codigo;";
+                    comando.CommandText = "SELECT * FROM tamanho_pizza WHERE codigo = @codigo;";
                     comando.Parameters.AddWithValue("codigo", cod);
 
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
-                        oSaborPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
-                        oSaborPizza.Descricao = reader["descricao"].ToString();
+                        oTamanhoPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        oTamanhoPizza.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))
-                            oSaborPizza.Observacao = reader["observacao"].ToString();
-                        oSaborPizza.ValorAdicional = Convert.ToDecimal(reader["valor_adicional"].ToString());
-                        oSaborPizza.Status = (Status)Convert.ToInt16(reader["situacao"]);
-                        oSaborPizza.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
-                        oSaborPizza.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
+                            oTamanhoPizza.Observacao = reader["observacao"].ToString();
+                        oTamanhoPizza.Valor = Convert.ToDecimal(reader["valor"].ToString());
+                        oTamanhoPizza.QtdSabores = Convert.ToInt32(reader["qtd_sabores"].ToString());                        
+                        oTamanhoPizza.Status = (Status)Convert.ToInt16(reader["situacao"]);
+                        oTamanhoPizza.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
+                        oTamanhoPizza.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
                     }
                 }
                 catch (MySqlException mysqle)
@@ -259,12 +266,12 @@ namespace BaseDados.Produtos
                     conexao.Close();
                 }
             }
-            return oSaborPizza;
+            return oTamanhoPizza;
         }
 
         public int BuscarProximoCodigo()
         {
-            return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'sabor_pizza'");
+            return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'tamanho_pizza'");
         }
     }
 }

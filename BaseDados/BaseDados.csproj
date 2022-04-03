@@ -92,7 +92,9 @@
     <Compile Include="Pessoas\TipoUsuarioBD.cs" />
     <Compile Include="Pessoas\UsuarioBD.cs" />
     <Compile Include="Produtos\AdicionalBD.cs" />
+    <Compile Include="Produtos\SaborBordaBD.cs" />
     <Compile Include="Produtos\SaborPizzaBD.cs" />
+    <Compile Include="Produtos\TamanhoPizzaBD.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
