@@ -37,6 +37,10 @@ namespace Negocio.Pessoas
         {
             return _bd.Buscar(cod);
         }
+        public Cliente BuscarPorContato(long numeroContato)
+        {
+            return _bd.BuscarPorContato(numeroContato);
+        }
         public int BuscarProximoCodigo()
         {
             return _bd.BuscarProximoCodigo();

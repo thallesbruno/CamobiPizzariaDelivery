@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Entidades.Pessoas;
+using InterfaceUsuario.Modulos;
+using Negocio.Pessoas;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +18,15 @@ namespace InterfaceUsuario.Produtos
         public FrmRotPedidos()
         {
             InitializeComponent();
+        }
+
+        private void txtContato_Validating(object sender, CancelEventArgs e)
+        {
+            var valorCampo = Funcoes.RemoverMascaraCampoNumerico(txtContato);
+            if (valorCampo == null) return;
+
+            Cliente oCliente = new ClienteNG().BuscarPorContato(Convert.ToInt64(valorCampo));
+
         }
     }
 }

@@ -501,6 +501,47 @@ namespace BaseDados.Pessoas
             return oCliente;
         }
 
+        public Cliente BuscarPorContato(long numeroContato)
+        {
+            var oCliente = new Cliente();
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    comando.CommandText = "SELECT * FROM CLIENTE WHERE telefone LIKE @numeroContato OR celular LIKE @numeroContato LIMIT 1;";
+                    comando.Parameters.AddWithValue("numeroContato", numeroContato);
+
+                    MySqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        oCliente.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        oCliente.Nome = reader["nome"].ToString();
+                        if (reader["telefone"] != null && reader["telefone"].ToString() != string.Empty)
+                            oCliente.Telefone = Convert.ToInt64(reader["telefone"].ToString());
+                        if (reader["celular"] != null && reader["celular"].ToString() != string.Empty)
+                            oCliente.Celular = Convert.ToInt64(reader["celular"].ToString());
+                        oCliente.Status = (Status)Convert.ToInt16(reader["situacao"]);
+                        oCliente.DtAlteracao = Convert.ToDateTime(reader["dt_alteracao"].ToString());
+                        oCliente.CodigoUsrAlteracao = Convert.ToInt32(reader["codigo_usr_alteracao"].ToString());
+                        oCliente.Enderecos = new EnderecoClienteBD().BuscarEnderecosCliente(oCliente.Codigo);
+                    }
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return oCliente;
+        }
+
         public int BuscarProximoCodigo()
         {
             return bdFuncoes.BuscaCodigo("SHOW TABLE STATUS LIKE 'cliente'");
