@@ -1,5 +1,6 @@
 ﻿using Entidades.Pessoas;
 using InterfaceUsuario.Modulos;
+using InterfaceUsuario.Pessoas;
 using Negocio.Pessoas;
 using System;
 using System.Collections.Generic;
@@ -23,10 +24,22 @@ namespace InterfaceUsuario.Produtos
         private void txtContato_Validating(object sender, CancelEventArgs e)
         {
             var valorCampo = Funcoes.RemoverMascaraCampoNumerico(txtContato);
-            if (valorCampo == null) return;
+            if (valorCampo == null)
+                return;
 
-            Cliente oCliente = new ClienteNG().BuscarPorContato(Convert.ToInt64(valorCampo));
+            var oCliente = new ClienteNG().BuscarPorContato(Convert.ToInt64(valorCampo));
 
+            if (oCliente == null)
+            {
+                FrmCadCliente oFrm = new FrmCadCliente();
+                oFrm.WindowState = FormWindowState.Normal;
+                oFrm.StartPosition = FormStartPosition.CenterScreen;
+                oFrm.ShowDialog();
+            }
+            else
+            {
+
+            }
         }
     }
 }

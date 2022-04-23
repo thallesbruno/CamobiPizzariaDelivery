@@ -78,5 +78,10 @@ namespace InterfaceUsuario
         {
             AbrirFormularios(new FrmCadTamanhoPizza());
         }
+
+        private void pedidosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            AbrirFormularios(new FrmRotPedidos());
+        }
     }
 }

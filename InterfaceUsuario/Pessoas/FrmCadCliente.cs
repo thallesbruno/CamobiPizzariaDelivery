@@ -139,7 +139,7 @@ namespace InterfaceUsuario.Pessoas
 
         private void btnAdicionarEndereco_Click(object sender, EventArgs e)
         {
-            if (VerificarCamposEndereco())
+            if (!VerificarCamposEndereco())
             {
                 return;
             }

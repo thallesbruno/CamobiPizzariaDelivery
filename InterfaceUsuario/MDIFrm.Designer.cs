@@ -41,10 +41,11 @@ namespace InterfaceUsuario
             this.adicionaisToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pizzasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saboresToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.rotinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.relatõriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bordasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tamanhosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rotinasToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.relatõriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pedidosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mnsPrincipal.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -91,7 +92,7 @@ namespace InterfaceUsuario
             this.clientesToolStripMenuItem,
             this.usuáriosToolStripMenuItem});
             this.pessoasToolStripMenuItem.Name = "pessoasToolStripMenuItem";
-            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pessoasToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.pessoasToolStripMenuItem.Text = "Pessoas";
             // 
             // clientesToolStripMenuItem
@@ -114,13 +115,13 @@ namespace InterfaceUsuario
             this.adicionaisToolStripMenuItem,
             this.pizzasToolStripMenuItem});
             this.produtosToolStripMenuItem.Name = "produtosToolStripMenuItem";
-            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.produtosToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.produtosToolStripMenuItem.Text = "Produtos";
             // 
             // adicionaisToolStripMenuItem
             // 
             this.adicionaisToolStripMenuItem.Name = "adicionaisToolStripMenuItem";
-            this.adicionaisToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.adicionaisToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.adicionaisToolStripMenuItem.Text = "Adicionais";
             this.adicionaisToolStripMenuItem.Click += new System.EventHandler(this.adicionaisToolStripMenuItem_Click);
             // 
@@ -131,18 +132,34 @@ namespace InterfaceUsuario
             this.bordasToolStripMenuItem,
             this.tamanhosToolStripMenuItem});
             this.pizzasToolStripMenuItem.Name = "pizzasToolStripMenuItem";
-            this.pizzasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pizzasToolStripMenuItem.Size = new System.Drawing.Size(129, 22);
             this.pizzasToolStripMenuItem.Text = "Pizzas";
             // 
             // saboresToolStripMenuItem
             // 
             this.saboresToolStripMenuItem.Name = "saboresToolStripMenuItem";
-            this.saboresToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.saboresToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.saboresToolStripMenuItem.Text = "Sabores";
             this.saboresToolStripMenuItem.Click += new System.EventHandler(this.saboresToolStripMenuItem_Click);
             // 
+            // bordasToolStripMenuItem
+            // 
+            this.bordasToolStripMenuItem.Name = "bordasToolStripMenuItem";
+            this.bordasToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.bordasToolStripMenuItem.Text = "Bordas";
+            this.bordasToolStripMenuItem.Click += new System.EventHandler(this.bordasToolStripMenuItem_Click);
+            // 
+            // tamanhosToolStripMenuItem
+            // 
+            this.tamanhosToolStripMenuItem.Name = "tamanhosToolStripMenuItem";
+            this.tamanhosToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.tamanhosToolStripMenuItem.Text = "Tamanhos";
+            this.tamanhosToolStripMenuItem.Click += new System.EventHandler(this.tamanhosToolStripMenuItem_Click);
+            // 
             // rotinasToolStripMenuItem
             // 
+            this.rotinasToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pedidosToolStripMenuItem});
             this.rotinasToolStripMenuItem.Name = "rotinasToolStripMenuItem";
             this.rotinasToolStripMenuItem.Size = new System.Drawing.Size(58, 20);
             this.rotinasToolStripMenuItem.Text = "Rotinas";
@@ -153,19 +170,12 @@ namespace InterfaceUsuario
             this.relatõriosToolStripMenuItem.Size = new System.Drawing.Size(71, 20);
             this.relatõriosToolStripMenuItem.Text = "Relatórios";
             // 
-            // bordasToolStripMenuItem
+            // pedidosToolStripMenuItem
             // 
-            this.bordasToolStripMenuItem.Name = "bordasToolStripMenuItem";
-            this.bordasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.bordasToolStripMenuItem.Text = "Bordas";
-            this.bordasToolStripMenuItem.Click += new System.EventHandler(this.bordasToolStripMenuItem_Click);
-            // 
-            // tamanhosToolStripMenuItem
-            // 
-            this.tamanhosToolStripMenuItem.Name = "tamanhosToolStripMenuItem";
-            this.tamanhosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.tamanhosToolStripMenuItem.Text = "Tamanhos";
-            this.tamanhosToolStripMenuItem.Click += new System.EventHandler(this.tamanhosToolStripMenuItem_Click);
+            this.pedidosToolStripMenuItem.Name = "pedidosToolStripMenuItem";
+            this.pedidosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.pedidosToolStripMenuItem.Text = "Pedidos";
+            this.pedidosToolStripMenuItem.Click += new System.EventHandler(this.pedidosToolStripMenuItem_Click);
             // 
             // MDIFrm
             // 
@@ -205,6 +215,7 @@ namespace InterfaceUsuario
         private System.Windows.Forms.ToolStripMenuItem saboresToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem bordasToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tamanhosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pedidosToolStripMenuItem;
     }
 }
 
