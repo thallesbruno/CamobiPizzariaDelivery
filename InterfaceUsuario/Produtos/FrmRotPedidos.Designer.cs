@@ -35,8 +35,21 @@ namespace InterfaceUsuario.Produtos
             this.btnCancelar = new System.Windows.Forms.Button();
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.lblMstValorTotal = new System.Windows.Forms.GroupBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.txtValorTeleentrega = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.chkTeleentrega = new System.Windows.Forms.CheckBox();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnDelAdicional = new System.Windows.Forms.Button();
+            this.btnAddAdicional = new System.Windows.Forms.Button();
+            this.lvlListagemPedidosAdicionais = new System.Windows.Forms.ListView();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnDelPizza = new System.Windows.Forms.Button();
+            this.btnAddPizza = new System.Windows.Forms.Button();
+            this.lvlListagemPedidosPizzas = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.gpbEndereco = new System.Windows.Forms.GroupBox();
             this.btnAlterarEndereco = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -60,27 +73,15 @@ namespace InterfaceUsuario.Produtos
             this.label1 = new System.Windows.Forms.Label();
             this.txtContato = new System.Windows.Forms.MaskedTextBox();
             this.tbpAndamento = new System.Windows.Forms.TabPage();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.lvlListagemPedidosPizzas = new System.Windows.Forms.ListView();
-            this.btnAddPizza = new System.Windows.Forms.Button();
-            this.btnDelPizza = new System.Windows.Forms.Button();
-            this.btnDelAdicional = new System.Windows.Forms.Button();
-            this.btnAddAdicional = new System.Windows.Forms.Button();
-            this.lvlListagemPedidosAdicionais = new System.Windows.Forms.ListView();
-            this.chkTeleentrega = new System.Windows.Forms.CheckBox();
-            this.txtValorTeleentrega = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
+            this.lblCodEnderecoEntrega = new System.Windows.Forms.Label();
             this.tbcPedidos.SuspendLayout();
             this.tbpRegistro.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
             this.lblMstValorTotal.SuspendLayout();
-            this.groupBox1.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
             this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.gpbEndereco.SuspendLayout();
             this.SuspendLayout();
             // 
             // tbcPedidos
@@ -128,6 +129,7 @@ namespace InterfaceUsuario.Produtos
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.TextAlign = System.Drawing.ContentAlignment.BottomCenter;
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnConfirmar
             // 
@@ -158,9 +160,148 @@ namespace InterfaceUsuario.Produtos
             this.lblMstValorTotal.TabStop = false;
             this.lblMstValorTotal.Text = "Itens do Pedido";
             // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label12.Location = new System.Drawing.Point(883, 360);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(134, 13);
+            this.label12.TabIndex = 50;
+            this.label12.Text = "Valor Total do Pedido:";
+            // 
+            // label11
+            // 
+            this.label11.BackColor = System.Drawing.SystemColors.Control;
+            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.Location = new System.Drawing.Point(1023, 350);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(125, 23);
+            this.label11.TabIndex = 49;
+            this.label11.Text = "R$ 0,00";
+            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txtValorTeleentrega
+            // 
+            this.txtValorTeleentrega.BackColor = System.Drawing.SystemColors.InactiveCaption;
+            this.txtValorTeleentrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtValorTeleentrega.Location = new System.Drawing.Point(7, 353);
+            this.txtValorTeleentrega.Name = "txtValorTeleentrega";
+            this.txtValorTeleentrega.Size = new System.Drawing.Size(112, 20);
+            this.txtValorTeleentrega.TabIndex = 41;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.Location = new System.Drawing.Point(7, 337);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(134, 13);
+            this.label6.TabIndex = 40;
+            this.label6.Text = "Valor da Tele-entrega:";
+            // 
+            // chkTeleentrega
+            // 
+            this.chkTeleentrega.AutoSize = true;
+            this.chkTeleentrega.Location = new System.Drawing.Point(8, 309);
+            this.chkTeleentrega.Name = "chkTeleentrega";
+            this.chkTeleentrega.Size = new System.Drawing.Size(98, 17);
+            this.chkTeleentrega.TabIndex = 2;
+            this.chkTeleentrega.Text = "Tele-entrega";
+            this.chkTeleentrega.UseVisualStyleBackColor = true;
+            // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnDelAdicional);
+            this.groupBox5.Controls.Add(this.btnAddAdicional);
+            this.groupBox5.Controls.Add(this.lvlListagemPedidosAdicionais);
+            this.groupBox5.Location = new System.Drawing.Point(8, 164);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(1139, 138);
+            this.groupBox5.TabIndex = 1;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Adicionais";
+            // 
+            // btnDelAdicional
+            // 
+            this.btnDelAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelAdicional.Image = global::InterfaceUsuario.Properties.Resources.excluir;
+            this.btnDelAdicional.Location = new System.Drawing.Point(1101, 53);
+            this.btnDelAdicional.Name = "btnDelAdicional";
+            this.btnDelAdicional.Size = new System.Drawing.Size(35, 31);
+            this.btnDelAdicional.TabIndex = 48;
+            this.btnDelAdicional.UseVisualStyleBackColor = true;
+            // 
+            // btnAddAdicional
+            // 
+            this.btnAddAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddAdicional.Image = global::InterfaceUsuario.Properties.Resources.adicionar;
+            this.btnAddAdicional.Location = new System.Drawing.Point(1101, 16);
+            this.btnAddAdicional.Name = "btnAddAdicional";
+            this.btnAddAdicional.Size = new System.Drawing.Size(35, 31);
+            this.btnAddAdicional.TabIndex = 47;
+            this.btnAddAdicional.UseVisualStyleBackColor = true;
+            // 
+            // lvlListagemPedidosAdicionais
+            // 
+            this.lvlListagemPedidosAdicionais.CheckBoxes = true;
+            this.lvlListagemPedidosAdicionais.FullRowSelect = true;
+            this.lvlListagemPedidosAdicionais.GridLines = true;
+            this.lvlListagemPedidosAdicionais.HideSelection = false;
+            this.lvlListagemPedidosAdicionais.Location = new System.Drawing.Point(2, 16);
+            this.lvlListagemPedidosAdicionais.Name = "lvlListagemPedidosAdicionais";
+            this.lvlListagemPedidosAdicionais.Size = new System.Drawing.Size(1099, 113);
+            this.lvlListagemPedidosAdicionais.TabIndex = 46;
+            this.lvlListagemPedidosAdicionais.UseCompatibleStateImageBehavior = false;
+            // 
+            // groupBox4
+            // 
+            this.groupBox4.Controls.Add(this.btnDelPizza);
+            this.groupBox4.Controls.Add(this.btnAddPizza);
+            this.groupBox4.Controls.Add(this.lvlListagemPedidosPizzas);
+            this.groupBox4.Location = new System.Drawing.Point(8, 20);
+            this.groupBox4.Name = "groupBox4";
+            this.groupBox4.Size = new System.Drawing.Size(1140, 138);
+            this.groupBox4.TabIndex = 0;
+            this.groupBox4.TabStop = false;
+            this.groupBox4.Text = "Pizzas";
+            // 
+            // btnDelPizza
+            // 
+            this.btnDelPizza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelPizza.Image = global::InterfaceUsuario.Properties.Resources.excluir;
+            this.btnDelPizza.Location = new System.Drawing.Point(1105, 56);
+            this.btnDelPizza.Name = "btnDelPizza";
+            this.btnDelPizza.Size = new System.Drawing.Size(35, 31);
+            this.btnDelPizza.TabIndex = 45;
+            this.btnDelPizza.UseVisualStyleBackColor = true;
+            // 
+            // btnAddPizza
+            // 
+            this.btnAddPizza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAddPizza.Image = global::InterfaceUsuario.Properties.Resources.adicionar;
+            this.btnAddPizza.Location = new System.Drawing.Point(1105, 19);
+            this.btnAddPizza.Name = "btnAddPizza";
+            this.btnAddPizza.Size = new System.Drawing.Size(35, 31);
+            this.btnAddPizza.TabIndex = 44;
+            this.btnAddPizza.UseVisualStyleBackColor = true;
+            // 
+            // lvlListagemPedidosPizzas
+            // 
+            this.lvlListagemPedidosPizzas.CheckBoxes = true;
+            this.lvlListagemPedidosPizzas.FullRowSelect = true;
+            this.lvlListagemPedidosPizzas.GridLines = true;
+            this.lvlListagemPedidosPizzas.HideSelection = false;
+            this.lvlListagemPedidosPizzas.Location = new System.Drawing.Point(6, 19);
+            this.lvlListagemPedidosPizzas.Name = "lvlListagemPedidosPizzas";
+            this.lvlListagemPedidosPizzas.Size = new System.Drawing.Size(1099, 113);
+            this.lvlListagemPedidosPizzas.TabIndex = 0;
+            this.lvlListagemPedidosPizzas.UseCompatibleStateImageBehavior = false;
+            // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.groupBox3);
+            this.groupBox1.Controls.Add(this.gpbEndereco);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.lblMstNomeCliente);
             this.groupBox1.Controls.Add(this.btnAdicionarCliente);
@@ -179,26 +320,27 @@ namespace InterfaceUsuario.Produtos
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Identificação do Cliente";
             // 
-            // groupBox3
+            // gpbEndereco
             // 
-            this.groupBox3.Controls.Add(this.btnAlterarEndereco);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.lblMstCidade);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.lblMstBairro);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.lblMstComplemento);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Controls.Add(this.lblMstNumero);
-            this.groupBox3.Controls.Add(this.lblRua);
-            this.groupBox3.Controls.Add(this.lblMstRua);
-            this.groupBox3.Location = new System.Drawing.Point(498, 16);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(650, 168);
-            this.groupBox3.TabIndex = 46;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Endereço:";
+            this.gpbEndereco.Controls.Add(this.lblCodEnderecoEntrega);
+            this.gpbEndereco.Controls.Add(this.btnAlterarEndereco);
+            this.gpbEndereco.Controls.Add(this.label10);
+            this.gpbEndereco.Controls.Add(this.label9);
+            this.gpbEndereco.Controls.Add(this.lblMstCidade);
+            this.gpbEndereco.Controls.Add(this.label8);
+            this.gpbEndereco.Controls.Add(this.lblMstBairro);
+            this.gpbEndereco.Controls.Add(this.label7);
+            this.gpbEndereco.Controls.Add(this.lblMstComplemento);
+            this.gpbEndereco.Controls.Add(this.label5);
+            this.gpbEndereco.Controls.Add(this.lblMstNumero);
+            this.gpbEndereco.Controls.Add(this.lblRua);
+            this.gpbEndereco.Controls.Add(this.lblMstRua);
+            this.gpbEndereco.Location = new System.Drawing.Point(498, 16);
+            this.gpbEndereco.Name = "gpbEndereco";
+            this.gpbEndereco.Size = new System.Drawing.Size(650, 168);
+            this.gpbEndereco.TabIndex = 46;
+            this.gpbEndereco.TabStop = false;
+            this.gpbEndereco.Text = "Endereço:";
             // 
             // btnAlterarEndereco
             // 
@@ -383,6 +525,7 @@ namespace InterfaceUsuario.Produtos
             this.btnBscCliente.Size = new System.Drawing.Size(23, 21);
             this.btnBscCliente.TabIndex = 40;
             this.btnBscCliente.UseVisualStyleBackColor = true;
+            this.btnBscCliente.Click += new System.EventHandler(this.btnBscCliente_Click);
             // 
             // txtCodigoCliente
             // 
@@ -392,6 +535,7 @@ namespace InterfaceUsuario.Produtos
             this.txtCodigoCliente.Name = "txtCodigoCliente";
             this.txtCodigoCliente.Size = new System.Drawing.Size(65, 20);
             this.txtCodigoCliente.TabIndex = 39;
+            this.txtCodigoCliente.Validating += new System.ComponentModel.CancelEventHandler(this.txtCodigoCliente_Validating);
             // 
             // label2
             // 
@@ -434,144 +578,16 @@ namespace InterfaceUsuario.Produtos
             this.tbpAndamento.Text = "Andamento";
             this.tbpAndamento.UseVisualStyleBackColor = true;
             // 
-            // groupBox4
+            // lblCodEnderecoEntrega
             // 
-            this.groupBox4.Controls.Add(this.btnDelPizza);
-            this.groupBox4.Controls.Add(this.btnAddPizza);
-            this.groupBox4.Controls.Add(this.lvlListagemPedidosPizzas);
-            this.groupBox4.Location = new System.Drawing.Point(8, 20);
-            this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(1140, 138);
-            this.groupBox4.TabIndex = 0;
-            this.groupBox4.TabStop = false;
-            this.groupBox4.Text = "Pizzas";
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.btnDelAdicional);
-            this.groupBox5.Controls.Add(this.btnAddAdicional);
-            this.groupBox5.Controls.Add(this.lvlListagemPedidosAdicionais);
-            this.groupBox5.Location = new System.Drawing.Point(8, 164);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(1139, 138);
-            this.groupBox5.TabIndex = 1;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Adicionais";
-            // 
-            // lvlListagemPedidosPizzas
-            // 
-            this.lvlListagemPedidosPizzas.CheckBoxes = true;
-            this.lvlListagemPedidosPizzas.FullRowSelect = true;
-            this.lvlListagemPedidosPizzas.GridLines = true;
-            this.lvlListagemPedidosPizzas.HideSelection = false;
-            this.lvlListagemPedidosPizzas.Location = new System.Drawing.Point(6, 19);
-            this.lvlListagemPedidosPizzas.Name = "lvlListagemPedidosPizzas";
-            this.lvlListagemPedidosPizzas.Size = new System.Drawing.Size(1099, 113);
-            this.lvlListagemPedidosPizzas.TabIndex = 0;
-            this.lvlListagemPedidosPizzas.UseCompatibleStateImageBehavior = false;
-            // 
-            // btnAddPizza
-            // 
-            this.btnAddPizza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddPizza.Image = global::InterfaceUsuario.Properties.Resources.adicionar;
-            this.btnAddPizza.Location = new System.Drawing.Point(1105, 19);
-            this.btnAddPizza.Name = "btnAddPizza";
-            this.btnAddPizza.Size = new System.Drawing.Size(35, 31);
-            this.btnAddPizza.TabIndex = 44;
-            this.btnAddPizza.UseVisualStyleBackColor = true;
-            // 
-            // btnDelPizza
-            // 
-            this.btnDelPizza.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelPizza.Image = global::InterfaceUsuario.Properties.Resources.excluir;
-            this.btnDelPizza.Location = new System.Drawing.Point(1105, 56);
-            this.btnDelPizza.Name = "btnDelPizza";
-            this.btnDelPizza.Size = new System.Drawing.Size(35, 31);
-            this.btnDelPizza.TabIndex = 45;
-            this.btnDelPizza.UseVisualStyleBackColor = true;
-            // 
-            // btnDelAdicional
-            // 
-            this.btnDelAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelAdicional.Image = global::InterfaceUsuario.Properties.Resources.excluir;
-            this.btnDelAdicional.Location = new System.Drawing.Point(1101, 53);
-            this.btnDelAdicional.Name = "btnDelAdicional";
-            this.btnDelAdicional.Size = new System.Drawing.Size(35, 31);
-            this.btnDelAdicional.TabIndex = 48;
-            this.btnDelAdicional.UseVisualStyleBackColor = true;
-            // 
-            // btnAddAdicional
-            // 
-            this.btnAddAdicional.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAddAdicional.Image = global::InterfaceUsuario.Properties.Resources.adicionar;
-            this.btnAddAdicional.Location = new System.Drawing.Point(1101, 16);
-            this.btnAddAdicional.Name = "btnAddAdicional";
-            this.btnAddAdicional.Size = new System.Drawing.Size(35, 31);
-            this.btnAddAdicional.TabIndex = 47;
-            this.btnAddAdicional.UseVisualStyleBackColor = true;
-            // 
-            // lvlListagemPedidosAdicionais
-            // 
-            this.lvlListagemPedidosAdicionais.CheckBoxes = true;
-            this.lvlListagemPedidosAdicionais.FullRowSelect = true;
-            this.lvlListagemPedidosAdicionais.GridLines = true;
-            this.lvlListagemPedidosAdicionais.HideSelection = false;
-            this.lvlListagemPedidosAdicionais.Location = new System.Drawing.Point(2, 16);
-            this.lvlListagemPedidosAdicionais.Name = "lvlListagemPedidosAdicionais";
-            this.lvlListagemPedidosAdicionais.Size = new System.Drawing.Size(1099, 113);
-            this.lvlListagemPedidosAdicionais.TabIndex = 46;
-            this.lvlListagemPedidosAdicionais.UseCompatibleStateImageBehavior = false;
-            // 
-            // chkTeleentrega
-            // 
-            this.chkTeleentrega.AutoSize = true;
-            this.chkTeleentrega.Location = new System.Drawing.Point(8, 309);
-            this.chkTeleentrega.Name = "chkTeleentrega";
-            this.chkTeleentrega.Size = new System.Drawing.Size(98, 17);
-            this.chkTeleentrega.TabIndex = 2;
-            this.chkTeleentrega.Text = "Tele-entrega";
-            this.chkTeleentrega.UseVisualStyleBackColor = true;
-            // 
-            // txtValorTeleentrega
-            // 
-            this.txtValorTeleentrega.BackColor = System.Drawing.SystemColors.InactiveCaption;
-            this.txtValorTeleentrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtValorTeleentrega.Location = new System.Drawing.Point(7, 353);
-            this.txtValorTeleentrega.Name = "txtValorTeleentrega";
-            this.txtValorTeleentrega.Size = new System.Drawing.Size(112, 20);
-            this.txtValorTeleentrega.TabIndex = 41;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(7, 337);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 13);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "Valor da Tele-entrega:";
-            // 
-            // label11
-            // 
-            this.label11.BackColor = System.Drawing.SystemColors.Control;
-            this.label11.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(1023, 350);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(125, 23);
-            this.label11.TabIndex = 49;
-            this.label11.Text = "R$ 0,00";
-            this.label11.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(883, 360);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(134, 13);
-            this.label12.TabIndex = 50;
-            this.label12.Text = "Valor Total do Pedido:";
+            this.lblCodEnderecoEntrega.BackColor = System.Drawing.SystemColors.Control;
+            this.lblCodEnderecoEntrega.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblCodEnderecoEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodEnderecoEntrega.Location = new System.Drawing.Point(497, 13);
+            this.lblCodEnderecoEntrega.Name = "lblCodEnderecoEntrega";
+            this.lblCodEnderecoEntrega.Size = new System.Drawing.Size(48, 23);
+            this.lblCodEnderecoEntrega.TabIndex = 58;
+            this.lblCodEnderecoEntrega.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmRotPedidos
             // 
@@ -587,17 +603,18 @@ namespace InterfaceUsuario.Produtos
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.Text = "Pedidos";
+            this.Load += new System.EventHandler(this.FrmRotPedidos_Load);
             this.tbcPedidos.ResumeLayout(false);
             this.tbpRegistro.ResumeLayout(false);
             this.flowLayoutPanel1.ResumeLayout(false);
             this.lblMstValorTotal.ResumeLayout(false);
             this.lblMstValorTotal.PerformLayout();
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
+            this.gpbEndereco.ResumeLayout(false);
+            this.gpbEndereco.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -620,7 +637,7 @@ namespace InterfaceUsuario.Produtos
         private System.Windows.Forms.Button btnBscCliente;
         private System.Windows.Forms.TextBox txtCodigoCliente;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.GroupBox gpbEndereco;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label lblMstCidade;
         private System.Windows.Forms.Label label8;
@@ -648,5 +665,6 @@ namespace InterfaceUsuario.Produtos
         private System.Windows.Forms.CheckBox chkTeleentrega;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label lblCodEnderecoEntrega;
     }
 }

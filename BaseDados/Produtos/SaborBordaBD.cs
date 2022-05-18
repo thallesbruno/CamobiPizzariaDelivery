@@ -225,7 +225,7 @@ namespace BaseDados.Produtos
 
         public SaborBorda Buscar(int cod)
         {
-            SaborBorda oSaborBorda = new SaborBorda();
+            SaborBorda oSaborBorda = null;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -240,6 +240,7 @@ namespace BaseDados.Produtos
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
+                        oSaborBorda = new SaborBorda();
                         oSaborBorda.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oSaborBorda.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))

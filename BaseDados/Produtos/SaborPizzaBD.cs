@@ -225,7 +225,7 @@ namespace BaseDados.Produtos
 
         public SaborPizza Buscar(int cod)
         {
-            SaborPizza oSaborPizza = new SaborPizza();
+            SaborPizza oSaborPizza = null;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -240,6 +240,7 @@ namespace BaseDados.Produtos
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
+                        oSaborPizza = new SaborPizza();
                         oSaborPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oSaborPizza.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))

@@ -462,7 +462,7 @@ namespace BaseDados.Pessoas
 
         public Cliente Buscar(int cod)
         {
-            var oCliente = new Cliente();
+            Cliente oCliente = null;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -477,6 +477,7 @@ namespace BaseDados.Pessoas
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
+                        oCliente = new Cliente();
                         oCliente.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oCliente.Nome = reader["nome"].ToString();
                         if (reader["telefone"] != null && reader["telefone"].ToString() != string.Empty)
@@ -503,7 +504,7 @@ namespace BaseDados.Pessoas
 
         public Cliente BuscarPorContato(long numeroContato)
         {
-            var oCliente = new Cliente();
+            Cliente oCliente = null;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -512,12 +513,16 @@ namespace BaseDados.Pessoas
                     MySqlCommand comando = new MySqlCommand();
                     comando = conexao.CreateCommand();
 
-                    comando.CommandText = "SELECT * FROM CLIENTE WHERE telefone LIKE @numeroContato OR celular LIKE @numeroContato LIMIT 1;";
+                    comando.CommandText = "SELECT * FROM CLIENTE WHERE" +
+                                            " telefone LIKE @numeroContato" +
+                                            " OR celular LIKE @numeroContato" +
+                                            " LIMIT 1;";
                     comando.Parameters.AddWithValue("numeroContato", numeroContato);
 
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
+                        oCliente = new Cliente();
                         oCliente.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oCliente.Nome = reader["nome"].ToString();
                         if (reader["telefone"] != null && reader["telefone"].ToString() != string.Empty)

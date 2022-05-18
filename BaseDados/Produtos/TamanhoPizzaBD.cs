@@ -231,7 +231,7 @@ namespace BaseDados.Produtos
 
         public TamanhoPizza Buscar(int cod)
         {
-            TamanhoPizza oTamanhoPizza = new TamanhoPizza();
+            TamanhoPizza oTamanhoPizza = null;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -246,6 +246,7 @@ namespace BaseDados.Produtos
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
+                        oTamanhoPizza = new TamanhoPizza();
                         oTamanhoPizza.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oTamanhoPizza.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))

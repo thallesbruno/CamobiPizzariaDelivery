@@ -207,7 +207,7 @@ namespace BaseDados.Produtos
 
         public Adicional Buscar(int cod)
         {
-            Adicional oAdicional = new Adicional();
+            Adicional oAdicional = null;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -222,6 +222,7 @@ namespace BaseDados.Produtos
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
+                        oAdicional = new Adicional();
                         oAdicional.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         oAdicional.Descricao = reader["descricao"].ToString();
                         if (!(reader["observacao"] is System.DBNull))

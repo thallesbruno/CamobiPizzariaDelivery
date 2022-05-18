@@ -48,7 +48,7 @@ namespace BaseDados.Pessoas
         }
         public TipoUsuario BuscarTipoUsuarioDoUsuario(int codigo)
         {
-            TipoUsuario tipoUsuario = new TipoUsuario();
+            TipoUsuario tipoUsuario = null;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -67,6 +67,7 @@ namespace BaseDados.Pessoas
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
+                        tipoUsuario = new TipoUsuario();
                         tipoUsuario.Codigo = Convert.ToInt32(reader["CodigoTipoUsuario"].ToString());
                         tipoUsuario.Descricao = reader["DescricaoTipoUsuario"].ToString();
                     }
@@ -85,7 +86,7 @@ namespace BaseDados.Pessoas
 
         public TipoUsuario Buscar(int codigo)
         {
-            TipoUsuario tipoUsuario = new TipoUsuario();
+            TipoUsuario tipoUsuario = null;
             using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
             {
                 try
@@ -100,6 +101,7 @@ namespace BaseDados.Pessoas
                     MySqlDataReader reader = comando.ExecuteReader();
                     while (reader.Read())
                     {
+                        tipoUsuario = new TipoUsuario();
                         tipoUsuario.Codigo = Convert.ToInt32(reader["codigo"].ToString());
                         tipoUsuario.Descricao = reader["descricao"].ToString();
                     }
