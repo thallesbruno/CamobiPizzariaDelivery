@@ -50,6 +50,7 @@ namespace InterfaceUsuario.Produtos
             this.lvlListagemPedidosPizzas = new System.Windows.Forms.ListView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.gpbEndereco = new System.Windows.Forms.GroupBox();
+            this.lblCodEnderecoEntrega = new System.Windows.Forms.Label();
             this.btnAlterarEndereco = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
@@ -73,7 +74,6 @@ namespace InterfaceUsuario.Produtos
             this.label1 = new System.Windows.Forms.Label();
             this.txtContato = new System.Windows.Forms.MaskedTextBox();
             this.tbpAndamento = new System.Windows.Forms.TabPage();
-            this.lblCodEnderecoEntrega = new System.Windows.Forms.Label();
             this.tbcPedidos.SuspendLayout();
             this.tbpRegistro.SuspendLayout();
             this.flowLayoutPanel1.SuspendLayout();
@@ -342,6 +342,17 @@ namespace InterfaceUsuario.Produtos
             this.gpbEndereco.TabStop = false;
             this.gpbEndereco.Text = "Endereço:";
             // 
+            // lblCodEnderecoEntrega
+            // 
+            this.lblCodEnderecoEntrega.BackColor = System.Drawing.SystemColors.Control;
+            this.lblCodEnderecoEntrega.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.lblCodEnderecoEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCodEnderecoEntrega.Location = new System.Drawing.Point(497, 13);
+            this.lblCodEnderecoEntrega.Name = "lblCodEnderecoEntrega";
+            this.lblCodEnderecoEntrega.Size = new System.Drawing.Size(48, 23);
+            this.lblCodEnderecoEntrega.TabIndex = 58;
+            this.lblCodEnderecoEntrega.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
             // btnAlterarEndereco
             // 
             this.btnAlterarEndereco.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -515,6 +526,7 @@ namespace InterfaceUsuario.Produtos
             this.btnEditarCliente.Size = new System.Drawing.Size(23, 21);
             this.btnEditarCliente.TabIndex = 41;
             this.btnEditarCliente.UseVisualStyleBackColor = true;
+            this.btnEditarCliente.Click += new System.EventHandler(this.btnEditarCliente_Click);
             // 
             // btnBscCliente
             // 
@@ -577,17 +589,6 @@ namespace InterfaceUsuario.Produtos
             this.tbpAndamento.TabIndex = 1;
             this.tbpAndamento.Text = "Andamento";
             this.tbpAndamento.UseVisualStyleBackColor = true;
-            // 
-            // lblCodEnderecoEntrega
-            // 
-            this.lblCodEnderecoEntrega.BackColor = System.Drawing.SystemColors.Control;
-            this.lblCodEnderecoEntrega.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.lblCodEnderecoEntrega.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCodEnderecoEntrega.Location = new System.Drawing.Point(497, 13);
-            this.lblCodEnderecoEntrega.Name = "lblCodEnderecoEntrega";
-            this.lblCodEnderecoEntrega.Size = new System.Drawing.Size(48, 23);
-            this.lblCodEnderecoEntrega.TabIndex = 58;
-            this.lblCodEnderecoEntrega.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // FrmRotPedidos
             // 

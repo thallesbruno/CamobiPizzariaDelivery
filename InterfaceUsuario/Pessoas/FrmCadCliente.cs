@@ -28,7 +28,7 @@ namespace InterfaceUsuario.Pessoas
         public void InicializarEdicao(int iCodEdit)
         {
             isSucesso = false;
-             iCodEdicao= iCodEdit;
+            iCodEdicao= iCodEdit;
         }
 
         private void FrmCadCliente_Load(object sender, EventArgs e)
@@ -101,6 +101,12 @@ namespace InterfaceUsuario.Pessoas
                 {
                     MessageBox.Show("Cliente alterado com sucesso!", this.Text, MessageBoxButtons.OK, MessageBoxIcon.Information);
                     LimparCampos();
+
+                    if (iCodEdicao > 0)
+                    {
+                        isSucesso = true;
+                        this.Close();
+                    }
                 }
                 else
                 {

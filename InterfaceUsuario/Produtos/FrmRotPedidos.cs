@@ -142,5 +142,17 @@ namespace InterfaceUsuario.Produtos
         {
             btnCancelar_Click(btnCancelar, new EventArgs());
         }
+
+        private void btnEditarCliente_Click(object sender, EventArgs e)
+        {
+            if (txtCodigoCliente.Text.Trim().Equals(String.Empty))
+                return;
+
+            FrmCadCliente oFrm = new FrmCadCliente();
+            oFrm.WindowState = FormWindowState.Normal;
+            oFrm.StartPosition = FormStartPosition.CenterScreen;
+
+
+        }
     }
 }
