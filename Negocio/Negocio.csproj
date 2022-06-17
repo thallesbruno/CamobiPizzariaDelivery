@@ -85,6 +85,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Pessoas\ClienteNG.cs" />
+    <Compile Include="Pessoas\EnderecoClienteNG.cs" />
     <Compile Include="Pessoas\TipoUsuarioNG.cs" />
     <Compile Include="Pessoas\UsuarioNG.cs" />
     <Compile Include="Produtos\AdicionalNG.cs" />

@@ -34,14 +34,14 @@ namespace InterfaceUsuario.Pesquisas
             this.btnConfirmar = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtBusca = new System.Windows.Forms.TextBox();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.gpbStatus = new System.Windows.Forms.GroupBox();
             this.optSomenteInativos = new System.Windows.Forms.RadioButton();
             this.optSomenteAtivos = new System.Windows.Forms.RadioButton();
             this.optTodos = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.lvlListagem = new System.Windows.Forms.ListView();
             this.flowLayoutPanel1.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.gpbStatus.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,17 +98,17 @@ namespace InterfaceUsuario.Pesquisas
             this.txtBusca.TabIndex = 1;
             this.txtBusca.TextChanged += new System.EventHandler(this.txtBusca_TextChanged);
             // 
-            // groupBox1
+            // gpbStatus
             // 
-            this.groupBox1.Controls.Add(this.optSomenteInativos);
-            this.groupBox1.Controls.Add(this.optSomenteAtivos);
-            this.groupBox1.Controls.Add(this.optTodos);
-            this.groupBox1.Location = new System.Drawing.Point(15, 63);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(523, 48);
-            this.groupBox1.TabIndex = 3;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Situação";
+            this.gpbStatus.Controls.Add(this.optSomenteInativos);
+            this.gpbStatus.Controls.Add(this.optSomenteAtivos);
+            this.gpbStatus.Controls.Add(this.optTodos);
+            this.gpbStatus.Location = new System.Drawing.Point(15, 63);
+            this.gpbStatus.Name = "gpbStatus";
+            this.gpbStatus.Size = new System.Drawing.Size(523, 48);
+            this.gpbStatus.TabIndex = 3;
+            this.gpbStatus.TabStop = false;
+            this.gpbStatus.Text = "Situação";
             // 
             // optSomenteInativos
             // 
@@ -176,7 +176,7 @@ namespace InterfaceUsuario.Pesquisas
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(553, 529);
             this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.gpbStatus);
             this.Controls.Add(this.txtBusca);
             this.Controls.Add(this.flowLayoutPanel1);
             this.Controls.Add(this.label1);
@@ -189,8 +189,8 @@ namespace InterfaceUsuario.Pesquisas
             this.Text = "Pesquisa";
             this.Load += new System.EventHandler(this.FrmPesquisaGenerica_Load);
             this.flowLayoutPanel1.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
+            this.gpbStatus.ResumeLayout(false);
+            this.gpbStatus.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -204,11 +204,11 @@ namespace InterfaceUsuario.Pesquisas
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox txtBusca;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RadioButton optSomenteInativos;
         private System.Windows.Forms.RadioButton optSomenteAtivos;
         private System.Windows.Forms.RadioButton optTodos;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ListView lvlListagem;
+        public System.Windows.Forms.GroupBox gpbStatus;
     }
 }

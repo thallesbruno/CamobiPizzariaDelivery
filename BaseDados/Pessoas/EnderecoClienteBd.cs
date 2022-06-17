@@ -1,4 +1,6 @@
-﻿using Entidades.Pessoas;
+﻿using Entidades.Entidades;
+using Entidades.Enumeradores;
+using Entidades.Pessoas;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -54,6 +56,53 @@ namespace BaseDados.Pessoas
                 }
             }
             return lista;
+        }
+
+        public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(int codCliente)
+        {
+            var listaEntidades = new List<EntidadeViewPesquisa>();
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    string query = @"select codigo, concat(rua,
+				                    ', nº ',
+                                    numero,
+                                    if(complemento like null, null, concat(', ', complemento)),
+                                    ', ', bairro,
+                                    ', ', cidade
+                                    ) as descricao, '1' as situacao
+                                    FROM pizzarias.endereco_cliente
+                                    WHERE codigo_cliente = @codigo_cliente";
+
+                    comando.CommandText = query;
+                    comando.Parameters.AddWithValue("codigo_cliente", codCliente);
+
+                    MySqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        var oEntidade = new EntidadeViewPesquisa();
+                        oEntidade.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+                        oEntidade.Descricao = reader["descricao"].ToString();
+                        oEntidade.Status = (Status)Convert.ToInt16(reader["situacao"]);
+
+                        listaEntidades.Add(oEntidade);
+                    }
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return listaEntidades;
         }
     }
 }

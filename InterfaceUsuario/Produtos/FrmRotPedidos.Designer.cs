@@ -362,6 +362,7 @@ namespace InterfaceUsuario.Produtos
             this.btnAlterarEndereco.Size = new System.Drawing.Size(23, 21);
             this.btnAlterarEndereco.TabIndex = 57;
             this.btnAlterarEndereco.UseVisualStyleBackColor = true;
+            this.btnAlterarEndereco.Click += new System.EventHandler(this.btnAlterarEndereco_Click);
             // 
             // label10
             // 

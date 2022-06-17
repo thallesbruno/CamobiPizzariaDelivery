@@ -152,6 +152,32 @@ namespace InterfaceUsuario.Produtos
             oFrm.WindowState = FormWindowState.Normal;
             oFrm.StartPosition = FormStartPosition.CenterScreen;
 
+            oFrm.InicializarEdicao(Convert.ToInt32(txtCodigoCliente.Text.Trim()));
+            oFrm.ShowDialog();
+
+            if (oFrm.isSucesso)
+                txtCodigoCliente_Validating(txtCodigoCliente, new CancelEventArgs());
+        }
+
+        private void btnAlterarEndereco_Click(object sender, EventArgs e)
+        {
+            var ngEnderecoCliente = new EnderecoClienteNG();
+            var lista = ngEnderecoCliente.ListarEntidadesViewPesquisa(Convert.ToInt32(txtCodigoCliente.Text.Trim()));
+
+            if (lista.Count < 1)
+            {
+                MessageBox.Show("Este cliente não possui endereços!",
+                    this.Text,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            var frmPesquisa = new FrmPesquisaGenerica("Listagem de Endereços do Cliente", Status.Ativo);
+            frmPesquisa.gpbStatus.Enabled = false;
+            frmPesquisa.lista = lista;
+            frmPesquisa.ShowDialog();
+
 
         }
     }
