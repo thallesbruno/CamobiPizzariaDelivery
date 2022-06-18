@@ -38,7 +38,7 @@ namespace InterfaceUsuario.Produtos
             this.label12 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.txtValorTeleentrega = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
+            this.lblValorTele = new System.Windows.Forms.Label();
             this.chkTeleentrega = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnDelAdicional = new System.Windows.Forms.Button();
@@ -148,7 +148,7 @@ namespace InterfaceUsuario.Produtos
             this.lblMstValorTotal.Controls.Add(this.label12);
             this.lblMstValorTotal.Controls.Add(this.label11);
             this.lblMstValorTotal.Controls.Add(this.txtValorTeleentrega);
-            this.lblMstValorTotal.Controls.Add(this.label6);
+            this.lblMstValorTotal.Controls.Add(this.lblValorTele);
             this.lblMstValorTotal.Controls.Add(this.chkTeleentrega);
             this.lblMstValorTotal.Controls.Add(this.groupBox5);
             this.lblMstValorTotal.Controls.Add(this.groupBox4);
@@ -191,15 +191,15 @@ namespace InterfaceUsuario.Produtos
             this.txtValorTeleentrega.Size = new System.Drawing.Size(112, 20);
             this.txtValorTeleentrega.TabIndex = 41;
             // 
-            // label6
+            // lblValorTele
             // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(7, 337);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(134, 13);
-            this.label6.TabIndex = 40;
-            this.label6.Text = "Valor da Tele-entrega:";
+            this.lblValorTele.AutoSize = true;
+            this.lblValorTele.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblValorTele.Location = new System.Drawing.Point(7, 337);
+            this.lblValorTele.Name = "lblValorTele";
+            this.lblValorTele.Size = new System.Drawing.Size(134, 13);
+            this.lblValorTele.TabIndex = 40;
+            this.lblValorTele.Text = "Valor da Tele-entrega:";
             // 
             // chkTeleentrega
             // 
@@ -210,6 +210,7 @@ namespace InterfaceUsuario.Produtos
             this.chkTeleentrega.TabIndex = 2;
             this.chkTeleentrega.Text = "Tele-entrega";
             this.chkTeleentrega.UseVisualStyleBackColor = true;
+            this.chkTeleentrega.CheckedChanged += new System.EventHandler(this.chkTeleentrega_CheckedChanged);
             // 
             // groupBox5
             // 
@@ -232,6 +233,7 @@ namespace InterfaceUsuario.Produtos
             this.btnDelAdicional.Size = new System.Drawing.Size(35, 31);
             this.btnDelAdicional.TabIndex = 48;
             this.btnDelAdicional.UseVisualStyleBackColor = true;
+            this.btnDelAdicional.Click += new System.EventHandler(this.btnDelAdicional_Click);
             // 
             // btnAddAdicional
             // 
@@ -242,6 +244,7 @@ namespace InterfaceUsuario.Produtos
             this.btnAddAdicional.Size = new System.Drawing.Size(35, 31);
             this.btnAddAdicional.TabIndex = 47;
             this.btnAddAdicional.UseVisualStyleBackColor = true;
+            this.btnAddAdicional.Click += new System.EventHandler(this.btnAddAdicional_Click);
             // 
             // lvlListagemPedidosAdicionais
             // 
@@ -250,6 +253,7 @@ namespace InterfaceUsuario.Produtos
             this.lvlListagemPedidosAdicionais.GridLines = true;
             this.lvlListagemPedidosAdicionais.HideSelection = false;
             this.lvlListagemPedidosAdicionais.Location = new System.Drawing.Point(2, 16);
+            this.lvlListagemPedidosAdicionais.MultiSelect = false;
             this.lvlListagemPedidosAdicionais.Name = "lvlListagemPedidosAdicionais";
             this.lvlListagemPedidosAdicionais.Size = new System.Drawing.Size(1099, 113);
             this.lvlListagemPedidosAdicionais.TabIndex = 46;
@@ -294,6 +298,7 @@ namespace InterfaceUsuario.Produtos
             this.lvlListagemPedidosPizzas.GridLines = true;
             this.lvlListagemPedidosPizzas.HideSelection = false;
             this.lvlListagemPedidosPizzas.Location = new System.Drawing.Point(6, 19);
+            this.lvlListagemPedidosPizzas.MultiSelect = false;
             this.lvlListagemPedidosPizzas.Name = "lvlListagemPedidosPizzas";
             this.lvlListagemPedidosPizzas.Size = new System.Drawing.Size(1099, 113);
             this.lvlListagemPedidosPizzas.TabIndex = 0;
@@ -508,6 +513,7 @@ namespace InterfaceUsuario.Produtos
             this.btnAdicionarCliente.Size = new System.Drawing.Size(23, 21);
             this.btnAdicionarCliente.TabIndex = 43;
             this.btnAdicionarCliente.UseVisualStyleBackColor = true;
+            this.btnAdicionarCliente.Click += new System.EventHandler(this.btnAdicionarCliente_Click);
             // 
             // label3
             // 
@@ -663,7 +669,7 @@ namespace InterfaceUsuario.Produtos
         private System.Windows.Forms.Button btnAddPizza;
         private System.Windows.Forms.ListView lvlListagemPedidosPizzas;
         private System.Windows.Forms.TextBox txtValorTeleentrega;
-        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Label lblValorTele;
         private System.Windows.Forms.CheckBox chkTeleentrega;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.Label label11;

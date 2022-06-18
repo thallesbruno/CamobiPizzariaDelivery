@@ -39,7 +39,7 @@ namespace BaseDados.Pessoas
                         oEndereco.CodigoCliente = Convert.ToInt32(reader["codigo_cliente"].ToString());
                         oEndereco.Rua = reader["rua"].ToString();
                         oEndereco.Numero = Convert.ToInt32(reader["numero"].ToString());
-                        if (reader["complemento"] != null)
+                        if (reader["complemento"] != DBNull.Value)
                             oEndereco.Complemento = reader["complemento"].ToString();
                         oEndereco.Bairro = reader["bairro"].ToString();
                         oEndereco.Cidade = reader["cidade"].ToString();
@@ -103,6 +103,48 @@ namespace BaseDados.Pessoas
                 }
             }
             return listaEntidades;
+        }
+
+        public Endereco BuscarEndereco(int codEndereco)
+        {
+            Endereco oEndereco = null;
+
+            using (MySqlConnection conexao = ConexaoBaseDados.getInstancia().getConexao())
+            {
+                try
+                {
+                    conexao.Open();
+                    MySqlCommand comando = new MySqlCommand();
+                    comando = conexao.CreateCommand();
+
+                    comando.CommandText = "SELECT * FROM endereco_cliente WHERE codigo = @codigo;";
+                    comando.Parameters.AddWithValue("codigo", codEndereco);
+
+                    MySqlDataReader reader = comando.ExecuteReader();
+                    while (reader.Read())
+                    {
+                        oEndereco = new Endereco();
+                        oEndereco.Codigo = Convert.ToInt32(reader["codigo"].ToString());
+
+                        oEndereco.CodigoCliente = Convert.ToInt32(reader["codigo_cliente"].ToString());
+                        oEndereco.Rua = reader["rua"].ToString();
+                        oEndereco.Numero = Convert.ToInt32(reader["numero"].ToString());
+                        if (reader["complemento"] != DBNull.Value)
+                            oEndereco.Complemento = reader["complemento"].ToString();
+                        oEndereco.Bairro = reader["bairro"].ToString();
+                        oEndereco.Cidade = reader["cidade"].ToString();
+                    }
+                }
+                catch (MySqlException mysqle)
+                {
+                    throw new System.Exception(mysqle.ToString());
+                }
+                finally
+                {
+                    conexao.Close();
+                }
+            }
+            return oEndereco;
         }
     }
 }

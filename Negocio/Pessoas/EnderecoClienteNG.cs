@@ -1,5 +1,6 @@
 ﻿using BaseDados.Pessoas;
 using Entidades.Entidades;
+using Entidades.Pessoas;
 using System.Collections.Generic;
 
 namespace Negocio.Pessoas
@@ -17,6 +18,11 @@ namespace Negocio.Pessoas
         public List<EntidadeViewPesquisa> ListarEntidadesViewPesquisa(int codCliente)
         {
             return _bd.ListarEntidadesViewPesquisa(codCliente);
+        }
+
+        public Endereco BuscarEndereco(int codEndereco)
+        {
+            return _bd.BuscarEndereco(codEndereco);
         }
     }
 }
