@@ -190,6 +190,7 @@ namespace InterfaceUsuario.Produtos
             this.txtValorTeleentrega.Name = "txtValorTeleentrega";
             this.txtValorTeleentrega.Size = new System.Drawing.Size(112, 20);
             this.txtValorTeleentrega.TabIndex = 41;
+            this.txtValorTeleentrega.Validating += new System.ComponentModel.CancelEventHandler(this.txtValorTeleentrega_Validating);
             // 
             // lblValorTele
             // 

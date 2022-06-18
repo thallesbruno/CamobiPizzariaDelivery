@@ -215,6 +215,41 @@ namespace InterfaceUsuario.Produtos
 
             btnEditarCliente.Enabled = true;
         }
+
+        private void txtValorTeleentrega_Validating(object sender, CancelEventArgs e)
+        {
+            if (!chkTeleentrega.Checked)
+                return;
+
+            MascaraDinheiro.TirarMascara(txtValorTeleentrega, new EventArgs());
+            var dValorTele = Convert.ToDecimal(txtValorTeleentrega.Text.Trim());
+            MascaraDinheiro.RetornarMascara(txtValorTeleentrega, new EventArgs());
+
+            if (dValorTele < 0)
+            {
+                MessageBox.Show("O valor da tele-entrega não pode ser negativo. Tente novamente!",
+                    this.Text,
+                    MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+                return;
+            }
+
+            AtualizarValorTotalPedido();
+        }
+        #endregion
+
+        #region Outros eventos
+        private void chkTeleentrega_CheckedChanged(object sender, EventArgs e)
+        {
+            txtValorTeleentrega.Text = String.Empty;
+            lblValorTele.Enabled = chkTeleentrega.Checked;
+            txtValorTeleentrega.Enabled = chkTeleentrega.Checked;
+
+            MascaraDinheiro.RetornarMascara(txtValorTeleentrega, new EventArgs());
+
+            AtualizarValorTotalPedido();
+        }
+
         #endregion
 
         #region Outros médotos
@@ -232,6 +267,21 @@ namespace InterfaceUsuario.Produtos
 
             gpbEndereco.Enabled = false;
             btnEditarCliente.Enabled = false;
+
+            lvlListagemPedidosPizzas.Items.Clear();
+            lvlListagemPedidosAdicionais.Items.Clear();
+
+            lblMstValorTotal.Text = "R$ 0,00";
+
+            MascaraCampoCodigo.RetornarMascara(txtCodigoCliente, new EventArgs());
+            MascaraDinheiro.RetornarMascara(txtValorTeleentrega, new EventArgs());
+
+            chkTeleentrega.Checked = false;
+            chkTeleentrega_CheckedChanged(chkTeleentrega, new EventArgs());
+
+            txtContato.Focus();
+
+            txtContato.Select(0, 0);
         }
 
         private void PreencherCamposEnderecoEntrega(Endereco oEndereco)
@@ -310,14 +360,5 @@ namespace InterfaceUsuario.Produtos
         }
 
         #endregion
-
-        private void chkTeleentrega_CheckedChanged(object sender, EventArgs e)
-        {
-            txtValorTeleentrega.Text = String.Empty;
-            lblValorTele.Enabled = chkTeleentrega.Checked;
-            txtValorTeleentrega.Enabled = chkTeleentrega.Checked;
-
-            MascaraDinheiro.RetornarMascara(txtValorTeleentrega, new EventArgs());
-        }
     }
 }
