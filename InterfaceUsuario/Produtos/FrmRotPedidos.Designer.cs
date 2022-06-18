@@ -281,6 +281,7 @@ namespace InterfaceUsuario.Produtos
             this.btnDelPizza.Size = new System.Drawing.Size(35, 31);
             this.btnDelPizza.TabIndex = 45;
             this.btnDelPizza.UseVisualStyleBackColor = true;
+            this.btnDelPizza.Click += new System.EventHandler(this.btnDelPizza_Click);
             // 
             // btnAddPizza
             // 
@@ -291,6 +292,7 @@ namespace InterfaceUsuario.Produtos
             this.btnAddPizza.Size = new System.Drawing.Size(35, 31);
             this.btnAddPizza.TabIndex = 44;
             this.btnAddPizza.UseVisualStyleBackColor = true;
+            this.btnAddPizza.Click += new System.EventHandler(this.btnAddPizza_Click);
             // 
             // lvlListagemPedidosPizzas
             // 

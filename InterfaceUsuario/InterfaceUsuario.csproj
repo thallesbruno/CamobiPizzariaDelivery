@@ -168,6 +168,12 @@
     <Compile Include="Produtos\FrmCadTamanhoPizza.Designer.cs">
       <DependentUpon>FrmCadTamanhoPizza.cs</DependentUpon>
     </Compile>
+    <Compile Include="Produtos\FrmRotAdicionarPizza.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produtos\FrmRotAdicionarPizza.Designer.cs">
+      <DependentUpon>FrmRotAdicionarPizza.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produtos\FrmRotPedidos.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -211,6 +217,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos\FrmCadTamanhoPizza.resx">
       <DependentUpon>FrmCadTamanhoPizza.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produtos\FrmRotAdicionarPizza.resx">
+      <DependentUpon>FrmRotAdicionarPizza.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produtos\FrmRotPedidos.resx">
       <DependentUpon>FrmRotPedidos.cs</DependentUpon>

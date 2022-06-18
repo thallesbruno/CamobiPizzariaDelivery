@@ -144,6 +144,22 @@ namespace InterfaceUsuario.Produtos
             PreencherListaAdicionais(iRetorno);
             btnAddAdicional.Focus();
         }
+
+        private void btnDelPizza_Click(object sender, EventArgs e)
+        {
+            if (lvlListagemPedidosPizzas.SelectedIndices.Count < 1)
+                return;
+
+            var iSelectedIndex = Convert.ToInt32(lvlListagemPedidosPizzas.SelectedIndices[0]);
+
+            if (iSelectedIndex >= 0)
+                lvlListagemPedidosPizzas.Items[iSelectedIndex].Remove();
+        }
+
+        private void btnAddPizza_Click(object sender, EventArgs e)
+        {
+
+        }
         #endregion
 
         #region Eventos Validating
