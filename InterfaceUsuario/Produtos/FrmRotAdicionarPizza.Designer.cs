@@ -35,13 +35,13 @@
             this.label8 = new System.Windows.Forms.Label();
             this.lblMstValorTamanhoPizza = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.lvlListagemSabores = new System.Windows.Forms.ListView();
-            this.lvlListagemEscolhidos = new System.Windows.Forms.ListView();
-            this.lblMstQtdMaxSabores = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblMstQtdSaboresSelecionados = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.lblMstValorSabores = new System.Windows.Forms.Label();
+            this.lblMstQtdSaboresSelecionados = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblMstQtdMaxSabores = new System.Windows.Forms.Label();
+            this.lvlListagemEscolhidos = new System.Windows.Forms.ListView();
+            this.lvlListagemSabores = new System.Windows.Forms.ListView();
             this.gpbSaborBorda = new System.Windows.Forms.GroupBox();
             this.label3 = new System.Windows.Forms.Label();
             this.lblMstValorSaborBorda = new System.Windows.Forms.Label();
@@ -138,61 +138,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Sabores da Pizza";
             // 
-            // lvlListagemSabores
-            // 
-            this.lvlListagemSabores.CheckBoxes = true;
-            this.lvlListagemSabores.FullRowSelect = true;
-            this.lvlListagemSabores.GridLines = true;
-            this.lvlListagemSabores.HideSelection = false;
-            this.lvlListagemSabores.Location = new System.Drawing.Point(6, 19);
-            this.lvlListagemSabores.MultiSelect = false;
-            this.lvlListagemSabores.Name = "lvlListagemSabores";
-            this.lvlListagemSabores.Size = new System.Drawing.Size(526, 148);
-            this.lvlListagemSabores.TabIndex = 1;
-            this.lvlListagemSabores.UseCompatibleStateImageBehavior = false;
-            // 
-            // lvlListagemEscolhidos
-            // 
-            this.lvlListagemEscolhidos.FullRowSelect = true;
-            this.lvlListagemEscolhidos.GridLines = true;
-            this.lvlListagemEscolhidos.HideSelection = false;
-            this.lvlListagemEscolhidos.Location = new System.Drawing.Point(538, 19);
-            this.lvlListagemEscolhidos.MultiSelect = false;
-            this.lvlListagemEscolhidos.Name = "lvlListagemEscolhidos";
-            this.lvlListagemEscolhidos.Size = new System.Drawing.Size(177, 148);
-            this.lvlListagemEscolhidos.TabIndex = 2;
-            this.lvlListagemEscolhidos.UseCompatibleStateImageBehavior = false;
-            // 
-            // lblMstQtdMaxSabores
-            // 
-            this.lblMstQtdMaxSabores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMstQtdMaxSabores.Location = new System.Drawing.Point(33, 170);
-            this.lblMstQtdMaxSabores.Name = "lblMstQtdMaxSabores";
-            this.lblMstQtdMaxSabores.Size = new System.Drawing.Size(355, 18);
-            this.lblMstQtdMaxSabores.TabIndex = 57;
-            this.lblMstQtdMaxSabores.Text = "Quantidade Máxima de Sabores - ";
-            this.lblMstQtdMaxSabores.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // label1
-            // 
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(394, 170);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(25, 18);
-            this.label1.TabIndex = 58;
-            this.label1.Text = "/";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // lblMstQtdSaboresSelecionados
-            // 
-            this.lblMstQtdSaboresSelecionados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMstQtdSaboresSelecionados.Location = new System.Drawing.Point(425, 170);
-            this.lblMstQtdSaboresSelecionados.Name = "lblMstQtdSaboresSelecionados";
-            this.lblMstQtdSaboresSelecionados.Size = new System.Drawing.Size(244, 18);
-            this.lblMstQtdSaboresSelecionados.TabIndex = 59;
-            this.lblMstQtdSaboresSelecionados.Text = "Quantidade de Sabores Selecionados -";
-            this.lblMstQtdSaboresSelecionados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -214,6 +159,61 @@
             this.lblMstValorSabores.TabIndex = 60;
             this.lblMstValorSabores.Text = "R$ 0,00";
             this.lblMstValorSabores.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // lblMstQtdSaboresSelecionados
+            // 
+            this.lblMstQtdSaboresSelecionados.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMstQtdSaboresSelecionados.Location = new System.Drawing.Point(425, 170);
+            this.lblMstQtdSaboresSelecionados.Name = "lblMstQtdSaboresSelecionados";
+            this.lblMstQtdSaboresSelecionados.Size = new System.Drawing.Size(244, 18);
+            this.lblMstQtdSaboresSelecionados.TabIndex = 59;
+            this.lblMstQtdSaboresSelecionados.Text = "Quantidade de Sabores Selecionados -";
+            this.lblMstQtdSaboresSelecionados.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(394, 170);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(25, 18);
+            this.label1.TabIndex = 58;
+            this.label1.Text = "/";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lblMstQtdMaxSabores
+            // 
+            this.lblMstQtdMaxSabores.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblMstQtdMaxSabores.Location = new System.Drawing.Point(33, 170);
+            this.lblMstQtdMaxSabores.Name = "lblMstQtdMaxSabores";
+            this.lblMstQtdMaxSabores.Size = new System.Drawing.Size(355, 18);
+            this.lblMstQtdMaxSabores.TabIndex = 57;
+            this.lblMstQtdMaxSabores.Text = "Quantidade Máxima de Sabores - ";
+            this.lblMstQtdMaxSabores.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // lvlListagemEscolhidos
+            // 
+            this.lvlListagemEscolhidos.FullRowSelect = true;
+            this.lvlListagemEscolhidos.GridLines = true;
+            this.lvlListagemEscolhidos.HideSelection = false;
+            this.lvlListagemEscolhidos.Location = new System.Drawing.Point(538, 19);
+            this.lvlListagemEscolhidos.MultiSelect = false;
+            this.lvlListagemEscolhidos.Name = "lvlListagemEscolhidos";
+            this.lvlListagemEscolhidos.Size = new System.Drawing.Size(177, 148);
+            this.lvlListagemEscolhidos.TabIndex = 2;
+            this.lvlListagemEscolhidos.UseCompatibleStateImageBehavior = false;
+            // 
+            // lvlListagemSabores
+            // 
+            this.lvlListagemSabores.CheckBoxes = true;
+            this.lvlListagemSabores.FullRowSelect = true;
+            this.lvlListagemSabores.GridLines = true;
+            this.lvlListagemSabores.HideSelection = false;
+            this.lvlListagemSabores.Location = new System.Drawing.Point(6, 19);
+            this.lvlListagemSabores.MultiSelect = false;
+            this.lvlListagemSabores.Name = "lvlListagemSabores";
+            this.lvlListagemSabores.Size = new System.Drawing.Size(526, 148);
+            this.lvlListagemSabores.TabIndex = 1;
+            this.lvlListagemSabores.UseCompatibleStateImageBehavior = false;
             // 
             // gpbSaborBorda
             // 
@@ -305,7 +305,7 @@
             // 
             this.label12.AutoSize = true;
             this.label12.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label12.Location = new System.Drawing.Point(469, 431);
+            this.label12.Location = new System.Drawing.Point(473, 396);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(125, 13);
             this.label12.TabIndex = 61;
@@ -316,7 +316,7 @@
             this.lblMstValorTotalPizza.BackColor = System.Drawing.SystemColors.Control;
             this.lblMstValorTotalPizza.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             this.lblMstValorTotalPizza.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMstValorTotalPizza.Location = new System.Drawing.Point(602, 421);
+            this.lblMstValorTotalPizza.Location = new System.Drawing.Point(606, 386);
             this.lblMstValorTotalPizza.Name = "lblMstValorTotalPizza";
             this.lblMstValorTotalPizza.Size = new System.Drawing.Size(125, 23);
             this.lblMstValorTotalPizza.TabIndex = 60;
@@ -328,7 +328,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnCancelar);
             this.flowLayoutPanel1.Controls.Add(this.btnConfirmar);
             this.flowLayoutPanel1.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanel1.Location = new System.Drawing.Point(372, 459);
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(376, 424);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
             this.flowLayoutPanel1.Size = new System.Drawing.Size(355, 54);
             this.flowLayoutPanel1.TabIndex = 59;
@@ -361,7 +361,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(736, 525);
+            this.ClientSize = new System.Drawing.Size(736, 485);
             this.Controls.Add(this.label12);
             this.Controls.Add(this.lblMstValorTotalPizza);
             this.Controls.Add(this.flowLayoutPanel1);
